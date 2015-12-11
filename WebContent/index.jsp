@@ -39,31 +39,31 @@
 	          </table>
 	          
 	<table class="table">
-	<tr> <th colspan="3">Ist die folgende Aussage zutreffend/etwas zutreffend/neutral/wenig zutreffend/nicht zutreffend? </th></tr>
+	<tr> <th colspan="3">Ist die folgende Aussage nicht zutreffend (1), wenig zutreffend (2), neutral (3), etwas zutreffend (4) oder zutreffend (5)? </th></tr>
 	<tr> <td colspan="2"> In der Werbung geht es hauptsächlich um das beworbene Produkt </td>
-	     <td> <input type="radio" name="zutreffend1" value="1" />
+	     <td> 1 <input type="radio" name="zutreffend1" value="1" />
 	          <input type="radio" name="zutreffend1" value="2" />
 	          <input type="radio" name="zutreffend1" value="3" /> 
 	          <input type="radio" name="zutreffend1" value="4" /> 
-	          <input type="radio" name="zutreffend1" value="5" /> </td></tr>
+	          <input type="radio" name="zutreffend1" value="5" /> 5</td></tr>
 	<tr> <td colspan="2"> Ich sehe diese Werbung gerne im Fernsehen  </td>
-	     <td> <input type="radio" name="zutreffend2" value="1" /> 
+	     <td> 1 <input type="radio" name="zutreffend2" value="1" /> 
 	          <input type="radio" name="zutreffend2" value="2" /> 
 	          <input type="radio" name="zutreffend2" value="3" /> 
 	          <input type="radio" name="zutreffend2" value="4" />
-	          <input type="radio" name="zutreffend2" value="5" /> </td></tr>
+	          <input type="radio" name="zutreffend2" value="5" /> 5</td></tr>
 	<tr> <td colspan="2"> Die Werbung überzeugt mich von der Qualität des Produkts  </td>
-	     <td> <input type="radio" name="zutreffend3" value="1" /> 
+	     <td> 1 <input type="radio" name="zutreffend3" value="1" /> 
 	          <input type="radio" name="zutreffend3" value="2" /> 
 	          <input type="radio" name="zutreffend3" value="3" /> 
 	          <input type="radio" name="zutreffend3" value="4" /> 
-	          <input type="radio" name="zutreffend3" value="5" /> </td></tr>
+	          <input type="radio" name="zutreffend3" value="5" /> 5</td></tr>
 	<tr> <td colspan="2"> Wenn ich das nächste Mal einkaufen gehe, werde ich nach dem beworbenen Produkt Ausschau halten</td>
-	     <td> <input type="radio" name="zutreffend4" value="1" />
+	     <td> 1 <input type="radio" name="zutreffend4" value="1" />
 	          <input type="radio" name="zutreffend4" value="2" /> 
 	          <input type="radio" name="zutreffend4" value="3" /> 
 	          <input type="radio" name="zutreffend4" value="4" />
-	          <input type="radio" name="zutreffend4" value="5" /></td></tr></table>
+	          <input type="radio" name="zutreffend4" value="5" /> 5</td></tr></table>
 	          
 	<table class="table">
 	<tr> <th colspan="3">Ich empfinde diese Werbung als </th></tr>
@@ -105,12 +105,12 @@
 	          <input type="radio" name="empfinden6" value="5" /> </td> <td> unsympathisch </td></tr></table>
 	          
 	<table class="table">
-	<tr> <th colspan="3"><b>Zielt die Werbung Ihrer Meinung nach auf eine bestimmte Zielgruppe ab?</b></th></tr>
+	<tr> <th colspan="3"><b>Zielt die Werbung Ihrer Meinung nach auf eine bestimmte Zielgruppe ab? (Antwort optional)</b></th></tr>
 	<tr><td>
 	<input type="checkbox" name="zielgruppe" value="tiere" />Tierliebhaber<br>
 	<input type="checkbox" name="zielgruppe" value="frauen" />Frauen<br>
 	<input type="checkbox" name="zielgruppe" value="maenner" />Männer<br>
-	<input type="checkbox" name="zielgruppe" value="kinder" />Kinder oder Jugendliches<br>
+	<input type="checkbox" name="zielgruppe" value="kinder" />Kinder oder Jugendliche<br>
 	<input type="checkbox" name="zielgruppe" value="familien" />Familien<br>
 	<input type="checkbox" name="zielgruppe" value="pensionisten" />Pensionisten<br>
 	<input type="checkbox" name="zielgruppe" value="singles" />Singles<br>
@@ -130,6 +130,12 @@
 	<input type="radio" name="gesamtbewertung" value="8" />8
 	<input type="radio" name="gesamtbewertung" value="9" />9
 	<input type="radio" name="gesamtbewertung" value="10" />10</td>
+	</tr>
+	</table>
+	
+	<table class="table">
+	<tr><th colspan="3">Hast du noch eine persönliche Anmerkung zu dieser Werbung? </th></tr>
+	<tr><td colspand="3"><input type="text" name="kommentar"/></td>
 	</tr>
 	</table>
 	<input class="btn btn-default" type="submit" value="Submit">
