@@ -85,8 +85,12 @@ public class Video {
 
 	/* ------------ Getter ------------ */
 	
+	public String getId(){ return id; }
 	public String getURL(){ return url; }
 	public String getName(){ return name; }
+	public String getLength(){ return length; }
+	public String getMarke(){ return marke; }
+	public String getKategorie(){ return kategorie; }
 	
 	public int getSchonGesehen(int wert){ return schongesehen[wert]; }
 	public int getPlotTwist(int wert){ return plottwist[wert]; }

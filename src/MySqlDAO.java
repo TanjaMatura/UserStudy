@@ -14,10 +14,12 @@ public class MySqlDAO {
   private Statement statement = null;
   private PreparedStatement preparedStatement = null;
   private ResultSet resultSet = null;
+  
+  /* ------------ Video stuff  ------------ */
 
   public ArrayList<Video> getVideoList() throws Exception{
 	  
-	  ArrayList<Video> videoList=null;
+	  ArrayList<Video> videoList= new ArrayList<Video>();
 	  try {
 		
 		  // This will load the MySQL driver, each DB has its own driver
@@ -39,7 +41,7 @@ public class MySqlDAO {
 	      while(resultSet.next()) {
 	    	  Video tempvid = new Video(resultSet.getString("vid_id"), resultSet.getString("vid_url"), resultSet.getString("vid_name"),
 	    			  resultSet.getString("vid_length"), resultSet.getString("vid_marke"), resultSet.getString("vid_kategorie"));
-	    	  
+	    	  videoList.add(tempvid);
 	      }
 	  }catch (Exception e) {
 	      throw e;
@@ -49,6 +51,107 @@ public class MySqlDAO {
 	  return videoList;
 	  
   }
+  
+  public Video getVideobyUrl(String url) throws Exception{
+	  
+	  Video thing=null;
+	  try {
+		
+		  // This will load the MySQL driver, each DB has its own driver
+	      Class.forName("com.mysql.jdbc.Driver");
+	      // Setup the connection with the DB
+	      connect = DriverManager
+	          .getConnection("jdbc:mysql://a1200069.mysql.univie.ac.at/a1200069"
+	              + "user=a1200069&password=mz8UserStudy");
+	      //set our SQL SELECT query
+	      String query = "SELECT " + url +" FROM Video";
+	   
+	      // create the java statement
+	      statement = connect.createStatement();
+
+		  //execute query and get java resultSet
+	      resultSet = statement.executeQuery(query);
+	      
+	      //iterate through the reultSet and create new Video object
+	      while(resultSet.next()) {
+	    	  thing = new Video(resultSet.getString("vid_id"), resultSet.getString("vid_url"), resultSet.getString("vid_name"),
+	    			  resultSet.getString("vid_length"), resultSet.getString("vid_marke"), resultSet.getString("vid_kategorie"));
+	    	  
+	      }
+	  }catch (Exception e) {
+	      throw e;
+	    } finally {
+	      close();
+	    }
+	  return thing;
+	  
+  }
+  
+  public void removeVideobyUrl(String url) throws Exception{
+	  
+	  
+	  try {
+		
+		  // This will load the MySQL driver, each DB has its own driver
+	      Class.forName("com.mysql.jdbc.Driver");
+	      // Setup the connection with the DB
+	      connect = DriverManager
+	          .getConnection("jdbc:mysql://a1200069.mysql.univie.ac.at/a1200069"
+	              + "user=a1200069&password=mz8UserStudy");
+	      //set our SQL SELECT query
+	      String query = "DELETE * FROM Video WHERE vid_url='" + url +"'";
+	   
+	      // create the java statement
+	      statement = connect.createStatement();
+
+		  //execute query and get java resultSet
+	      resultSet = statement.executeQuery(query);
+	      
+	      
+	  }catch (Exception e) {
+	      throw e;
+	    } finally {
+	      close();
+	    }
+	  
+	  
+  }
+  
+  public void saveVideo(Video video) throws Exception{
+	  
+	  
+	  try {
+		
+		  // This will load the MySQL driver, each DB has its own driver
+	      Class.forName("com.mysql.jdbc.Driver");
+	      // Setup the connection with the DB
+	      connect = DriverManager
+	          .getConnection("jdbc:mysql://a1200069.mysql.univie.ac.at/a1200069"
+	              + "user=a1200069&password=mz8UserStudy");
+	      //set our SQL SELECT query
+	      String query = "INSERT INTO Video VALUES (" + video.getId() + "," + video.getURL() + video.getName() + "," + video.getLength() + "," +
+	    		  video.getMarke() + "," + video.getKategorie() +  ")";
+	   
+	      // create the java statement
+	      statement = connect.createStatement();
+
+		  //execute query and get java resultSet
+	      resultSet = statement.executeQuery(query);
+	      
+	      
+	  }catch (Exception e) {
+	      throw e;
+	    } finally {
+	      close();
+	    }
+	  
+	  
+  }
+  /* ------------ Bewertung stuff ------------ */
+  /* ------------ User  stuff ------------ */
+  /* ------------ Comment stuff ------------ */
+  
+  
   public void readDataBase() throws Exception {
     try {
       // This will load the MySQL driver, each DB has its own driver

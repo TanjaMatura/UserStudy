@@ -38,16 +38,20 @@ public class Admin {
 	/* ------------ Komplexere Methoden ------------ */
 	
 	/*------------- Datenbankmanipulation ------------- */
-	public void addVideo(String url, String name, String length, String marke, String kategorie){
+	public void addVideo(String url, String name, String length, String marke, String kategorie) throws Exception{
 		Video neuesVid = new Video(url, name, length, marke, kategorie);
 		//Datenbank relevanter Code
-		VideoDAO vDAO = new VideoDAO("\\video");
+		MySqlDAO vDAO = new MySqlDAO();
 		vDAO.saveVideo(neuesVid);
 	}
-	public void removeVideo(Video video){
+	public void removeVideo(Video video) throws Exception{
 		//Datenbank relevanter Code
-		VideoDAO vDAO = new VideoDAO("\\video");
-		vDAO.deleteVideo(video);
+		MySqlDAO vDAO = new MySqlDAO();
+		try{
+		vDAO.removeVideobyUrl(video.getURL());
+		}catch (Exception e) {
+		      throw e;
+		    }
 	}
 	
 	
