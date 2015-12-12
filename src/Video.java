@@ -9,9 +9,12 @@ import java.util.ArrayList;
 *   	- N/A: Ok eigentlich brauchen wir in jedem Array einen Platz mehr, falls gar keine Antwort ausgewählt wurde ^^  
 */
 public class Video {
+	private String id;
 	private String url; 
 	private String name; 
-	//private String marke; 
+	private String marke; 
+	private String length; // TIME values in 'HH:MM:SS' format
+	private String kategorie;
 	//private boolean promis; 
 	//private int sekunden; 
 	private int anzahlBewertungen; 
@@ -45,9 +48,36 @@ public class Video {
 	
 	/* ------------ Konstruktor  ------------ */
 	
-	public Video(String url, String name){
+	//Konstruktur zum anlegen (keine id)
+	public Video(String url, String name, String length, String marke, String kategorie){
+		this.id = id; 
 		this.url = url; 
-		this.name = name; 
+		this.name = name;
+		this.length = length;
+		this.marke = marke;
+		this.kategorie = kategorie; 
+		anzahlBewertungen = 0; 
+		angeboten = 0; 
+		ausgewaehlt = 0;
+		MySqlDAO mySqlDAO = new MySqlDAO();
+		try {
+			this.id = Integer.toString(mySqlDAO.getVideoList().size()+1);	
+		}
+		catch(Exception e){
+			this.id = Integer.toString(1);
+		}
+	}
+	
+	
+	//Konstruktor für Datenauslese
+	
+	public Video(String id, String url, String name, String length, String marke, String kategorie){
+		this.id = id; 
+		this.url = url; 
+		this.name = name;
+		this.length = length;
+		this.marke = marke;
+		this.kategorie = kategorie; 
 		anzahlBewertungen = 0; 
 		angeboten = 0; 
 		ausgewaehlt = 0; 

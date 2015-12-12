@@ -38,8 +38,8 @@ public class Admin {
 	/* ------------ Komplexere Methoden ------------ */
 	
 	/*------------- Datenbankmanipulation ------------- */
-	public void addVideo(String url, String name){
-		Video neuesVid = new Video(url, name);
+	public void addVideo(String url, String name, String length, String marke, String kategorie){
+		Video neuesVid = new Video(url, name, length, marke, kategorie);
 		//Datenbank relevanter Code
 		VideoDAO vDAO = new VideoDAO("\\video");
 		vDAO.saveVideo(neuesVid);

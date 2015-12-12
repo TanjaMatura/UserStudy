@@ -5,7 +5,7 @@
 public class Main {
 	
 		public static void main(String[] args) { 		
-			Video meinVideo = new Video("url", "name"); 
+			Video meinVideo = new Video("url", "name", "length", "marke", "kategorie"); 
 			meinVideo.addBewertung(3); 
 			meinVideo.addBewertung(2);
 			meinVideo.addBewertung(3);

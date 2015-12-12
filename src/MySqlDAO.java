@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class MySqlDAO {
@@ -14,6 +15,40 @@ public class MySqlDAO {
   private PreparedStatement preparedStatement = null;
   private ResultSet resultSet = null;
 
+  public ArrayList<Video> getVideoList() throws Exception{
+	  
+	  ArrayList<Video> videoList=null;
+	  try {
+		
+		  // This will load the MySQL driver, each DB has its own driver
+	      Class.forName("com.mysql.jdbc.Driver");
+	      // Setup the connection with the DB
+	      connect = DriverManager
+	          .getConnection("jdbc:mysql://a1200069.mysql.univie.ac.at/a1200069"
+	              + "user=a1200069&password=mz8UserStudy");
+	      //set our SQL SELECT query
+	      String query = "SELECT * FROM Video";
+	   
+	      // create the java statement
+	      statement = connect.createStatement();
+
+		  //execute query and get java resultSet
+	      resultSet = statement.executeQuery(query);
+	      
+	      //iterate through the reultSet and create new Video objects, adding them to the videoList
+	      while(resultSet.next()) {
+	    	  Video tempvid = new Video(resultSet.getString("vid_id"), resultSet.getString("vid_url"), resultSet.getString("vid_name"),
+	    			  resultSet.getString("vid_length"), resultSet.getString("vid_marke"), resultSet.getString("vid_kategorie"));
+	    	  
+	      }
+	  }catch (Exception e) {
+	      throw e;
+	    } finally {
+	      close();
+	    }
+	  return videoList;
+	  
+  }
   public void readDataBase() throws Exception {
     try {
       // This will load the MySQL driver, each DB has its own driver
