@@ -335,4 +335,3 @@ public ArrayList<Bewertung> getBewertungList() throws Exception{
     }
   }
 
-} 
