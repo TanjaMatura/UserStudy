@@ -5,7 +5,7 @@
 public class Main {
 	
 		public static void main(String[] args) { 		
-			Video meinVideo = new Video("url", "name"); 
+			/*Video meinVideo = new Video("url", "name", "length", "marke", "kategorie"); 
 			meinVideo.addBewertung(3); 
 			meinVideo.addBewertung(2);
 			meinVideo.addBewertung(3);
@@ -23,7 +23,7 @@ public class Main {
 								"\n 7: " + meinVideo.getBewertung(7) +
 								"\n 8: " + meinVideo.getBewertung(8) +
 								"\n 9: " + meinVideo.getBewertung(9) +
-								"\n 10: " + meinVideo.getBewertung(10));
+								"\n 10: " + meinVideo.getBewertung(10));*/
 		}
 
 }
