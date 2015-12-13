@@ -9,17 +9,19 @@ public class Admin {
 	private String password;
 	private String age;
 	private String gender;
+	private int admin;
 
 	
 					
 	
 	/* ------------ Konstruktor  ------------ */
 	
-	public Admin(String username, String password, String age, String gender){
+	public Admin(String username, String password, String age, String gender, int admin){
 		this.username = username; 
 		this.password = password; 
 		this.age = age;
 		this.gender = gender;
+		this.admin = admin
 		MySqlDAO mySqlDAO = new MySqlDAO();
 		try {
 			this.id = Integer.toString(mySqlDAO.getUserList().size()+1);	
@@ -30,13 +32,14 @@ public class Admin {
 		
 	}
 	//für laden von der database
-	public Admin(String id, String username, String password, String age, String gender){
+	public Admin(String id, String username, String password, String age, String gender, String admin){
 		this.id = id;
 		this.username = username; 
 		this.password = password; 
 		this.password = password; 
 		this.age = age;
 		this.gender = gender;
+		this.admin = Integer.parseInt(admin);
 		
 	}
 
@@ -47,6 +50,7 @@ public class Admin {
 	public String getPassword(){ return password; }
 	public String getAge(){ return age; }
 	public String getGender(){ return gender; }
+	public int getAdmin(){ return admin; }
 	
 	/*------------- Setter ------------- */
 	

@@ -250,9 +250,9 @@ public void saveBewertung(Bewertung bewertung) throws Exception{
 
   /* ------------ User  stuff ------------ */
   
-  public ArrayList<Video> getUserList() throws Exception{
+  public ArrayList<Admin> getUserList() throws Exception{
 	  
-	  ArrayList<Video> videoList= new ArrayList<Video>();
+	  ArrayList<Admin> userList= new ArrayList<Admin>();
 	  try {
 		
 		  // This will load the MySQL driver, each DB has its own driver
@@ -262,7 +262,7 @@ public void saveBewertung(Bewertung bewertung) throws Exception{
 	          .getConnection("jdbc:mysql://a1200069.mysql.univie.ac.at/a1200069"
 	              + "user=a1200069&password=mz8UserStudy");
 	      //set our SQL SELECT query
-	      String query = "SELECT * FROM Video";
+	      String query = "SELECT * FROM User";
 	   
 	      // create the java statement
 	      statement = connect.createStatement();
@@ -272,16 +272,16 @@ public void saveBewertung(Bewertung bewertung) throws Exception{
 	      
 	      //iterate through the reultSet and create new Video objects, adding them to the videoList
 	      while(resultSet.next()) {
-	    	  Video tempvid = new Video(resultSet.getString("vid_id"), resultSet.getString("vid_url"), resultSet.getString("vid_name"),
-	    			  resultSet.getString("vid_length"), resultSet.getString("vid_marke"), resultSet.getString("vid_kategorie"));
-	    	  videoList.add(tempvid);
+	    	  Admin tempUser = new Admin(resultSet.getString("user_id"), resultSet.getString("user_name"), resultSet.getString("user_password"),
+	    			  resultSet.getString("user_age"), resultSet.getString("user_gender"), resultSet.getString("user_admin"));
+	    	  videoList.add(tempUser);
 	      }
 	  }catch (Exception e) {
 	      throw e;
 	    } finally {
 	      close();
 	    }
-	  return videoList;
+	  return userList;
 	  
   }
   
@@ -308,7 +308,7 @@ public void saveBewertung(Bewertung bewertung) throws Exception{
 	      //iterate through the reultSet and create new Video object
 	      while(resultSet.next()) {
 	    	  thing = new Admin(resultSet.getString("user_id"), resultSet.getString("user_name"), resultSet.getString("user_password"),
-	    			  resultSet.getString("user_age"), resultSet.getString("user_gender"));
+	    			  resultSet.getString("user_age"), resultSet.getString("user_gender"), resultSet.getString("user_admin"));
 	    	  
 	      }
 	  }catch (Exception e) {
@@ -363,7 +363,7 @@ public void saveBewertung(Bewertung bewertung) throws Exception{
 	              + "user=a1200069&password=mz8UserStudy");
 	      //set our SQL SELECT query
 	      String query = "INSERT INTO User VALUES (" + user.getId() + "," + user.getUsername() + user.getPassword() + "," + user.getAge() + "," +
-	    		  user.getGender() +")";
+	    		  user.getGender() + "," + user.getAdmin() + ")";
 	   
 	      // create the java statement
 	      statement = connect.createStatement();
