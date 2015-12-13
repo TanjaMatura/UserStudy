@@ -5,10 +5,11 @@
 
 public class Bewertung {
 	private String id;
-	private String geschlecht; 		// männlich, weiblich, was anderes
-	private String altersgruppe; 	// 5 Altersgruppen
+	private String uid;
+	//private String geschlecht; 		// männlich, weiblich, was anderes
+	//private String altersgruppe; 	// 5 Altersgruppen
 	private String videourl; 
-	private String videoname; 
+	//private String videoname; 
 	
 	
 	// Ja/Nein (NA)
@@ -36,13 +37,41 @@ public class Bewertung {
 		private int bewertungen;
 /* ------------ Konstruktor  ------------ */
 	
-	public Bewertung(String geschlecht, String altersgruppe, String videourl, String videoname, int produktfixierung, int lachenweinen, 
+	public Bewertung(String userID, String videourl, String videoname, int produktfixierung, int lachenweinen, 
 			int froehlichtraurig, int lustigernst, int altmodischmodern, int kreativunkreativ, int liebenswertfies, int sympathischunsympathisch, 
 			String zielgruppe, int bewertungen){
-		this.geschlecht = geschlecht; 
-		this.altersgruppe = altersgruppe; 
+		
+		this.uid = userID
 		this.videourl = videourl;
-		this.videoname = videoname;
+		this.produktfixierung = produktfixierung; 
+		this.lachenweinen = lachenweinen; 
+		this.froehlichtraurig = froehlichtraurig; 
+		this.lustigernst = lustigernst; 
+		this.altmodischmodern = altmodischmodern; 
+		this.kreativunkreativ = kreativunkreativ; 
+		this.liebenswertfies = liebenswertfies; 
+		this.sympathischunsympathisch = sympathischunsympathisch; 
+		this.zielgruppe = zielgruppe; 
+		this.bewertungen = bewertungen; 
+		mySqlDAO bDAO = new mySqlDAO();
+		try {
+			this.id = Integer.toString(bDAO.getBewertungList().size()+1);	
+		}
+		catch(Exception e){
+			this.id = Integer.toString(1);
+		}
+		
+		
+		
+	}
+	
+	//konstruktor zur asulese
+	
+	public Bewertung(String id, String userID, String videourl, int produktfixierung, int lachenweinen, 
+			int froehlichtraurig, int lustigernst, int altmodischmodern, int kreativunkreativ, int liebenswertfies, int sympathischunsympathisch, 
+			String zielgruppe, int bewertungen){ 
+		this.uid = userID
+		this.videourl = videourl;
 		this.produktfixierung = produktfixierung; 
 		this.lachenweinen = lachenweinen; 
 		this.froehlichtraurig = froehlichtraurig; 
@@ -54,12 +83,7 @@ public class Bewertung {
 		this.zielgruppe = zielgruppe; 
 		this.bewertungen = bewertungen; 
 		BewertungDAO bDAO = new BewertungDAO("\\rating");
-		try {
-			this.id = Integer.toString(bDAO.getbewertungList().size()+1);	
-		}
-		catch(Exception e){
-			this.id = Integer.toString(1);
-		}
+		this.id =id;
 		
 		
 		
@@ -68,6 +92,8 @@ public class Bewertung {
 /* ------------ Getter ------------ */
 	
 	public String getID(){ return id; }
+	public String getUid(){ return uid; }
+	public String geturl(){ return videourl; }
 	public String getSchonGesehen(){ return schongesehen; }
 	public String getPlotTwist(){ return plottwist; }
 	public String getCatchPhrase(){ return catchphrase; }

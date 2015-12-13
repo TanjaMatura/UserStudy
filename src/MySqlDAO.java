@@ -40,7 +40,8 @@ public class MySqlDAO {
 	      //iterate through the reultSet and create new Video objects, adding them to the videoList
 	      while(resultSet.next()) {
 	    	  Video tempvid = new Video(resultSet.getString("vid_id"), resultSet.getString("vid_url"), resultSet.getString("vid_name"),
-	    			  resultSet.getString("vid_length"), resultSet.getString("vid_marke"), resultSet.getString("vid_kategorie"));
+	    			  resultSet.getString("vid_length"), resultSet.getString("vid_marke"), resultSet.getString("vid_kategorie"),
+	    			  resultSet.getString("vid_pickcount"), resultSet.getString("vid_pickavailable"));
 	    	  videoList.add(tempvid);
 	      }
 	  }catch (Exception e) {
@@ -75,7 +76,8 @@ public class MySqlDAO {
 	      //iterate through the reultSet and create new Video object
 	      while(resultSet.next()) {
 	    	  thing = new Video(resultSet.getString("vid_id"), resultSet.getString("vid_url"), resultSet.getString("vid_name"),
-	    			  resultSet.getString("vid_length"), resultSet.getString("vid_marke"), resultSet.getString("vid_kategorie"));
+	    			  resultSet.getString("vid_length"), resultSet.getString("vid_marke"), resultSet.getString("vid_kategorie"),
+	    			  resultSet.getString("vid_pickcount"), resultSet.getString("vid_pickavailable"));
 	    	  
 	      }
 	  }catch (Exception e) {
@@ -129,7 +131,7 @@ public class MySqlDAO {
 	              + "user=a1200069&password=mz8UserStudy");
 	      //set our SQL SELECT query
 	      String query = "INSERT INTO Video VALUES (" + video.getId() + "," + video.getURL() + video.getName() + "," + video.getLength() + "," +
-	    		  video.getMarke() + "," + video.getKategorie() +  ")";
+	    		  video.getMarke() + "," + video.getKategorie() + video.getAnzahlAusgewaehlt() + video.getAnzahlAngeboten() +  ")";
 	   
 	      // create the java statement
 	      statement = connect.createStatement();
@@ -147,6 +149,7 @@ public class MySqlDAO {
 	  
   }
   /* ------------ Bewertung stuff ------------ */
+  
 public ArrayList<Bewertung> getBewertungList() throws Exception{
 	  ArrayList<Bewertung> bewertungList= new ArrayList<Bewertung>();
 	  try {
@@ -167,9 +170,9 @@ public ArrayList<Bewertung> getBewertungList() throws Exception{
 	      
 	      //iterate through the reultSet and create new Video objects, adding them to the videoList
 	      while(resultSet.next()) {
-	    	  Bewertung tempbew = new Bewertung(resultSet.getString("b_geschlecht"), resultSet.getString("b_altersgruppe"), resultSet.getString("b_videourl"),
-	    			  resultSet.getString("b_videoname"), resultSet.getInt("b_produktfixierung"), resultSet.getInt("b_lachenweinen"), resultSet.getInt("froehlichtraurig"), resultSet.getInt("b_lustigernst"),
-	    			  resultSet.getInt("b_altmodischmodern"), resultSet.getInt("b_kreativunkreativ"), resultSet.getInt("b_liebenswertfies"), resultSet.getInt("b_sympathischunsympathisch"), resultSet.getString("b_zielgruppe"), resultSet.getInt("b_bewertungen"));
+	    	  Bewertung tempbew = new Bewertung(resultSet.getString("b_id"), resultSet.getString("b_uid"), resultSet.getString("b_url"),
+	    			  resultSet.getInt("produktfixierung"), resultSet.getInt("lachenweinen"), resultSet.getInt("froehlichtraurig"), resultSet.getInt("lustigernst"),
+	    			  resultSet.getInt("altmodischmodern"), resultSet.getInt("kreativunkreativ"), resultSet.getInt("liebenswertfies"), resultSet.getInt("sympathischunsympathisch"), resultSet.getString("zielgruppe"), resultSet.getInt("bewertungen"));
 	    	  bewertungList.add(tempbew);
 	      }
 	  }catch (Exception e) {
@@ -180,6 +183,70 @@ public ArrayList<Bewertung> getBewertungList() throws Exception{
 	  return bewertungList;
 	  
   }
+
+public void removeBewertungbyId(String id) throws Exception{
+	  
+	  
+	  try {
+		
+		  // This will load the MySQL driver, each DB has its own driver
+	      Class.forName("com.mysql.jdbc.Driver");
+	      // Setup the connection with the DB
+	      connect = DriverManager
+	          .getConnection("jdbc:mysql://a1200069.mysql.univie.ac.at/a1200069"
+	              + "user=a1200069&password=mz8UserStudy");
+	      //set our SQL SELECT query
+	      String query = "DELETE * FROM Bewertung WHERE b_id='" + id +"'";
+	   
+	      // create the java statement
+	      statement = connect.createStatement();
+
+		  //execute query and get java resultSet
+	      resultSet = statement.executeQuery(query);
+	      
+	      
+	  }catch (Exception e) {
+	      throw e;
+	    } finally {
+	      close();
+	    }
+	  
+	  
+}
+
+public void saveBewertung(Bewertung bewertung) throws Exception{
+    
+	  try {
+		
+		  // This will load the MySQL driver, each DB has its own driver
+	      Class.forName("com.mysql.jdbc.Driver");
+	      // Setup the connection with the DB
+	      connect = DriverManager
+	          .getConnection("jdbc:mysql://a1200069.mysql.univie.ac.at/a1200069"
+	              + "user=a1200069&password=mz8UserStudy");
+	      //set our SQL SELECT query
+	      String query = "INSERT INTO Bewertung VALUES (" + bewertung.getUid() + "," + bewertung.geturl() + bewertung.getSchonGesehen() + "," + bewertung.getPlotTwist() + "," +
+	    		  bewertung.getCatchPhrase() + "," + bewertung.getGernGesehen() + "," + bewertung.getUeberzeugung() +  
+	    		  "," + bewertung.getAufmerksamkeit() + "," + bewertung.getMarkeBekannt() + "," + bewertung.getProduktfixierung() +
+	    		  "," + bewertung.getLachenWeinen() + "," + bewertung.getFroehlichTraurig() + "," + bewertung.getLustigErnst() + 
+	    		  "," + bewertung.getAltmodischModern() + "," + bewertung.getKreativUnkreativ() + "," + bewertung.getLiebenswertFies() +
+	    		  "," + bewertung.getSympathischUnsympathisch() + "," + bewertung.getZielgruppe() + "," + bewertung.getBewertung() + ")";
+	   
+	      // create the java statement
+	      statement = connect.createStatement();
+
+		  //execute query and get java resultSet
+	      resultSet = statement.executeQuery(query);
+	      
+	      
+	  }catch (Exception e) {
+	      throw e;
+	    } finally {
+	      close();
+	    }
+	  
+	  
+}
 
   /* ------------ User  stuff ------------ */
   
@@ -313,6 +380,76 @@ public ArrayList<Bewertung> getBewertungList() throws Exception{
   }
   
   /* ------------ Comment stuff ------------ */
+  
+public void saveComment(Admin user, Video vid, String comment ) throws Exception{
+	 
+	String tempId;
+	try {
+		tempId = Integer.toString(mySqlDAO.getCommentList().size()+1);	
+	}
+	catch(Exception e){
+		tempId = Integer.toString(1);
+	}  
+	
+	  try {
+		
+		  // This will load the MySQL driver, each DB has its own driver
+	      Class.forName("com.mysql.jdbc.Driver");
+	      // Setup the connection with the DB
+	      connect = DriverManager
+	          .getConnection("jdbc:mysql://a1200069.mysql.univie.ac.at/a1200069"
+	              + "user=a1200069&password=mz8UserStudy");
+	      //set our SQL SELECT query
+	      String query = "INSERT INTO Comment VALUES (" + tempId + "," + user.getId() + vid.getId() + "," + comment +")";
+	   
+	      // create the java statement
+	      statement = connect.createStatement();
+
+		  //execute query and get java resultSet
+	      resultSet = statement.executeQuery(query);
+	      
+	      
+	  }catch (Exception e) {
+	      throw e;
+	    } finally {
+	      close();
+	    }
+  }
+
+public ArrayList<String> getCommentList(){
+	
+	ArrayList<String> commentList= new ArrayList<String>();
+	  try {
+		
+		  // This will load the MySQL driver, each DB has its own driver
+	      Class.forName("com.mysql.jdbc.Driver");
+	      // Setup the connection with the DB
+	      connect = DriverManager
+	          .getConnection("jdbc:mysql://a1200069.mysql.univie.ac.at/a1200069"
+	              + "user=a1200069&password=mz8UserStudy");
+	      //set our SQL SELECT query
+	      String query = "SELECT * FROM Comment";
+	   
+	      // create the java statement
+	      statement = connect.createStatement();
+
+		  //execute query and get java resultSet
+	      resultSet = statement.executeQuery(query);
+	      
+	      //iterate through the reultSet and create new Video objects, adding them to the videoList
+	      while(resultSet.next()) {
+	    	  commentList = resultSet.getString("comment_text");
+	      }
+	    	
+	  }catch (Exception e) {
+	      throw e;
+	    } finally {
+	      close();
+	    }
+	  return commentList;
+
+	
+}
   
   
 
