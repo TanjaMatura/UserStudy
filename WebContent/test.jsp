@@ -21,21 +21,21 @@
 	<input type="hidden" name="action" value="bewertung">
 	<table class="table">
 	<tr> <td colspan="2"> Ich habe die Werbung schon einmal gesehen </td>
-	     <td> <input type="radio" name="janein1" value="j" />	Ja 
-	          <input type="radio" name="janein1" value="n" /> Nein 
-	          <input type="radio" name="janein1" value="k" checked/> N/A </td></tr>
+	     <td> <input type="radio" name="janein1" value="ja" />	Ja 
+	          <input type="radio" name="janein1" value="nein" /> Nein 
+	          <input type="radio" name="janein1" value="nein" checked/> N/A </td></tr>
 	<tr> <td colspan="2"> Ich kenne die beworbene Marke </td>
-	     <td> <input type="radio" name="janein2" value="j" />	Ja 
-	          <input type="radio" name="janein2" value="n" /> Nein 
-	          <input type="radio" name="janein2" value="k" checked/> N/A </td></tr>
+	     <td> <input type="radio" name="janein2" value="ja" />	Ja 
+	          <input type="radio" name="janein2" value="nein" /> Nein 
+	          <input type="radio" name="janein1" value="nein" checked/> N/A </td></tr>
 	<tr> <td colspan="2"> Die Werbung hat mich überrascht </td>
-	     <td> <input type="radio" name="janein3" value="j" />	Ja 
-	          <input type="radio" name="janein3" value="n" /> Nein 
-	          <input type="radio" name="janein3" value="k" checked/> N/A </td></tr>
+	     <td> <input type="radio" name="janein3" value="ja" />	Ja 
+	          <input type="radio" name="janein3" value="nein" /> Nein 
+	          <input type="radio" name="janein1" value="nein" checked/> N/A </td></tr>
 	<tr> <td colspan="2"> Die Werbung hat eine gute Catch Phrase </td>
-	     <td> <input type="radio" name="janein4" value="j" />	Ja 
-	          <input type="radio" name="janein4" value="n" /> Nein 
-	          <input type="radio" name="janein4" value="k" checked/> N/A </td></tr>
+	     <td> <input type="radio" name="janein4" value="ja" />	Ja 
+	          <input type="radio" name="janein4" value="nein" /> Nein 
+	          <input type="radio" name="janein1" value="nein" checked/> N/A </td></tr>
 	          </table>
 	          
 	<table class="table">
@@ -43,25 +43,25 @@
 	<tr> <td colspan="2"> In der Werbung geht es hauptsächlich um das beworbene Produkt </td>
 	     <td> 1 <input type="radio" name="zutreffend1" value="1" />
 	          <input type="radio" name="zutreffend1" value="2" />
-	          <input type="radio" name="zutreffend1" value="3" checked/> 
+	          <input type="radio" name="zutreffend1" value="3" /> 
 	          <input type="radio" name="zutreffend1" value="4" /> 
 	          <input type="radio" name="zutreffend1" value="5" /> 5</td></tr>
 	<tr> <td colspan="2"> Ich sehe diese Werbung gerne im Fernsehen  </td>
 	     <td> 1 <input type="radio" name="zutreffend2" value="1" /> 
 	          <input type="radio" name="zutreffend2" value="2" /> 
-	          <input type="radio" name="zutreffend2" value="3" checked/> 
+	          <input type="radio" name="zutreffend2" value="3" /> 
 	          <input type="radio" name="zutreffend2" value="4" />
 	          <input type="radio" name="zutreffend2" value="5" /> 5</td></tr>
 	<tr> <td colspan="2"> Die Werbung überzeugt mich von der Qualität des Produkts  </td>
 	     <td> 1 <input type="radio" name="zutreffend3" value="1" /> 
 	          <input type="radio" name="zutreffend3" value="2" /> 
-	          <input type="radio" name="zutreffend3" value="3" checked/> 
+	          <input type="radio" name="zutreffend3" value="3" /> 
 	          <input type="radio" name="zutreffend3" value="4" /> 
 	          <input type="radio" name="zutreffend3" value="5" /> 5</td></tr>
 	<tr> <td colspan="2"> Wenn ich das nächste Mal einkaufen gehe, werde ich nach dem beworbenen Produkt Ausschau halten</td>
 	     <td> 1 <input type="radio" name="zutreffend4" value="1" />
 	          <input type="radio" name="zutreffend4" value="2" /> 
-	          <input type="radio" name="zutreffend4" value="3" checked/> 
+	          <input type="radio" name="zutreffend4" value="3" /> 
 	          <input type="radio" name="zutreffend4" value="4" />
 	          <input type="radio" name="zutreffend4" value="5" /> 5</td></tr></table>
 	          
@@ -70,37 +70,37 @@
 	<tr> <td style="text-align: right;" > fröhlich </td> <td style="text-align: center" >
 			  <input type="radio" name="empfinden1" value="1" />
 	          <input type="radio" name="empfinden1" value="2" /> 
-	          <input type="radio" name="empfinden1" value="3" checked/> 
+	          <input type="radio" name="empfinden1" value="3" /> 
 	          <input type="radio" name="empfinden1" value="4" /> 
 	          <input type="radio" name="empfinden1" value="5" /> </td> <td> traurig </td></tr>
 	<tr> <td style="text-align: right;"> lustig </td> <td style="text-align: center">
 	   		  <input type="radio" name="empfinden2" value="1" />
 	          <input type="radio" name="empfinden2" value="2" /> 
-	          <input type="radio" name="empfinden2" value="3" checked/> 
+	          <input type="radio" name="empfinden2" value="3" /> 
 	          <input type="radio" name="empfinden2" value="4" /> 
 	          <input type="radio" name="empfinden2" value="5" /> </td> <td> ernst </td></tr>
 	<tr> <td style="text-align: right;"> altmodisch </td> <td style="text-align: center">
 	          <input type="radio" name="empfinden3" value="1" /> 
 	          <input type="radio" name="empfinden3" value="2" />
-	          <input type="radio" name="empfinden3" value="3" checked/>
+	          <input type="radio" name="empfinden3" value="3" />
 	          <input type="radio" name="empfinden3" value="4" /> 
 	          <input type="radio" name="empfinden3" value="5" /> </td> <td> modern </td></tr>
 	<tr> <td style="text-align: right; "> originell </td> <td style="text-align: center">
 			  <input type="radio" name="empfinden4" value="1" /> 
 	          <input type="radio" name="empfinden4" value="2" /> 
-	          <input type="radio" name="empfinden4" value="3" checked/> 
+	          <input type="radio" name="empfinden4" value="3" /> 
 	          <input type="radio" name="empfinden4" value="4" />
 	          <input type="radio" name="empfinden4" value="5" /> </td> <td> unoriginell  </td></tr>
 	<tr> <td style="text-align: right; "> liebenswert </td> <td style="text-align: center">
 			  <input type="radio" name="empfinden5" value="1" />
 	          <input type="radio" name="empfinden5" value="2" /> 
-	          <input type="radio" name="empfinden5" value="3" checked/>
+	          <input type="radio" name="empfinden5" value="3" />
 	          <input type="radio" name="empfinden5" value="4" />
 	          <input type="radio" name="empfinden5" value="5" /> </td> <td> unliebsam </td></tr>
 	<tr> <td style="text-align: right; "> sympathisch </td> <td style="text-align: center">
 	 		  <input type="radio" name="empfinden6" value="1" /> 
 	          <input type="radio" name="empfinden6" value="2" /> 
-	          <input type="radio" name="empfinden6" value="3" checked/> 
+	          <input type="radio" name="empfinden6" value="3" /> 
 	          <input type="radio" name="empfinden6" value="4" />
 	          <input type="radio" name="empfinden6" value="5" /> </td> <td> unsympathisch </td></tr></table>
 	          
@@ -124,7 +124,7 @@
 	<input type="radio" name="gesamtbewertung" value="2" />2
 	<input type="radio" name="gesamtbewertung" value="3" />3
 	<input type="radio" name="gesamtbewertung" value="4" />4
-	<input type="radio" name="gesamtbewertung" value="5" checked/>5
+	<input type="radio" name="gesamtbewertung" value="5" />5
 	<input type="radio" name="gesamtbewertung" value="6" />6
 	<input type="radio" name="gesamtbewertung" value="7" />7
 	<input type="radio" name="gesamtbewertung" value="8" />8

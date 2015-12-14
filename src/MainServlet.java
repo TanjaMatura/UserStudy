@@ -1,5 +1,7 @@
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,7 +42,32 @@ public class MainServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		MySqlDAO sDAO = new MySqlDAO();
+		Bewertung nbew = new Bewertung("1", "/watchkekse",  Integer.parseInt(request.getParameter("zutreffend1")), Integer.parseInt(request.getParameter("zutreffend2")), 
+				Integer.parseInt(request.getParameter("zutreffend3")), Integer.parseInt(request.getParameter("zutreffend4")), Integer.parseInt(request.getParameter("empfinden1")), Integer.parseInt(request.getParameter("empfinden2")), Integer.parseInt(request.getParameter("empfinden3")), Integer.parseInt(request.getParameter("empfinden4")), 
+				request.getParameter("zielgruppe"), Integer.parseInt(request.getParameter("gesamtbewertung")));
+		try {
+			sDAO.saveBewertung(nbew);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			response.getWriter().println(e);
+		}
 		response.getWriter().println("Hello");
+	}
+	
+	/* ------------ Database stuff  ------------ */
+	protected String GetUrl( String vid_id) throws Exception{
+		vid_id="1";
+		String finalurl="";
+		MySqlDAO testDAO = new MySqlDAO();
+		ArrayList<Video> vidList = testDAO.getVideoList();
+		for(int i=0; i < vidList.size();i++){
+			if(vidList.get(i).getId() == vid_id){
+				finalurl = vidList.get(i).getURL();
+			}
+			
+		}
+		return finalurl;
 	}
 
 }

@@ -37,7 +37,7 @@ public class Bewertung {
 		private int bewertungen;
 /* ------------ Konstruktor  ------------ */
 	
-	public Bewertung(String userID, String videourl, String videoname, int produktfixierung, int lachenweinen, 
+	public Bewertung(String userID, String videourl,  int produktfixierung, int lachenweinen, 
 			int froehlichtraurig, int lustigernst, int altmodischmodern, int kreativunkreativ, int liebenswertfies, int sympathischunsympathisch, 
 			String zielgruppe, int bewertungen){
 		
@@ -62,6 +62,30 @@ public class Bewertung {
 		catch(Exception e){
 			this.id = Integer.toString(1);
 		}
+
+		
+		
+		
+	}
+	public Bewertung(String id, String userID, String videourl,  int produktfixierung, int lachenweinen, 
+			int froehlichtraurig, int lustigernst, int altmodischmodern, int kreativunkreativ, int liebenswertfies, int sympathischunsympathisch, 
+			String zielgruppe, int bewertungen){
+		this.id=id;
+		this.uid = userID; 
+
+		this.videourl = videourl;
+		this.produktfixierung = produktfixierung; 
+		this.lachenweinen = lachenweinen; 
+		this.froehlichtraurig = froehlichtraurig; 
+		this.lustigernst = lustigernst; 
+		this.altmodischmodern = altmodischmodern; 
+		this.kreativunkreativ = kreativunkreativ; 
+		this.liebenswertfies = liebenswertfies; 
+		this.sympathischunsympathisch = sympathischunsympathisch; 
+		this.zielgruppe = zielgruppe; 
+		this.bewertungen = bewertungen; 
+
+		
 
 		
 		
