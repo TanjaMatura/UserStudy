@@ -1,4 +1,3 @@
-
 /* Bewertung-Klasse 
  * Repraesentiert eine ausgefuellte Befragung
  */
@@ -139,3 +138,4 @@ public class Bewertung {
 	
 	
 }
+
