@@ -42,6 +42,16 @@ public class MainServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		MySqlDAO sDAO = new MySqlDAO();
+		Bewertung nbew = new Bewertung("1", "/watchkekse",  Integer.parseInt(request.getParameter("zutreffend1")), Integer.parseInt(request.getParameter("zutreffend2")), 
+				Integer.parseInt(request.getParameter("zutreffend3")), Integer.parseInt(request.getParameter("zutreffend4")), Integer.parseInt(request.getParameter("empfinden1")), Integer.parseInt(request.getParameter("empfinden2")), Integer.parseInt(request.getParameter("empfinden3")), Integer.parseInt(request.getParameter("empfinden4")), 
+				request.getParameter("zielgruppe"), Integer.parseInt(request.getParameter("gesamtbewertung")));
+		try {
+			sDAO.saveBewertung(nbew);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			response.getWriter().println(e);
+		}
 		response.getWriter().println("Hello");
 	}
 	

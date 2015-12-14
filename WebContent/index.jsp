@@ -21,21 +21,21 @@
 	<input type="hidden" name="action" value="bewertung">
 	<table class="table">
 	<tr> <td colspan="2"> Ich habe die Werbung schon einmal gesehen </td>
-	     <td> <input type="radio" name="janein1" value="ja" />	Ja 
-	          <input type="radio" name="janein1" value="nein" /> Nein 
-	          <input type="radio" name="janein1" value="nein" /> N/A </td></tr>
+	     <td> <input type="radio" name="janein1" value="j" />	Ja 
+	          <input type="radio" name="janein1" value="n" /> Nein 
+	          <input type="radio" name="janein1" value="k" /> N/A </td></tr>
 	<tr> <td colspan="2"> Ich kenne die beworbene Marke </td>
-	     <td> <input type="radio" name="janein2" value="ja" />	Ja 
-	          <input type="radio" name="janein2" value="nein" /> Nein 
-	          <input type="radio" name="janein1" value="nein" /> N/A </td></tr>
+	     <td> <input type="radio" name="janein2" value="j" />	Ja 
+	          <input type="radio" name="janein2" value="n" /> Nein 
+	          <input type="radio" name="janein1" value="k" /> N/A </td></tr>
 	<tr> <td colspan="2"> Die Werbung hat mich überrascht </td>
-	     <td> <input type="radio" name="janein3" value="ja" />	Ja 
-	          <input type="radio" name="janein3" value="nein" /> Nein 
-	          <input type="radio" name="janein1" value="nein" /> N/A </td></tr>
+	     <td> <input type="radio" name="janein3" value="j" />	Ja 
+	          <input type="radio" name="janein3" value="n" /> Nein 
+	          <input type="radio" name="janein1" value="k" /> N/A </td></tr>
 	<tr> <td colspan="2"> Die Werbung hat eine gute Catch Phrase </td>
-	     <td> <input type="radio" name="janein4" value="ja" />	Ja 
-	          <input type="radio" name="janein4" value="nein" /> Nein 
-	          <input type="radio" name="janein1" value="nein" /> N/A </td></tr>
+	     <td> <input type="radio" name="janein4" value="j" />	Ja 
+	          <input type="radio" name="janein4" value="n" /> Nein 
+	          <input type="radio" name="janein1" value="k" /> N/A </td></tr>
 	          </table>
 	          
 	<table class="table">
