@@ -274,7 +274,9 @@ public void saveBewertung(Bewertung bewertung) throws Exception{
 	      while(resultSet.next()) {
 	    	  Admin tempUser = new Admin(resultSet.getString("user_id"), resultSet.getString("user_name"), resultSet.getString("user_password"),
 	    			  resultSet.getString("user_age"), resultSet.getString("user_gender"), resultSet.getString("user_admin"));
+
 	    	  userList.add(tempUser);
+
 	      }
 	  }catch (Exception e) {
 	      throw e;
@@ -451,7 +453,7 @@ public ArrayList<String> getCommentList() throws Exception{
 	
 }
   
-  
+
 
   // You need to close the resultSet
   private void close() {

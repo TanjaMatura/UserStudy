@@ -21,7 +21,9 @@ public class Admin {
 		this.password = password; 
 		this.age = age;
 		this.gender = gender;
+
 		this.admin = admin; 
+
 		MySqlDAO mySqlDAO = new MySqlDAO();
 		try {
 			this.id = Integer.toString(mySqlDAO.getUserList().size()+1);	

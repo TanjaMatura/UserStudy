@@ -42,6 +42,7 @@ public class Bewertung {
 			String zielgruppe, int bewertungen){
 		
 		this.uid = userID; 
+
 		this.videourl = videourl;
 		this.produktfixierung = produktfixierung; 
 		this.lachenweinen = lachenweinen; 
@@ -53,6 +54,7 @@ public class Bewertung {
 		this.sympathischunsympathisch = sympathischunsympathisch; 
 		this.zielgruppe = zielgruppe; 
 		this.bewertungen = bewertungen; 
+
 		MySqlDAO bDAO = new MySqlDAO();
 		try {
 			this.id = Integer.toString(bDAO.getBewertungList().size()+1);	
@@ -60,6 +62,7 @@ public class Bewertung {
 		catch(Exception e){
 			this.id = Integer.toString(1);
 		}
+
 		
 		
 		
