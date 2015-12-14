@@ -1,4 +1,4 @@
-package src; 
+
 /* Bewertung-Klasse 
  * Repraesentiert eine ausgefuellte Befragung
  */

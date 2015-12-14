@@ -1,4 +1,3 @@
-package src; 
 
 /* Admin Klasse... Wir rbauchen eigentlihc nur username, password, 
  * statistik methoden, datenbank manipulation

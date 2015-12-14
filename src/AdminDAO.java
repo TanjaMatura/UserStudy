@@ -1,4 +1,3 @@
-package src; 
 
 /* Admin DAO um Admins zu speichenr, zu laden und stuff
  *
