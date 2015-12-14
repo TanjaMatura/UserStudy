@@ -240,7 +240,7 @@ public void saveBewertung(Bewertung bewertung) throws Exception{
 			e.printStackTrace(); 
 		}
 		try {
-		
+
 	      //set our SQL SELECT query
 	      String query = "INSERT INTO Bewertung VALUES (" + bewertung.getUid() + "," + bewertung.geturl() + bewertung.getSchonGesehen() + "," + bewertung.getPlotTwist() + "," +
 	    		  bewertung.getCatchPhrase() + "," + bewertung.getGernGesehen() + "," + bewertung.getUeberzeugung() +  
