@@ -1,5 +1,7 @@
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,6 +43,21 @@ public class MainServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().println("Hello");
+	}
+	
+	/* ------------ Database stuff  ------------ */
+	protected String GetUrl( String vid_id) throws Exception{
+		vid_id="1";
+		String finalurl="";
+		MySqlDAO testDAO = new MySqlDAO();
+		ArrayList<Video> vidList = testDAO.getVideoList();
+		for(int i=0; i < vidList.size();i++){
+			if(vidList.get(i).getId() == vid_id){
+				finalurl = vidList.get(i).getURL();
+			}
+			
+		}
+		return finalurl;
 	}
 
 }
