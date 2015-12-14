@@ -1,14 +1,15 @@
-
+package src; 
 /* Bewertung-Klasse 
  * Repraesentiert eine ausgefuellte Befragung
  */
 
 public class Bewertung {
 	private String id;
-	private String geschlecht; 		// männlich, weiblich, was anderes
-	private String altersgruppe; 	// 5 Altersgruppen
+	private String uid;
+	//private String geschlecht; 		// männlich, weiblich, was anderes
+	//private String altersgruppe; 	// 5 Altersgruppen
 	private String videourl; 
-	private String videoname; 
+	//private String videoname; 
 	
 	
 	// Ja/Nein (NA)
@@ -36,13 +37,12 @@ public class Bewertung {
 		private int bewertungen;
 /* ------------ Konstruktor  ------------ */
 	
-	public Bewertung(String geschlecht, String altersgruppe, String videourl, String videoname, int produktfixierung, int lachenweinen, 
+	public Bewertung(String userID, String videourl, String videoname, int produktfixierung, int lachenweinen, 
 			int froehlichtraurig, int lustigernst, int altmodischmodern, int kreativunkreativ, int liebenswertfies, int sympathischunsympathisch, 
 			String zielgruppe, int bewertungen){
-		this.geschlecht = geschlecht; 
-		this.altersgruppe = altersgruppe; 
+		
+		this.uid = userID; 
 		this.videourl = videourl;
-		this.videoname = videoname;
 		this.produktfixierung = produktfixierung; 
 		this.lachenweinen = lachenweinen; 
 		this.froehlichtraurig = froehlichtraurig; 
@@ -53,9 +53,9 @@ public class Bewertung {
 		this.sympathischunsympathisch = sympathischunsympathisch; 
 		this.zielgruppe = zielgruppe; 
 		this.bewertungen = bewertungen; 
-		BewertungDAO bDAO = new BewertungDAO("\\rating");
+		MySqlDAO bDAO = new MySqlDAO();
 		try {
-			this.id = Integer.toString(bDAO.getbewertungList().size()+1);	
+			this.id = Integer.toString(bDAO.getBewertungList().size()+1);	
 		}
 		catch(Exception e){
 			this.id = Integer.toString(1);
@@ -65,9 +65,12 @@ public class Bewertung {
 		
 	}
 	
+	
 /* ------------ Getter ------------ */
 	
 	public String getID(){ return id; }
+	public String getUid(){ return uid; }
+	public String geturl(){ return videourl; }
 	public String getSchonGesehen(){ return schongesehen; }
 	public String getPlotTwist(){ return plottwist; }
 	public String getCatchPhrase(){ return catchphrase; }

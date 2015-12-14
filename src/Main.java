@@ -1,4 +1,4 @@
-
+package src; 
 
 // Main, um die Methoden zu testen
 

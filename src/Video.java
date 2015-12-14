@@ -1,4 +1,4 @@
-
+package src; 
 
 import java.util.ArrayList;
 
@@ -48,7 +48,7 @@ public class Video {
 	
 	//Konstruktor für Datenauslese
 	
-	public Video(String id, String url, String name, String length, String marke, String kategorie){
+	public Video(String id, String url, String name, String length, String marke, String kategorie, String pickcount, String available){
 		this.id = id; 
 		this.url = url; 
 		this.name = name;
@@ -56,8 +56,8 @@ public class Video {
 		this.marke = marke;
 		this.kategorie = kategorie; 
 		anzahlBewertungen = 0; 
-		angeboten = 0; 
-		ausgewaehlt = 0; 
+		this.angeboten = Integer.parseInt(available); 
+		this.ausgewaehlt = Integer.parseInt(pickcount); 
 	}
 
 	/* ------------ Getter ------------ */
@@ -70,6 +70,8 @@ public class Video {
 	public String getKategorie(){ return kategorie; }
 	
 	public int getAnzahlBewertungen(){ return anzahlBewertungen; }
+	public int getAnzahlAngeboten(){ return angeboten; }
+	public int getAnzahlAusgewaehlt(){ return ausgewaehlt; }
 	public double getPickRatio(){ return angeboten/ausgewaehlt; }
 	
 	

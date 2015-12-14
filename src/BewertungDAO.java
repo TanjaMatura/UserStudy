@@ -1,4 +1,4 @@
-
+package src; 
 /* Bewertung DAO um Bewertungs zu speichenr, zu laden und stuff
  *
  * 
