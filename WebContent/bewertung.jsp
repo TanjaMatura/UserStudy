@@ -8,15 +8,7 @@
 
 <!-- Bootstrap -->
 <link href="bootstrap-3.3.6-dist\css\bootstrap.min.css" rel="stylesheet" type="text/css" />
-<!-- Popup -->
-<script language="javascript" type="text/javascript">
-<!--
-function popitup(url) {
-	newwindow=window.open(url,'name','height=200,width=150');
-	if (window.focus) {newwindow.focus()}
-	return false;
-}
-// -->
+
 </script>
 </head>
 <body>
@@ -147,7 +139,7 @@ function popitup(url) {
 	<tr><td colspand="3"><input type="text" name="kommentar"/></td>
 	</tr>
 	</table>
-	<a href="danke.html" onclick="return popitup('danke.html')"><input class="btn btn-default" type="submit" value="Submit"></a>
+	<a href="danke.html"><input class="btn btn-default" type="submit" value="Submit"></a>
 	</form>
 </div>
 

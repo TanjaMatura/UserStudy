@@ -45,25 +45,8 @@ public class MainServlet extends HttpServlet {
 		MySqlDAO sDAO = new MySqlDAO();
 		String action = request.getParameter("action");  
 		
-		// Bewertung
-		if(action != null && action.equalsIgnoreCase("bewertung")){
-			response.getWriter().println("Start Kreation Bewertugn Objekt");
-
-			//Bewertung nbew = new Bewertung("keks", "keks", 0, 0, 0, 0, 0, 0, 0, 0, "keks", 0);
-			Bewertung nbew = new Bewertung("1", "/watchkekse",  Integer.parseInt(request.getParameter("zutreffend1")), Integer.parseInt(request.getParameter("zutreffend2")), 
-					Integer.parseInt(request.getParameter("zutreffend3")), Integer.parseInt(request.getParameter("zutreffend4")), Integer.parseInt(request.getParameter("empfinden1")), Integer.parseInt(request.getParameter("empfinden2")), Integer.parseInt(request.getParameter("empfinden3")), Integer.parseInt(request.getParameter("empfinden4")), 
-					request.getParameter("zielgruppe"), Integer.parseInt(request.getParameter("gesamtbewertung")));
-			try {
-					response.getWriter().println("Start saveBewertung(nbew)");
-					sDAO.saveBewertung(nbew);
-				} 
-			catch (Exception e) {
-					response.getWriter().println(e);
-				}
-			}
-		
-		//video wählen 
-	    if(action != null && action.equalsIgnoreCase("VideoWaehlen")){
+		//Video wählen 
+	    /*if(action != null && action.equalsIgnoreCase("VideoWaehlen")){
 	    	response.getWriter().println("wählen");
 	    	String whichvideo = request.getParameter("videos");
 	    	
@@ -75,7 +58,25 @@ public class MainServlet extends HttpServlet {
 	 	    	response.getWriter().println("Video2");
 	 	    	//mach irgendwas anderes 
 	 	    }
-	    }
+	    }*/
+	    
+		// Bewertung
+		if(action != null && action.equalsIgnoreCase("bewertung")){
+			response.getWriter().println("Start Kreation Bewertugn Objekt");
+
+			Bewertung nbew = new Bewertung("keks", "keks", 0, 0, 0, 0, 0, 0, 0, 0, "keks", 0);
+			/*Bewertung nbew = new Bewertung("1", "/watchkekse",  Integer.parseInt(request.getParameter("zutreffend1")), Integer.parseInt(request.getParameter("zutreffend2")), 
+					Integer.parseInt(request.getParameter("zutreffend3")), Integer.parseInt(request.getParameter("zutreffend4")), Integer.parseInt(request.getParameter("empfinden1")), Integer.parseInt(request.getParameter("empfinden2")), Integer.parseInt(request.getParameter("empfinden3")), Integer.parseInt(request.getParameter("empfinden4")), 
+					request.getParameter("zielgruppe"), Integer.parseInt(request.getParameter("gesamtbewertung")));
+			*/try {
+					response.getWriter().println("Start saveBewertung(nbew)");
+					sDAO.saveBewertung(nbew);
+				} 
+			catch (Exception e) {
+					response.getWriter().println(e);
+				}
+			}
+		
 
 		response.getWriter().println("Hello");
 	   
