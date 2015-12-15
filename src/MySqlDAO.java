@@ -28,7 +28,7 @@ public class MySqlDAO {
 	      // Setup the connection with the DB
 	      Connection connect = DriverManager
 	          .getConnection("jdbc:mysql://mysql5.univie.ac.at/a1200069"
-	              + "user=a1200069@www06.univie.ac.at&password=mz8UserStudy");
+	              + "user=a1200069&password=mz8UserStudy");
 	      //set our SQL SELECT query
 	      
 	      System.out.println("Connectione stablished");
