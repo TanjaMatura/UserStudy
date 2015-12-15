@@ -32,11 +32,12 @@
 <tr> 
 	<form action="MainServlet" method="post">
 	<input type="hidden" name="action" value="VideoWaehlen">
-	<td colspan="2"><center><input type="Button" name="Videos" value="1">Video wählen</center> </td>
-	<td colspan="2"><center><input type="Button" name="Videos" value="2">Video wählen</center> </td>
+	<td colspan="2"><center><input type="radio" name="videos" value="1" /></center> </td>
+	<td colspan="2"><center><input type="radio" name="videos" value="2" /> </center></td>
 	<!-- Kommentar: wenn ein Button geklickt wird muss auf die Bewertungsseite verlinkt werden außerdem muss die Videtabelle in der DB
 		 mit der auswahl und pickrate upgedated werden -->
-<center></center>
+</table>
+<center><input class="btn btn-default" type="submit" value="Submit"></center>
 <p>
 	
 </p>
