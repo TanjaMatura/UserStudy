@@ -43,12 +43,7 @@ public class MySqlDAO {
 	  ArrayList<Video> videoList= new ArrayList<Video>();
 	  try {
 		
-		  // This will load the MySQL driver, each DB has its own driver
-	      Class.forName("com.mysql.jdbc.Driver");
-	      // Setup the connection with the DB
-	      connect = DriverManager
-	          .getConnection("jdbc:mysql://a1200069.mysql.univie.ac.at/a1200069"
-	              + "user=a1200069&password=mz8UserStudy");
+		  connect();
 	      //set our SQL SELECT query
 	      String query = "SELECT * FROM Video";
 	   
@@ -79,14 +74,9 @@ public class MySqlDAO {
 	  Video thing=null;
 	  try {
 		
-		  // This will load the MySQL driver, each DB has its own driver
-	      Class.forName("com.mysql.jdbc.Driver");
-	      // Setup the connection with the DB
-	      connect = DriverManager
-	          .getConnection("jdbc:mysql://a1200069.mysql.univie.ac.at/a1200069"
-	              + "user=a1200069&password=mz8UserStudy");
+		  connect();
 	      //set our SQL SELECT query
-	      String query = "SELECT " + url +" FROM Video";
+	      String query = "SELECT * FROM Video WHERE vid_url='" + url + "'";
 	   
 	      // create the java statement
 	      statement = connect.createStatement();
@@ -115,20 +105,14 @@ public class MySqlDAO {
 	  
 	  try {
 		
-		  // This will load the MySQL driver, each DB has its own driver
-	      Class.forName("com.mysql.jdbc.Driver");
-	      // Setup the connection with the DB
-	      connect = DriverManager
-	          .getConnection("jdbc:mysql://a1200069.mysql.univie.ac.at/a1200069"
-	              + "user=a1200069&password=mz8UserStudy");
-	      //set our SQL SELECT query
+		  connect();
 	      String query = "DELETE * FROM Video WHERE vid_url='" + url +"'";
 	   
 	      // create the java statement
 	      statement = connect.createStatement();
 
 		  //execute query and get java resultSet
-	      resultSet = statement.executeQuery(query);
+	      statement.executeUpdate(query);
 	      
 	      
 	  }catch (Exception e) {
@@ -144,21 +128,16 @@ public class MySqlDAO {
 	    
 	  try {
 		
-		  // This will load the MySQL driver, each DB has its own driver
-	      Class.forName("com.mysql.jdbc.Driver");
-	      // Setup the connection with the DB
-	      connect = DriverManager
-	          .getConnection("jdbc:mysql://a1200069.mysql.univie.ac.at/a1200069"
-	              + "user=a1200069&password=mz8UserStudy");
+		  connect();
 	      //set our SQL SELECT query
-	      String query = "INSERT INTO Video VALUES (" + video.getId() + "," + video.getURL() + video.getName() + "," + video.getLength() + "," +
-	    		  video.getMarke() + "," + video.getKategorie() + video.getAnzahlAusgewaehlt() + video.getAnzahlAngeboten() +  ")";
+	      String query = "INSERT INTO Video VALUES ('" + video.getId() + "','" + video.getURL() + video.getName() + "','" + video.getLength() + "','" +
+	    		  video.getMarke() + "','" + video.getKategorie() + "',"+ video.getAnzahlAusgewaehlt() + "," + video.getAnzahlAngeboten() +  ")";
 	   
 	      // create the java statement
 	      statement = connect.createStatement();
 
 		  //execute query and get java resultSet
-	      resultSet = statement.executeQuery(query);
+	      statement.executeUpdate(query);
 	      
 	      
 	  }catch (Exception e) {
@@ -174,12 +153,7 @@ public class MySqlDAO {
 public ArrayList<Bewertung> getBewertungList() throws Exception{
 	  ArrayList<Bewertung> bewertungList= new ArrayList<Bewertung>();
 	  try {
-		  // This will load the MySQL driver, each DB has its own driver
-	      Class.forName("com.mysql.jdbc.Driver");
-	      // Setup the connection with the DB
-	      connect = DriverManager
-	          .getConnection("jdbc:mysql://a1200069.mysql.univie.ac.at/a1200069"
-	              + "user=a1200069&password=mz8UserStudy");
+		  connect();
 	      //set our SQL SELECT query
 	      String query = "SELECT * FROM Bewertung";
 	   
@@ -191,10 +165,12 @@ public ArrayList<Bewertung> getBewertungList() throws Exception{
 	      
 	      //iterate through the reultSet and create new Video objects, adding them to the videoList
 	      while(resultSet.next()) {
-	    	  /*Bewertung tempbew = new Bewertung(resultSet.getString("b_id"), resultSet.getString("b_uid"), resultSet.getString("b_url"),
+	    	  Bewertung tempbew = new Bewertung(resultSet.getString("b_id"), resultSet.getString("b_uid"), resultSet.getString("b_url"),
+	    			  resultSet.getString("schongesehen"),resultSet.getString("plottwist"),resultSet.getString("catchphrase"),
+	    			  resultSet.getString("gerngesehen"), resultSet.getString("ueberzeugung"), resultSet.getString("aufmerksamkeit"),resultSet.getString("markebekannt"),
 	    			  resultSet.getInt("produktfixierung"), resultSet.getInt("lachenweinen"), resultSet.getInt("froehlichtraurig"), resultSet.getInt("lustigernst"),
 	    			  resultSet.getInt("altmodischmodern"), resultSet.getInt("kreativunkreativ"), resultSet.getInt("liebenswertfies"), resultSet.getInt("sympathischunsympathisch"), resultSet.getString("zielgruppe"), resultSet.getInt("bewertungen"));
-	    	  bewertungList.add(tempbew);*/
+	    	  bewertungList.add(tempbew);
 	      }
 	  }catch (Exception e) {
 	      throw e;
@@ -210,12 +186,7 @@ public void removeBewertungbyId(String id) throws Exception{
 	  
 	  try {
 		
-		  // This will load the MySQL driver, each DB has its own driver
-	      Class.forName("com.mysql.jdbc.Driver");
-	      // Setup the connection with the DB
-	      connect = DriverManager
-	          .getConnection("jdbc:mysql://a1200069.mysql.univie.ac.at/a1200069"
-	              + "user=a1200069&password=mz8UserStudy");
+		  connect();
 	      //set our SQL SELECT query
 	      String query = "DELETE * FROM Bewertung WHERE b_id='" + id +"'";
 	   
@@ -223,7 +194,7 @@ public void removeBewertungbyId(String id) throws Exception{
 	      statement = connect.createStatement();
 
 		  //execute query and get java resultSet
-	      resultSet = statement.executeQuery(query);
+	      statement.executeUpdate(query);
 	      
 	      
 	  }catch (Exception e) {
@@ -281,12 +252,7 @@ public void saveBewertung(Bewertung bewertung) throws Exception{
 	  ArrayList<Admin> userList= new ArrayList<Admin>();
 	  try {
 		
-		  // This will load the MySQL driver, each DB has its own driver
-	      Class.forName("com.mysql.jdbc.Driver");
-	      // Setup the connection with the DB
-	      connect = DriverManager
-	          .getConnection("jdbc:mysql://a1200069.mysql.univie.ac.at/a1200069"
-	              + "user=a1200069&password=mz8UserStudy");
+		  connect();
 	      //set our SQL SELECT query
 	      String query = "SELECT * FROM User";
 	   
@@ -318,14 +284,9 @@ public void saveBewertung(Bewertung bewertung) throws Exception{
 	  Admin thing=null;
 	  try {
 		
-		  // This will load the MySQL driver, each DB has its own driver
-	      Class.forName("com.mysql.jdbc.Driver");
-	      // Setup the connection with the DB
-	      connect = DriverManager
-	          .getConnection("jdbc:mysql://a1200069.mysql.univie.ac.at/a1200069"
-	              + "user=a1200069&password=mz8UserStudy");
+		  connect();
 	      //set our SQL SELECT query
-	      String query = "SELECT " + username +" FROM User";
+	      String query = "SELECT * FROM User WHERE user_name='" + username + "'";
 	   
 	      // create the java statement
 	      statement = connect.createStatement();
@@ -353,12 +314,7 @@ public void saveBewertung(Bewertung bewertung) throws Exception{
 	  
 	  try {
 		
-		  // This will load the MySQL driver, each DB has its own driver
-	      Class.forName("com.mysql.jdbc.Driver");
-	      // Setup the connection with the DB
-	      connect = DriverManager
-	          .getConnection("jdbc:mysql://a1200069.mysql.univie.ac.at/a1200069"
-	              + "user=a1200069&password=mz8UserStudy");
+		  connect();
 	      //set our SQL SELECT query
 	      String query = "DELETE * FROM User WHERE user_name='" + username +"'";
 	   
@@ -366,7 +322,7 @@ public void saveBewertung(Bewertung bewertung) throws Exception{
 	      statement = connect.createStatement();
 
 		  //execute query and get java resultSet
-	      resultSet = statement.executeQuery(query);
+	      statement.executeUpdate(query);
 	      
 	      
 	  }catch (Exception e) {
@@ -383,21 +339,16 @@ public void saveBewertung(Bewertung bewertung) throws Exception{
 	  
 	  try {
 		
-		  // This will load the MySQL driver, each DB has its own driver
-	      Class.forName("com.mysql.jdbc.Driver");
-	      // Setup the connection with the DB
-	      connect = DriverManager
-	          .getConnection("jdbc:mysql://a1200069.mysql.univie.ac.at/a1200069"
-	              + "user=a1200069&password=mz8UserStudy");
+		  connect();
 	      //set our SQL SELECT query
-	      String query = "INSERT INTO User VALUES (" + user.getId() + "," + user.getUsername() + user.getPassword() + "," + user.getAge() + "," +
-	    		  user.getGender() + "," + user.getAdmin() + ")";
+	      String query = "INSERT INTO User VALUES ('" + user.getId() + "','" + user.getUsername() + user.getPassword() + "'," + user.getAge() + ",'" +
+	    		  user.getGender() + "'," + user.getAdmin() + ")";
 	   
 	      // create the java statement
 	      statement = connect.createStatement();
 
 		  //execute query and get java resultSet
-	      resultSet = statement.executeQuery(query);
+	      statement.executeUpdate(query);
 	      
 	      
 	  }catch (Exception e) {
@@ -421,20 +372,15 @@ public void saveComment(Admin user, Video vid, String comment ) throws Exception
 	
 	  try {
 		
-		  // This will load the MySQL driver, each DB has its own driver
-	      Class.forName("com.mysql.jdbc.Driver");
-	      // Setup the connection with the DB
-	      connect = DriverManager
-	          .getConnection("jdbc:mysql://a1200069.mysql.univie.ac.at/a1200069"
-	              + "user=a1200069&password=mz8UserStudy");
+		  connect();
 	      //set our SQL SELECT query
-	      String query = "INSERT INTO Comment VALUES (" + tempId + "," + user.getId() + vid.getId() + "," + comment +")";
+	      String query = "INSERT INTO Comment VALUES ('" + tempId + "','" + user.getId() + "','"+ vid.getId() + "','" + comment +"')";
 	   
 	      // create the java statement
 	      statement = connect.createStatement();
 
 		  //execute query and get java resultSet
-	      resultSet = statement.executeQuery(query);
+	      statement.executeUpdate(query);
 	      
 	      
 	  }catch (Exception e) {
@@ -449,12 +395,7 @@ public ArrayList<String> getCommentList() throws Exception{
 	ArrayList<String> commentList= new ArrayList<String>();
 	  try {
 		
-		  // This will load the MySQL driver, each DB has its own driver
-	      Class.forName("com.mysql.jdbc.Driver");
-	      // Setup the connection with the DB
-	      connect = DriverManager
-	          .getConnection("jdbc:mysql://a1200069.mysql.univie.ac.at/a1200069"
-	              + "user=a1200069&password=mz8UserStudy");
+		  connect();
 	      //set our SQL SELECT query
 	      String query = "SELECT * FROM Comment";
 	   
