@@ -36,13 +36,23 @@ public class Bewertung {
 		private int bewertungen;
 /* ------------ Konstruktor  ------------ */
 	
-	public Bewertung(String userID, String videourl,  int produktfixierung, int lachenweinen, 
+	public Bewertung(String userID, String videourl,String schongesehen, String plotttwist, String catchphrase, String gerngesehen,
+			String ueberzeugung, String aufmerksamkeit, String markebekannt,int produktfixierung, int lachenweinen, 
 			int froehlichtraurig, int lustigernst, int altmodischmodern, int kreativunkreativ, int liebenswertfies, int sympathischunsympathisch, 
 			String zielgruppe, int bewertungen){
 		
 		this.uid = userID; 
-
+		
 		this.videourl = videourl;
+		
+		this.schongesehen = schongesehen;
+		this.plottwist = plotttwist;
+		this.catchphrase = catchphrase;
+		this.gerngesehen = gerngesehen;
+		this.ueberzeugung = ueberzeugung;
+		this.aufmerksamkeit = aufmerksamkeit;
+		this.markebekannt = markebekannt;
+		
 		this.produktfixierung = produktfixierung; 
 		this.lachenweinen = lachenweinen; 
 		this.froehlichtraurig = froehlichtraurig; 
@@ -66,13 +76,23 @@ public class Bewertung {
 		
 		
 	}
-	public Bewertung(String id, String userID, String videourl,  int produktfixierung, int lachenweinen, 
+	public Bewertung(String id, String userID, String videourl,String schongesehen, String plotttwist, String catchphrase, String gerngesehen,
+			String ueberzeugung, String aufmerksamkeit, String markebekannt,int produktfixierung, int lachenweinen, 
 			int froehlichtraurig, int lustigernst, int altmodischmodern, int kreativunkreativ, int liebenswertfies, int sympathischunsympathisch, 
 			String zielgruppe, int bewertungen){
 		this.id=id;
 		this.uid = userID; 
 
 		this.videourl = videourl;
+		
+		this.schongesehen = schongesehen;
+		this.plottwist = plotttwist;
+		this.catchphrase = catchphrase;
+		this.gerngesehen = gerngesehen;
+		this.ueberzeugung = ueberzeugung;
+		this.aufmerksamkeit = aufmerksamkeit;
+		this.markebekannt = markebekannt;
+		
 		this.produktfixierung = produktfixierung; 
 		this.lachenweinen = lachenweinen; 
 		this.froehlichtraurig = froehlichtraurig; 

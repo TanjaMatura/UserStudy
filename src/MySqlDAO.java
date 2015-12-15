@@ -191,10 +191,10 @@ public ArrayList<Bewertung> getBewertungList() throws Exception{
 	      
 	      //iterate through the reultSet and create new Video objects, adding them to the videoList
 	      while(resultSet.next()) {
-	    	  Bewertung tempbew = new Bewertung(resultSet.getString("b_id"), resultSet.getString("b_uid"), resultSet.getString("b_url"),
+	    	  /*Bewertung tempbew = new Bewertung(resultSet.getString("b_id"), resultSet.getString("b_uid"), resultSet.getString("b_url"),
 	    			  resultSet.getInt("produktfixierung"), resultSet.getInt("lachenweinen"), resultSet.getInt("froehlichtraurig"), resultSet.getInt("lustigernst"),
 	    			  resultSet.getInt("altmodischmodern"), resultSet.getInt("kreativunkreativ"), resultSet.getInt("liebenswertfies"), resultSet.getInt("sympathischunsympathisch"), resultSet.getString("zielgruppe"), resultSet.getInt("bewertungen"));
-	    	  bewertungList.add(tempbew);
+	    	  bewertungList.add(tempbew);*/
 	      }
 	  }catch (Exception e) {
 	      throw e;
@@ -238,7 +238,7 @@ public void removeBewertungbyId(String id) throws Exception{
 public void saveBewertung(Bewertung bewertung) throws Exception{
     
 	
-		System.out.println("using connect()");
+		//System.out.println("using connect()");
 		connect();
 		
 		//____________________________________________________________________________
@@ -249,18 +249,20 @@ public void saveBewertung(Bewertung bewertung) throws Exception{
 		try {
 
 	      //set our SQL SELECT query
-	      String query = "INSERT INTO Bewertung VALUES (" + bewertung.getUid() + "," + bewertung.geturl() + bewertung.getSchonGesehen() + "," + bewertung.getPlotTwist() + "," +
-	    		  bewertung.getCatchPhrase() + "," + bewertung.getGernGesehen() + "," + bewertung.getUeberzeugung() +  
-	    		  "," + bewertung.getAufmerksamkeit() + "," + bewertung.getMarkeBekannt() + "," + bewertung.getProduktfixierung() +
+			String insert = "INSERT INTO comments " +
+	                   "VALUES (100, 'Zara', 'Ali@keks.de', 'imagineWebPages', '2009-09-14' , 'ImagineSummery' , 'ImagineComments')";
+	      String query = "INSERT INTO Bewertung VALUES ('" + bewertung.getID() + "','" + bewertung.getUid() + "','" + bewertung.geturl() + "','" + bewertung.getSchonGesehen() + "','" + bewertung.getPlotTwist() + "','" +
+	    		  bewertung.getCatchPhrase() + "','" + bewertung.getGernGesehen() + "','" + bewertung.getUeberzeugung() +  
+	    		  "','" + bewertung.getAufmerksamkeit() + "','" + bewertung.getMarkeBekannt() + "'," + bewertung.getProduktfixierung() +
 	    		  "," + bewertung.getLachenWeinen() + "," + bewertung.getFroehlichTraurig() + "," + bewertung.getLustigErnst() + 
 	    		  "," + bewertung.getAltmodischModern() + "," + bewertung.getKreativUnkreativ() + "," + bewertung.getLiebenswertFies() +
-	    		  "," + bewertung.getSympathischUnsympathisch() + "," + bewertung.getZielgruppe() + "," + bewertung.getBewertung() + ")";
+	    		  "," + bewertung.getSympathischUnsympathisch() + ",'" + bewertung.getZielgruppe() + "'," + bewertung.getBewertung() + ")";
 	   
 	      // create the java statement
 	      statement = connect.createStatement();
-
-		  //execute query and get java resultSet
-	      resultSet = statement.executeQuery(query);
+	      System.out.println(query);
+		  //execute query
+	      statement.executeUpdate(query);
 	      
 	      
 	  }catch (Exception e) {
