@@ -68,10 +68,13 @@ public class MainServlet extends HttpServlet {
 			response.getWriter().println("Start Kreation Bewertugn Objekt");
 
 			Bewertung nbew = new Bewertung("id","keks", "keks", "j", "j", "j", "j", "j", "j", "j", 0,0,0,0,0,0,0,0, "keks", 0);
-			/*Bewertung nbew = new Bewertung("1", "/watchkekse",  Integer.parseInt(request.getParameter("zutreffend1")), Integer.parseInt(request.getParameter("zutreffend2")), 
+			/*Bewertung nbew = new Bewertung("1", request.getParameter("videoURL"),  Integer.parseInt(request.getParameter("zutreffend1")), Integer.parseInt(request.getParameter("zutreffend2")), 
 					Integer.parseInt(request.getParameter("zutreffend3")), Integer.parseInt(request.getParameter("zutreffend4")), Integer.parseInt(request.getParameter("empfinden1")), Integer.parseInt(request.getParameter("empfinden2")), Integer.parseInt(request.getParameter("empfinden3")), Integer.parseInt(request.getParameter("empfinden4")), 
 					request.getParameter("zielgruppe"), Integer.parseInt(request.getParameter("gesamtbewertung")));
-			*/try {
+			*/
+			//System.out.println(request.getParameter("videoURL"));
+			
+			try {
 					response.getWriter().println("Start saveBewertung(nbew)");
 					sDAO.saveBewertung(nbew);
 				} 

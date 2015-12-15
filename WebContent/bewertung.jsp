@@ -12,7 +12,6 @@
 <!-- Url auslesen -->
 <script type="text/javascript">
 var url = request.getSession().getAttribute("VideoURL");
-//document.getElementById("videoo").src = url;	
 </script>
 
 </head>
@@ -25,6 +24,7 @@ var url = request.getSession().getAttribute("VideoURL");
 <p>
 	<form action="MainServlet" method="post">
 	<input type="hidden" name="action" value="bewertung">
+	<input type="hidden" name="videoURL" value=<%= request.getSession().getAttribute("VideoURL") %>>
 	<table class="table">
 	<tr> <td colspan="2">  <script type="text/javascript">document.write(url)</script> Ich habe die Werbung schon einmal gesehen </td>
 	     <td> <input type="radio" name="janein1" value="j" />	Ja 
