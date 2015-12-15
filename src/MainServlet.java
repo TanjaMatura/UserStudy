@@ -118,14 +118,10 @@ public class MainServlet extends HttpServlet {
 				request.getSession(true).setAttribute("VideoURL1", url1);
 				request.getSession(true).setAttribute("VideoURL2", url2);
 				request.getRequestDispatcher("bewertung.jsp").include(request, response);
-				
-				// Auslese in jsp: out.println(request.getSession().getAttribute("VideoURL"));
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
-
-			//System.out.println(request.getParameter("videos")); 
-			//response.getWriter().println("Hello");
 		}
 		
 	   
