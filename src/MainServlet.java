@@ -28,7 +28,7 @@ public class MainServlet extends HttpServlet {
 	 * @see Servlet#init(ServletConfig)
 	 */
 	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
+		
 	}
 
 	/**
@@ -43,35 +43,42 @@ public class MainServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MySqlDAO sDAO = new MySqlDAO();
-		response.getWriter().println("Start Kreation Bewertugn Objekt");
-
-		//Bewertung nbew = new Bewertung("keks", "keks", 0, 0, 0, 0, 0, 0, 0, 0, "keks", 0);
-		Bewertung nbew = new Bewertung("1", "/watchkekse",  Integer.parseInt(request.getParameter("zutreffend1")), Integer.parseInt(request.getParameter("zutreffend2")), 
-				Integer.parseInt(request.getParameter("zutreffend3")), Integer.parseInt(request.getParameter("zutreffend4")), Integer.parseInt(request.getParameter("empfinden1")), Integer.parseInt(request.getParameter("empfinden2")), Integer.parseInt(request.getParameter("empfinden3")), Integer.parseInt(request.getParameter("empfinden4")), 
-				request.getParameter("zielgruppe"), Integer.parseInt(request.getParameter("gesamtbewertung")));
-
+		String action = request.getParameter("action");  
 		
+		// Bewertung
+		if(action != null && action.equalsIgnoreCase("bewertung")){
+			response.getWriter().println("Start Kreation Bewertugn Objekt");
 
-		try {
-			response.getWriter().println("Start saveBewertung(nbew)");
-			sDAO.saveBewertung(nbew);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			response.getWriter().println(e);
-		}
+			//Bewertung nbew = new Bewertung("keks", "keks", 0, 0, 0, 0, 0, 0, 0, 0, "keks", 0);
+			Bewertung nbew = new Bewertung("1", "/watchkekse",  Integer.parseInt(request.getParameter("zutreffend1")), Integer.parseInt(request.getParameter("zutreffend2")), 
+					Integer.parseInt(request.getParameter("zutreffend3")), Integer.parseInt(request.getParameter("zutreffend4")), Integer.parseInt(request.getParameter("empfinden1")), Integer.parseInt(request.getParameter("empfinden2")), Integer.parseInt(request.getParameter("empfinden3")), Integer.parseInt(request.getParameter("empfinden4")), 
+					request.getParameter("zielgruppe"), Integer.parseInt(request.getParameter("gesamtbewertung")));
+			try {
+					response.getWriter().println("Start saveBewertung(nbew)");
+					sDAO.saveBewertung(nbew);
+				} 
+			catch (Exception e) {
+					response.getWriter().println(e);
+				}
+			}
+		
+		//video wählen 
+	    if(action != null && action.equalsIgnoreCase("VideoWaehlen")){
+	    	response.getWriter().println("wählen");
+	    	String whichvideo = request.getParameter("videos");
+	    	
+	    	if(whichvideo != null && whichvideo.equalsIgnoreCase("eins")){
+	 	    	response.getWriter().println("Video1");
+	 	    	//request.getRequestDispatcher("jsp/Bewertung.jsp");
+	 	    }
+	 	    if(whichvideo != null && whichvideo.equalsIgnoreCase("zwei")){ 
+	 	    	response.getWriter().println("Video2");
+	 	    	//mach irgendwas anderes 
+	 	    }
+	    }
+
 		response.getWriter().println("Hello");
-		
-		//video wählen
-		String action = request.getParameter("VideoWaehlen");    
-
-	    if(action != null && action.equalsIgnoreCase("videos")){
-	    	response.getWriter().println("Video1");
-	    	request.getRequestDispatcher("jsp/Bewertung.jsp");
-	    }
-	    if(action != null && action.equalsIgnoreCase("2")){ 
-	    	response.getWriter().println("Video2");
-	    	//mach irgendwas anderes 
-	    }
+	   
 	}
 	
 	/* ------------ Database stuff  ------------ */
