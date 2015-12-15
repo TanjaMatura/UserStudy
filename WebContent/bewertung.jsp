@@ -11,7 +11,7 @@
 <!-- Url auslesen -->
 <script type="text/javascript">
 var url = request.getSession().getAttribute("VideoURL");
-//document.getElementById("fooHolder").innerHTML = url.toString();
+//document.getElementById("videoo").src = url;	
 </script>
 
 </head>
@@ -20,12 +20,12 @@ var url = request.getSession().getAttribute("VideoURL");
 <div style="width:80%; margin: 0 auto; ">
 
 <p>
-<center><iframe width="560" height="315" src=url frameborder="0" allowfullscreen></iframe></center>
+<center><iframe id="videoo" width="560" height="315" src=<%= request.getSession().getAttribute("VideoURL") %> frameborder="0" allowfullscreen></iframe></center>
 <p>
 	<form action="MainServlet" method="post">
 	<input type="hidden" name="action" value="bewertung">
 	<table class="table">
-	<tr> <td colspan="2"> Ich habe die Werbung schon einmal gesehen </td>
+	<tr> <td colspan="2">  <script type="text/javascript">document.write(url)</script> Ich habe die Werbung schon einmal gesehen </td>
 	     <td> <input type="radio" name="janein1" value="j" />	Ja 
 	          <input type="radio" name="janein1" value="n" /> Nein 
 	          <input type="radio" name="janein1" value="k" checked/> N/A </td></tr>
