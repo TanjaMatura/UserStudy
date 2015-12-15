@@ -79,6 +79,7 @@ public class MainServlet extends HttpServlet {
 		
 		if(action != null && action.equalsIgnoreCase("VideoWaehlen")){
 			response.sendRedirect(request.getContextPath() + "/bewertung.jsp");
+			System.out.println(request.getParameter("videos")); 
 			//response.getWriter().println("Hello");
 		}
 	   
