@@ -46,20 +46,22 @@ public class MainServlet extends HttpServlet {
 		String action = request.getParameter("action");  
 		
 		//Video wählen 
-	    /*if(action != null && action.equalsIgnoreCase("VideoWaehlen")){
-	    	response.getWriter().println("wählen");
-	    	String whichvideo = request.getParameter("videos");
-	    	
-	    	if(whichvideo != null && whichvideo.equalsIgnoreCase("eins")){
-	 	    	response.getWriter().println("Video1");
-	 	    	//request.getRequestDispatcher("jsp/Bewertung.jsp");
-	 	    }
-	 	    if(whichvideo != null && whichvideo.equalsIgnoreCase("zwei")){ 
-	 	    	response.getWriter().println("Video2");
-	 	    	//mach irgendwas anderes 
-	 	    }
-	    }*/
-	    
+		if(action != null && action.equalsIgnoreCase("VideoWaehlen")){
+			//response.sendRedirect(request.getContextPath() + "/bewertung.jsp");
+			try {
+				String url = getUrl(request.getParameter("videos"));
+				request.getSession(true).setAttribute("VideoURL", url);
+				request.getRequestDispatcher("bewertung.jsp").include(request, response);
+				
+				// Auslese in jsp: out.println(request.getSession().getAttribute("VideoURL"));
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+
+			//System.out.println(request.getParameter("videos")); 
+			//response.getWriter().println("Hello");
+		}
+		
 		// Bewertung
 		if(action != null && action.equalsIgnoreCase("bewertung")){
 			response.getWriter().println("Start Kreation Bewertugn Objekt");
@@ -77,16 +79,11 @@ public class MainServlet extends HttpServlet {
 				}
 			}
 		
-		if(action != null && action.equalsIgnoreCase("VideoWaehlen")){
-			response.sendRedirect(request.getContextPath() + "/bewertung.jsp");
-			System.out.println(request.getParameter("videos")); 
-			//response.getWriter().println("Hello");
-		}
 	   
 	}
 	
 	/* ------------ Database stuff  ------------ */
-	protected String GetUrl( String vid_id) throws Exception{
+	protected String getUrl(String vid_id) throws Exception{
 		vid_id="1";
 		String finalurl="";
 		MySqlDAO testDAO = new MySqlDAO();
