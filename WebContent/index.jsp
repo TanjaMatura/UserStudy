@@ -11,7 +11,14 @@
 <style></style>
 </head>
 <body>
+<script type="text/javascript">
+	function getRandomInt(min, max) { 
+		return Math.floor(Math.random() * (max - min +1)) + min; 
+	}
+	
 
+
+</script>
 <div style="width:80%; margin: 0 auto; ">
 
 <p>
