@@ -53,11 +53,11 @@ Hier kommt eine Testzahl: <script> var first =0 doubleurl() document.write('firs
 <form action="MainServlet" method="post">
 <input type="hidden" name="action" value="VideoWaehlen">
 <table class="table"><tr> 
-	<td colspan="2"> <center><iframe width="280" height="162" src="https://www.youtube.com/embed/V6-0kYhqoRo?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe> </center></td>
-	<td colspan="2"> <center><iframe width="280" height="162" src="https://www.youtube.com/embed/VHbjTiZ1C_U?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></center> </td>
+	<td colspan="2"> <center><iframe width="280" height="162" src=<%= request.getSession().getAttribute("VideoURL1") %> frameborder="0" allowfullscreen></iframe> </center></td>
+	<td colspan="2"> <center><iframe width="280" height="162" src=<%= request.getSession().getAttribute("VideoURL2") %> frameborder="0" allowfullscreen></iframe></center> </td>
 	<tr> 
-	<td colspan="2"><center><input type="radio" name="videos" value="https://www.youtube.com/embed/V6-0kYhqoRo?rel=0&amp;showinfo=0" /></center> </td>
-	<td colspan="2"><center><input type="radio" name="videos" value="https://www.youtube.com/embed/VHbjTiZ1C_U?rel=0&amp;showinfo=0" /> </center></td>
+	<td colspan="2"><center><input type="radio" name="videos" value=<%= request.getSession().getAttribute("VideoURL1") %> /></center> </td>
+	<td colspan="2"><center><input type="radio" name="videos" value=<%= request.getSession().getAttribute("VideoURL2") %> /> </center></td>
 	<!-- Kommentar: wenn ein Button geklickt wird muss auf die Bewertungsseite verlinkt werden außerdem muss die Videtabelle in der DB
 		 mit der auswahl und pickrate upgedated werden -->
 </table>

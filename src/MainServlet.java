@@ -69,8 +69,8 @@ public class MainServlet extends HttpServlet {
 			response.getWriter().println("Start Kreation Bewertugn Objekt");
 			
 			// Schau mal wegen dem ^^
-			Bewertung nbew = new Bewertung("id", request.getParameter("videoURL"), request.getParameter("janein1"),  request.getParameter("janein3"),  request.getParameter("janein4"),  Integer.parseInt(request.getParameter("zutreffend2")),
-					Integer.parseInt(request.getParameter("zutreffend3")),  Integer.parseInt(request.getParameter("zutreffend4")),  request.getParameter("janein2"), Integer.parseInt(request.getParameter("zutreffend1")), 
+			Bewertung nbew = new Bewertung("id", request.getParameter("videoURL"), request.getParameter("janein1"),  request.getParameter("janein3"),  request.getParameter("janein4"), request.getParameter("zutreffend2"),
+					request.getParameter("zutreffend3"),  request.getParameter("zutreffend4"),  request.getParameter("janein2"), Integer.parseInt(request.getParameter("zutreffend1")), 
 					Integer.parseInt(request.getParameter("empfinden1")),  Integer.parseInt(request.getParameter("empfinden2")),  Integer.parseInt(request.getParameter("empfinden3")),  Integer.parseInt(request.getParameter("empfinden4")),  Integer.parseInt(request.getParameter("empfinden5")),  Integer.parseInt(request.getParameter("empfinden6")), 
 					request.getParameter("zielgruppe"),  Integer.parseInt(request.getParameter("bewertungen")));
 			
@@ -89,8 +89,9 @@ public class MainServlet extends HttpServlet {
 		if(action != null && action.equalsIgnoreCase("Teilnehmen")){
 			//response.sendRedirect(request.getContextPath() + "/bewertung.jsp");
 			//generere die beidne zufallsurls
-			String url1;
-			String url2;
+		try {
+			String url1=null;
+			String url2=null;
 			int max;
 			ArrayList<Video> vidList = sDAO.getVideoList();
 			max=vidList.size();
@@ -112,12 +113,9 @@ public class MainServlet extends HttpServlet {
 					url2=vidList.get(i).getURL();
 				}
 			}
-			
-			try {
-				
-				request.getSession(true).setAttribute("VideoURL1", url1);
-				request.getSession(true).setAttribute("VideoURL2", url2);
-				request.getRequestDispatcher("bewertung.jsp").include(request, response);
+			request.getSession(true).setAttribute("VideoURL1", url1);
+			request.getSession(true).setAttribute("VideoURL2", url2);
+			request.getRequestDispatcher("index.jsp").include(request, response);
 
 			} catch (Exception e) {
 				e.printStackTrace();
