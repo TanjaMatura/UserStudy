@@ -8,15 +8,19 @@
 
 <!-- Bootstrap -->
 <link href="bootstrap-3.3.6-dist\css\bootstrap.min.css" rel="stylesheet" type="text/css" />
-
+<!-- Url auslesen -->
+<script type="text/javascript">
+var url = request.getSession().getAttribute("VideoURL");
+//document.getElementById("fooHolder").innerHTML = url.toString();
 </script>
+
 </head>
 <body>
 
 <div style="width:80%; margin: 0 auto; ">
 
 <p>
-<center><iframe width="560" height="315" src="https://www.youtube.com/embed/V6-0kYhqoRo?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></center>
+<center><iframe width="560" height="315" src=url frameborder="0" allowfullscreen></iframe></center>
 <p>
 	<form action="MainServlet" method="post">
 	<input type="hidden" name="action" value="bewertung">

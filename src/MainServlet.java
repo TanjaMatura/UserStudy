@@ -49,7 +49,8 @@ public class MainServlet extends HttpServlet {
 		if(action != null && action.equalsIgnoreCase("VideoWaehlen")){
 			//response.sendRedirect(request.getContextPath() + "/bewertung.jsp");
 			try {
-				String url = getUrl(request.getParameter("videos"));
+				//String url = getUrl(request.getParameter("videos"));
+				String url = request.getParameter("videos");
 				request.getSession(true).setAttribute("VideoURL", url);
 				request.getRequestDispatcher("bewertung.jsp").include(request, response);
 				
@@ -84,7 +85,7 @@ public class MainServlet extends HttpServlet {
 	
 	/* ------------ Database stuff  ------------ */
 	protected String getUrl(String vid_id) throws Exception{
-		vid_id="1";
+		//vid_id="1";
 		String finalurl="";
 		MySqlDAO testDAO = new MySqlDAO();
 		ArrayList<Video> vidList = testDAO.getVideoList();
