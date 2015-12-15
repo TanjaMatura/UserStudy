@@ -62,9 +62,9 @@ public class MainServlet extends HttpServlet {
 		response.getWriter().println("Hello");
 		
 		//video wählen
-		String action = request.getParameter("Videos");    
+		String action = request.getParameter("VideoWaehlen");    
 
-	    if(action != null && action.equalsIgnoreCase("1")){
+	    if(action != null && action.equalsIgnoreCase("videos")){
 	    	response.getWriter().println("Video1");
 	    	request.getRequestDispatcher("jsp/Bewertung.jsp");
 	    }
