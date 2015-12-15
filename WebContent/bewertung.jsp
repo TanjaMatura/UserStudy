@@ -12,6 +12,9 @@
 <script type="text/javascript">
 var url = request.getSession().getAttribute("VideoURL");
 //document.getElementById("fooHolder").innerHTML = url.toString();
+document.onload(new function(){
+	document.getElementById("video").src = url;
+});
 </script>
 
 </head>
@@ -20,7 +23,7 @@ var url = request.getSession().getAttribute("VideoURL");
 <div style="width:80%; margin: 0 auto; ">
 
 <p>
-<center><iframe width="560" height="315" src=url frameborder="0" allowfullscreen></iframe></center>
+<center><iframe id="video" width="560" height="315" src=url frameborder="0" allowfullscreen></iframe></center>
 <p>
 	<form action="MainServlet" method="post">
 	<input type="hidden" name="action" value="bewertung">

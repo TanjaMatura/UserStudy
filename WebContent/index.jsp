@@ -14,11 +14,23 @@
 <script type="text/javascript">
 	function getRandomInt(min, max) { 
 		return Math.floor(Math.random() * (max - min +1)) + min; 
+		
 	}
-	
+	var first;
+	var second;
+	function doubleurl(){
+	var first =getRandomInt(1, 37);
+	//document.getElementId('urlId1').value = getRandomInt(1,37);
+	 second = getRandomInt(1, 37);
+	while (second == document.getElementId('urlId1')){
+		second = getRandomInt(1, 37);
+	}
+	//document.getElementId('urlId2').value = getRandomInt(1,37);
+	}
 
 
 </script>
+
 <div style="width:80%; margin: 0 auto; ">
 
 <p>
@@ -32,7 +44,10 @@
 </p>
 <br> 
 <br> 
+</br>
+</br>
 </center>
+Hier kommt eine Testzahl: <script> var first =0 doubleurl() document.write('first')</script>
 
 <form action="MainServlet" method="post">
 <input type="hidden" name="action" value="VideoWaehlen">
@@ -48,6 +63,7 @@
 <center><input class="btn btn-default" type="submit" value="Submit"></center>
 </form>
 </div>
+<body onload="doubleurl();">
 
 </body>
 </html>
