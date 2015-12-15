@@ -27,15 +27,15 @@
 	<tr> <td colspan="2"> Ich kenne die beworbene Marke </td>
 	     <td> <input type="radio" name="janein2" value="ja" />	Ja 
 	          <input type="radio" name="janein2" value="nein" /> Nein 
-	          <input type="radio" name="janein1" value="nein" checked/> N/A </td></tr>
+	          <input type="radio" name="janein2" value="nein" checked/> N/A </td></tr>
 	<tr> <td colspan="2"> Die Werbung hat mich überrascht </td>
 	     <td> <input type="radio" name="janein3" value="ja" />	Ja 
 	          <input type="radio" name="janein3" value="nein" /> Nein 
-	          <input type="radio" name="janein1" value="nein" checked/> N/A </td></tr>
+	          <input type="radio" name="janein3" value="nein" checked/> N/A </td></tr>
 	<tr> <td colspan="2"> Die Werbung hat eine gute Catch Phrase </td>
 	     <td> <input type="radio" name="janein4" value="ja" />	Ja 
 	          <input type="radio" name="janein4" value="nein" /> Nein 
-	          <input type="radio" name="janein1" value="nein" checked/> N/A </td></tr>
+	          <input type="radio" name="janein4" value="nein" checked/> N/A </td></tr>
 	          </table>
 	          
 	<table class="table">

@@ -1,6 +1,7 @@
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -66,12 +67,13 @@ public class MainServlet extends HttpServlet {
 		// Bewertung
 		if(action != null && action.equalsIgnoreCase("bewertung")){
 			response.getWriter().println("Start Kreation Bewertugn Objekt");
-
-			Bewertung nbew = new Bewertung("id","keks", "keks", "j", "j", "j", "j", "j", "j", "j", 0,0,0,0,0,0,0,0, "keks", 0);
-			/*Bewertung nbew = new Bewertung("1", request.getParameter("videoURL"),  Integer.parseInt(request.getParameter("zutreffend1")), Integer.parseInt(request.getParameter("zutreffend2")), 
-					Integer.parseInt(request.getParameter("zutreffend3")), Integer.parseInt(request.getParameter("zutreffend4")), Integer.parseInt(request.getParameter("empfinden1")), Integer.parseInt(request.getParameter("empfinden2")), Integer.parseInt(request.getParameter("empfinden3")), Integer.parseInt(request.getParameter("empfinden4")), 
-					request.getParameter("zielgruppe"), Integer.parseInt(request.getParameter("gesamtbewertung")));
-			*/
+			
+			// Schau mal wegen dem ^^
+			Bewertung nbew = new Bewertung("id", request.getParameter("videoURL"), request.getParameter("janein1"),  request.getParameter("janein3"),  request.getParameter("janein4"),  Integer.parseInt(request.getParameter("zutreffend2")),
+					Integer.parseInt(request.getParameter("zutreffend3")),  Integer.parseInt(request.getParameter("zutreffend4")),  request.getParameter("janein2"), Integer.parseInt(request.getParameter("zutreffend1")), 
+					Integer.parseInt(request.getParameter("empfinden1")),  Integer.parseInt(request.getParameter("empfinden2")),  Integer.parseInt(request.getParameter("empfinden3")),  Integer.parseInt(request.getParameter("empfinden4")),  Integer.parseInt(request.getParameter("empfinden5")),  Integer.parseInt(request.getParameter("empfinden6")), 
+					request.getParameter("zielgruppe"),  Integer.parseInt(request.getParameter("bewertungen")));
+			
 			//System.out.println(request.getParameter("videoURL"));
 			
 			try {
@@ -82,6 +84,49 @@ public class MainServlet extends HttpServlet {
 					response.getWriter().println(e);
 				}
 			}
+		
+		//zufällige videos
+		if(action != null && action.equalsIgnoreCase("Teilnehmen")){
+			//response.sendRedirect(request.getContextPath() + "/bewertung.jsp");
+			//generere die beidne zufallsurls
+			String url1;
+			String url2;
+			int max;
+			ArrayList<Video> vidList = sDAO.getVideoList();
+			max=vidList.size();
+			Random randomGenerator = new Random();
+			int rand1= randomGenerator.nextInt(max);
+			if(rand1==0){
+				rand1++;
+			}
+			int rand2=randomGenerator.nextInt(max);
+			if(rand2==0 || rand2==rand1){
+				rand2++;
+			}
+			//iterate through List
+			for(int i=0; i<max;i++){
+				if(Integer.parseInt(vidList.get(i).getId())==rand1){
+					url1=vidList.get(i).getURL();
+				}
+				if(Integer.parseInt(vidList.get(i).getId())==rand2){
+					url2=vidList.get(i).getURL();
+				}
+			}
+			
+			try {
+				
+				request.getSession(true).setAttribute("VideoURL1", url1);
+				request.getSession(true).setAttribute("VideoURL2", url2);
+				request.getRequestDispatcher("bewertung.jsp").include(request, response);
+				
+				// Auslese in jsp: out.println(request.getSession().getAttribute("VideoURL"));
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+
+			//System.out.println(request.getParameter("videos")); 
+			//response.getWriter().println("Hello");
+		}
 		
 	   
 	}
@@ -100,6 +145,8 @@ public class MainServlet extends HttpServlet {
 		}
 		return finalurl;
 	}
+	
+	
 
 }
 

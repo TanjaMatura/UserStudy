@@ -37,7 +37,7 @@ public class Bewertung {
 /* ------------ Konstruktor  ------------ */
 	
 	public Bewertung(String userID, String videourl,String schongesehen, String plotttwist, String catchphrase, String gerngesehen,
-			String ueberzeugung, String aufmerksamkeit, String markebekannt,int produktfixierung, int lachenweinen, 
+			String ueberzeugung, String aufmerksamkeit, String markebekannt,int produktfixierung,
 			int froehlichtraurig, int lustigernst, int altmodischmodern, int kreativunkreativ, int liebenswertfies, int sympathischunsympathisch, 
 			String zielgruppe, int bewertungen){
 		
@@ -54,7 +54,6 @@ public class Bewertung {
 		this.markebekannt = markebekannt;
 		
 		this.produktfixierung = produktfixierung; 
-		this.lachenweinen = lachenweinen; 
 		this.froehlichtraurig = froehlichtraurig; 
 		this.lustigernst = lustigernst; 
 		this.altmodischmodern = altmodischmodern; 
@@ -104,11 +103,6 @@ public class Bewertung {
 		this.zielgruppe = zielgruppe; 
 		this.bewertungen = bewertungen; 
 
-		
-
-		
-		
-		
 	}
 	
 	
