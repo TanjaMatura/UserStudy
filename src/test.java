@@ -9,7 +9,7 @@ public class test {
 
 	
 	public static void main(String[] args) throws Exception {
-		try {
+		/*try {
 			
 			  // This will load the MySQL driver, each DB has its own driver
 		      Class.forName("com.mysql.jdbc.Driver");
@@ -20,21 +20,17 @@ public class test {
 		try {
 		      // Setup the connection with the DB
 		      Connection connect = DriverManager
-		          .getConnection("jdbc:mysql://a1200069.mysql.univie.ac.at/a1200069"
-		              + "user=a1200069&password=mz8UserStudy");
+		          .getConnection("jdbc:mysql://mysql5.univie.ac.at/a1200069"
+		              + "user=a1200069@www06.univie.ac.at&password=mz8UserStudy");
 		      //set our SQL SELECT query
-		      String query = "SELECT * FROM Video";
-		   
-		      // create the java statement
-		      Statement statement = connect.createStatement();
-
-			  //execute query and get java resultSet
-		      ResultSet resultSet = statement.executeQuery(query);
+		      
 		      System.out.println("Connectione stablished");
 		} catch (Exception e) {
-			System.out.println("Connection not stablished");
+			System.out.println( e + "Connection not stablished");
 		}
-		
+	*/
+		MySqlDAO test = new MySqlDAO();
+		test.connect();
 	}
 		
 		

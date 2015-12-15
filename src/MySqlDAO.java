@@ -14,6 +14,30 @@ public class MySqlDAO {
   private PreparedStatement preparedStatement = null;
   private ResultSet resultSet = null;
   
+  //connection
+  public void connect(){
+	  try {
+			
+		  // This will load the MySQL driver, each DB has its own driver
+	      Class.forName("com.mysql.jdbc.Driver");
+	      System.out.println("Driver found.");
+	} catch (Exception e) {
+		System.out.println("Driver not found.");
+	}
+	try {
+	      // Setup the connection with the DB
+	      Connection connect = DriverManager
+	          .getConnection("jdbc:mysql://mysql5.univie.ac.at/a1200069"
+	              + "user=a1200069@www06.univie.ac.at&password=mz8UserStudy");
+	      //set our SQL SELECT query
+	      
+	      System.out.println("Connectione stablished");
+	} catch (Exception e) {
+		System.out.println( e + "Connection not stablished");
+	}
+	
+}
+  
   /* ------------ Video stuff  ------------ */
 
   public ArrayList<Video> getVideoList() throws Exception{
@@ -215,30 +239,15 @@ public void removeBewertungbyId(String id) throws Exception{
 
 public void saveBewertung(Bewertung bewertung) throws Exception{
     
-	try {
+	
+		System.out.println("using connect()");
+		connect();
+		
+		//____________________________________________________________________________
 			  // This will load the MySQL driver, each DB has its own driver
-		      Class.forName("com.mysql.jdbc.Driver");
-		      System.out.println("Driver found.");
-		} catch (Exception e) {
-			System.out.println("Driver not found.");
-			e.printStackTrace();
-		}
-		try {
-		      // Setup the connection with the DB
-		      Connection connect = DriverManager.getConnection("jdbc:mysql://a1200069.mysql.univie.ac.at/a1200069" + "user=a1200069&password=mz8UserStudy");
-		      //set our SQL SELECT query
-		      String query = "SELECT * FROM Video";
-		   
-		      // create the java statement
-		      Statement statement = connect.createStatement();
-
-			  //execute query and get java resultSet
-		      ResultSet resultSet = statement.executeQuery(query);
-		      System.out.println("Connectione stablished");
-		} catch (Exception e) {
-			System.out.println("Connection not stablished");
-			e.printStackTrace(); 
-		}
+		      
+		
+		
 		try {
 
 	      //set our SQL SELECT query

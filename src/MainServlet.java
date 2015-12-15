@@ -77,8 +77,10 @@ public class MainServlet extends HttpServlet {
 				}
 			}
 		
-
-		response.getWriter().println("Hello");
+		if(action != null && action.equalsIgnoreCase("VideoWaehlen")){
+			response.sendRedirect(request.getContextPath() + "/bewertung.jsp");
+			//response.getWriter().println("Hello");
+		}
 	   
 	}
 	
