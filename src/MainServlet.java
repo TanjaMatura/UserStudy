@@ -67,18 +67,20 @@ public class MainServlet extends HttpServlet {
 		// Bewertung
 		if(action != null && action.equalsIgnoreCase("bewertung")){
 			response.getWriter().println("Start Kreation Bewertugn Objekt");
-			
+			Admin tempUser = new Admin("anon", "none", request.getParameter("alter"), request.getParameter("geschlecht"), 0);
 			// Schau mal wegen dem ^^
-			Bewertung nbew = new Bewertung("id", request.getParameter("videoURL"), request.getParameter("janein1"),  request.getParameter("janein3"),  request.getParameter("janein4"), request.getParameter("zutreffend2"),
+			Bewertung nbew = new Bewertung( tempUser.getId(), request.getParameter("videoURL"), request.getParameter("janein1"),  request.getParameter("janein3"),  request.getParameter("janein4"), request.getParameter("zutreffend2"),
 					request.getParameter("zutreffend3"),  request.getParameter("zutreffend4"),  request.getParameter("janein2"), Integer.parseInt(request.getParameter("zutreffend1")), 
 					Integer.parseInt(request.getParameter("empfinden1")),  Integer.parseInt(request.getParameter("empfinden2")),  Integer.parseInt(request.getParameter("empfinden3")),  Integer.parseInt(request.getParameter("empfinden4")),  Integer.parseInt(request.getParameter("empfinden5")),  Integer.parseInt(request.getParameter("empfinden6")), 
-					request.getParameter("zielgruppe"),  Integer.parseInt(request.getParameter("bewertungen")));
+					request.getParameter("zielgruppe"),  Integer.parseInt(request.getParameter("gesamtbewertung")));
 			
 			//System.out.println(request.getParameter("videoURL"));
 			
 			try {
 					response.getWriter().println("Start saveBewertung(nbew)");
 					sDAO.saveBewertung(nbew);
+					sDAO.saveUser(tempUser);
+					sDAO.saveComment(tempUser, sDAO.getVideobyUrl(request.getParameter("videoURL")), request.getParameter("kommentar"));
 				} 
 			catch (Exception e) {
 					response.getWriter().println(e);
