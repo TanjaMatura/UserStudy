@@ -20,7 +20,7 @@ var url = request.getSession().getAttribute("VideoURL");
 <div style="width:80%; margin: 0 auto; ">
 
 <p>
-<center><iframe id="videoo" width="560" height="315" src=<%= request.getSession().getAttribute("VideoURL") %> frameborder="0" allowfullscreen></iframe></center>
+<center><iframe id="videoo" width="560" height="315" src=https://www.youtube.com/embed/<%= request.getSession().getAttribute("VideoURL") %> frameborder="0" allowfullscreen></iframe></center>
 <p>
 	<form action="MainServlet" method="post">
 	<input type="hidden" name="action" value="bewertung">

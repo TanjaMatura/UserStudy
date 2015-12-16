@@ -39,7 +39,7 @@
 <br> 
 <p>Bitte sehen Sie sich die beiden Videos an. Wählen Sie das Video aus, das Ihnen besser gefällt.
 </p>
-<p>Im Anschluss können Sie Fragen zu dem gewählten Video beantworten.
+<p>Im Anschluss können Sie Fragen zu dem gewählten Video beantworten. 
 </p>
 <br> 
 <br> 
@@ -48,8 +48,8 @@
 <form action="MainServlet" method="post">
 <input type="hidden" name="action" value="VideoWaehlen">
 <table class="table"><tr> 
-	<td colspan="2"> <center><iframe width="280" height="162" src=<%= request.getSession().getAttribute("VideoURL1") %> frameborder="0" allowfullscreen></iframe> </center></td>
-	<td colspan="2"> <center><iframe width="280" height="162" src=<%= request.getSession().getAttribute("VideoURL2") %> frameborder="0" allowfullscreen></iframe></center> </td>
+	<td colspan="2"> <center><iframe width="280" height="162" src=https://www.youtube.com/embed/<%= request.getSession().getAttribute("VideoURL1") %> frameborder="0" allowfullscreen></iframe> </center></td>
+	<td colspan="2"> <center><iframe width="280" height="162" src=https://www.youtube.com/embed/<%= request.getSession().getAttribute("VideoURL2") %> frameborder="0" allowfullscreen></iframe></center> </td>
 	<tr> 
 	<td colspan="2"><center><input type="radio" name="videos" value=<%= request.getSession().getAttribute("VideoURL1") %> /></center> </td>
 	<td colspan="2"><center><input type="radio" name="videos" value=<%= request.getSession().getAttribute("VideoURL2") %> /> </center></td>
