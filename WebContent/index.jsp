@@ -28,9 +28,6 @@
 	}
 	//document.getElementId('urlId2').value = getRandomInt(1,37);
 	}
-
-	var alter = request.getSession().getAttribute("UserAlter");
-	var geschlecht = request.getSession().getAttribute("UserGeschlecht");
 </script>
 
 <div style="width:80%; margin: 0 auto; ">
@@ -61,7 +58,8 @@ Hier kommt eine Testzahl: <script> var first =0 doubleurl() document.write('firs
 	<td colspan="2"><center><input type="radio" name="videos" value=<%= request.getSession().getAttribute("VideoURL2") %> /> </center></td>
 	<!-- Kommentar: wenn ein Button geklickt wird muss auf die Bewertungsseite verlinkt werden außerdem muss die Videtabelle in der DB
 		 mit der auswahl und pickrate upgedated werden -->
-</table>
+
+</table> 
 <center><input class="btn btn-default" type="submit" value="Submit"></center>
 </form>
 </div>

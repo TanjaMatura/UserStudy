@@ -67,7 +67,9 @@ public class MainServlet extends HttpServlet {
 		// Bewertung
 		if(action != null && action.equalsIgnoreCase("bewertung")){
 			response.getWriter().println("Start Kreation Bewertugn Objekt");
-			Admin tempUser = new Admin("anon", "none", request.getParameter("alter"), request.getParameter("geschlecht"), 0);
+			String alter = (String) request.getSession().getAttribute("UserAlter");
+			String geschlecht = (String) request.getSession().getAttribute("UserGeschlecht"); 
+			Admin tempUser = new Admin("anon", "none", alter, geschlecht, 0);
 			// Schau mal wegen dem ^^
 			Bewertung nbew = new Bewertung( tempUser.getId(), request.getParameter("videoURL"), request.getParameter("janein1"),  request.getParameter("janein3"),  request.getParameter("janein4"), request.getParameter("zutreffend2"),
 					request.getParameter("zutreffend3"),  request.getParameter("zutreffend4"),  request.getParameter("janein2"), Integer.parseInt(request.getParameter("zutreffend1")), 
@@ -95,7 +97,7 @@ public class MainServlet extends HttpServlet {
 		try {
 			String url1=null;
 			String url2=null;
-			int max;
+			/**int max;
 			ArrayList<Video> vidList = sDAO.getVideoList();
 			max=vidList.size();
 			Random randomGenerator = new Random();
@@ -115,7 +117,7 @@ public class MainServlet extends HttpServlet {
 				if(Integer.parseInt(vidList.get(i).getId())==rand2){
 					url2=vidList.get(i).getURL();
 				}
-			}
+			}*/
 			String alter = request.getParameter("alter"); 
 			String geschlecht = request.getParameter("geschlecht"); 
 			request.getSession(true).setAttribute("UserAlter", alter);
