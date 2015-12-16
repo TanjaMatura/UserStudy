@@ -66,7 +66,6 @@ public class MainServlet extends HttpServlet {
 		
 		// Bewertung
 		if(action != null && action.equalsIgnoreCase("bewertung")){
-			response.getWriter().println("Start Kreation Bewertugn Objekt");
 			String alter = (String) request.getSession().getAttribute("UserAlter");
 			String geschlecht = (String) request.getSession().getAttribute("UserGeschlecht"); 
 			Admin tempUser = new Admin("anon", "none", alter, geschlecht, 0);
@@ -87,6 +86,7 @@ public class MainServlet extends HttpServlet {
 			catch (Exception e) {
 					response.getWriter().println(e);
 				}
+			request.getRequestDispatcher("danke.html").include(request, response);
 			}
 		
 		// Teilnehmen

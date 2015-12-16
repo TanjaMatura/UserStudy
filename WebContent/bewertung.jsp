@@ -144,7 +144,7 @@ var url = request.getSession().getAttribute("VideoURL");
 	<tr><td colspand="3"><input type="text" name="kommentar"/></td>
 	</tr>
 	</table>
-	<a href="danke.html"><input class="btn btn-default" type="submit" value="Submit"></a>
+	<input class="btn btn-default" type="submit" value="Submit">
 	</form>
 </div>
 

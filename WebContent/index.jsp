@@ -57,7 +57,7 @@
 		 mit der auswahl und pickrate upgedated werden -->
 
 </table> 
-<center><input class="btn btn-default" type="submit" value="Submit"></center>
+<center><input class="btn btn-default" type="submit" value="Wählen"></center>
 </form>
 </div>
 <body onload="doubleurl();">

@@ -341,7 +341,7 @@ public void saveBewertung(Bewertung bewertung) throws Exception{
 		
 		  connect();
 	      //set our SQL SELECT query
-	      String query = "INSERT INTO User VALUES ('" + user.getId() + "','" + user.getUsername() + user.getPassword() + "'," + user.getAge() + ",'" +
+	      String query = "INSERT INTO User VALUES ('" + user.getId() + "','" + user.getUsername() + "','" + user.getPassword() + "'," + user.getAge() + ",'" +
 	    		  user.getGender() + "'," + user.getAdmin() + ")";
 	   
 	      // create the java statement
