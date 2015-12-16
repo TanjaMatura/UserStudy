@@ -87,8 +87,9 @@ public class MainServlet extends HttpServlet {
 				}
 			}
 		
-		//zufällige videos
+		// Teilnehmen
 		if(action != null && action.equalsIgnoreCase("Teilnehmen")){
+			//zufällige videos
 			//response.sendRedirect(request.getContextPath() + "/bewertung.jsp");
 			//generere die beidne zufallsurls
 		try {
@@ -115,6 +116,10 @@ public class MainServlet extends HttpServlet {
 					url2=vidList.get(i).getURL();
 				}
 			}
+			String alter = request.getParameter("alter"); 
+			String geschlecht = request.getParameter("geschlecht"); 
+			request.getSession(true).setAttribute("UserAlter", alter);
+			request.getSession(true).setAttribute("UserGeschlecht", geschlecht);
 			request.getSession(true).setAttribute("VideoURL1", url1);
 			request.getSession(true).setAttribute("VideoURL2", url2);
 			request.getRequestDispatcher("index.jsp").include(request, response);

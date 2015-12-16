@@ -29,7 +29,8 @@
 	//document.getElementId('urlId2').value = getRandomInt(1,37);
 	}
 
-
+	var alter = request.getSession().getAttribute("UserAlter");
+	var geschlecht = request.getSession().getAttribute("UserGeschlecht");
 </script>
 
 <div style="width:80%; margin: 0 auto; ">
