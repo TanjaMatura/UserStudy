@@ -97,7 +97,7 @@ public class MainServlet extends HttpServlet {
 		try {
 			String url1=null;
 			String url2=null;
-			/**int max;
+			int max;
 			ArrayList<Video> vidList = sDAO.getVideoList();
 			max=vidList.size();
 			Random randomGenerator = new Random();
@@ -117,7 +117,7 @@ public class MainServlet extends HttpServlet {
 				if(Integer.parseInt(vidList.get(i).getId())==rand2){
 					url2=vidList.get(i).getURL();
 				}
-			}*/
+			}
 			String alter = request.getParameter("alter"); 
 			String geschlecht = request.getParameter("geschlecht"); 
 			request.getSession(true).setAttribute("UserAlter", alter);

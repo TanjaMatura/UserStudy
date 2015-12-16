@@ -43,10 +43,7 @@
 </p>
 <br> 
 <br> 
-</br>
-</br>
 </center>
-Hier kommt eine Testzahl: <script> var first =0 doubleurl() document.write('first')</script>
 
 <form action="MainServlet" method="post">
 <input type="hidden" name="action" value="VideoWaehlen">
