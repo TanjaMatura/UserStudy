@@ -309,6 +309,35 @@ public void saveBewertung(Bewertung bewertung) throws Exception{
 	  
   }
   
+ public Admin getUserbyID(String id) throws Exception{
+	  
+	  Admin thing=null;
+	  try {
+		
+		  connect();
+	      //set our SQL SELECT query
+	      String query = "SELECT * FROM User WHERE user_id='" + id + "'";
+	   
+	      // create the java statement
+	      statement = connect.createStatement();
+
+		  //execute query and get java resultSet
+	      resultSet = statement.executeQuery(query);
+	      
+	      //iterate through the reultSet and create new Video object
+	      while(resultSet.next()) {
+	    	  thing = new Admin(resultSet.getString("user_id"), resultSet.getString("user_name"), resultSet.getString("user_password"),
+	    			  resultSet.getString("user_age"), resultSet.getString("user_gender"), Integer.parseInt(resultSet.getString("user_admin")));
+	      }
+	  }catch (Exception e) {
+	      throw e;
+	    } finally {
+	      close();
+	    }
+	  return thing;
+	  
+  }
+  
   public void removeUserbyName(String username) throws Exception{
 	  
 	  

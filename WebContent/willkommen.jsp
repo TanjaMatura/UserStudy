@@ -48,15 +48,15 @@
 <br> 
 
 <form action="MainServlet" method="post">
-<input type="hidden" name="action" value="Teilnehmen">
-<b>Geschlecht:  </b><br>
-<input type="radio" name="geschlecht" value="w" />	weiblich
-<input type="radio" name="geschlecht" value="m" />	männlich
-<input type="radio" name="geschlecht" value="a" checked/>	N/A<p><br>
-
-<b>Alter: </b> <input type="text" name="alter" value="0"/> Jahre<p>
-
-<input class="btn btn-default" type="submit" value="Teilnehmen"></center>
+	<input type="hidden" name="action" value="Teilnehmen">
+	<b>Geschlecht:  </b><br>
+	<input type="radio" name="geschlecht" value="w" />	weiblich
+	<input type="radio" name="geschlecht" value="m" />	männlich
+	<input type="radio" name="geschlecht" value="a" checked/>	N/A<p><br>
+	
+	<b>Alter: </b> <input type="text" name="alter" value="0"/> Jahre<p>
+	
+	<input class="btn btn-default" type="submit" value="Teilnehmen"></center>
 </form>
 </div>
 <body onload="doubleurl();">
