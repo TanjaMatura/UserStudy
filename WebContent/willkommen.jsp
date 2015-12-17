@@ -41,6 +41,8 @@
 <br> 
 <br> 
 <p>Vielen Dank für Ihr Interesse an unserer Studie.
+
+<p>Bitte sehen Sie sich die beiden Videos an. Wählen Sie das Video aus, das Ihnen besser gefällt.
 </p>
 <p>Im Anschluss können Sie Fragen zu dem gewählten Video beantworten. Alle Angaben werden nur anonym gespeichert.
 </p>
@@ -49,14 +51,19 @@
 
 <form action="MainServlet" method="post">
 	<input type="hidden" name="action" value="Teilnehmen">
-	<b>Geschlecht:  </b><br>
-	<input type="radio" name="geschlecht" value="w" />	weiblich
+	<table>
+	<tr>
+	<td><b>Geschlecht: </b></td> <td><input type="radio" name="geschlecht" value="w" />	weiblich
 	<input type="radio" name="geschlecht" value="m" />	männlich
-	<input type="radio" name="geschlecht" value="a" checked/>	N/A<p><br>
-	
-	<b>Alter: </b> <input type="text" name="alter" value="0"/> Jahre<p>
-	
-	<input class="btn btn-default" type="submit" value="Teilnehmen"></center>
+	<input type="radio" name="geschlecht" value="a" checked/>	N/A</td>
+	</tr>
+	<tr>
+	<td><b>Alter: </b></td>
+	<td><input type="text" name="alter" value="0"/> Jahre<p></td>
+	</tr>
+	</table>
+
+	<input class="btn btn-default" type="submit" value="Teilnehmen!"></center>
 </form>
 </div>
 <body onload="doubleurl();">

@@ -33,17 +33,7 @@
 <div style="width:80%; margin: 0 auto; ">
 
 <p>
-<center>
-<h1>User Studie - Werbung</h1>
-<br> 
-<br> 
-<p>Bitte sehen Sie sich die beiden Videos an. Wählen Sie das Video aus, das Ihnen besser gefällt.
-</p>
-<p>Im Anschluss können Sie Fragen zu dem gewählten Video beantworten.
-</p>
-<br> 
-<br> 
-</center>
+
 
 <form action="MainServlet" method="post">
 <input type="hidden" name="action" value="VideoWaehlen">

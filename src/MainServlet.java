@@ -109,14 +109,7 @@ public class MainServlet extends HttpServlet {
 				}
 				
 				//update availability on videos
-				Video av1 = sDAO.getVideobyUrl(url1);
-			    Video av2 = sDAO.getVideobyUrl(url2);
-				av1.addAnzahlAngeboten();
-				av2.addAnzahlAngeboten();
-				sDAO.removeVideobyUrl(url1);
-				sDAO.saveVideo(av1);
-				sDAO.removeVideobyUrl(url2);
-				sDAO.saveVideo(av2);
+				updateAvailability();
 				
 				request.getSession(true).setAttribute("VideoURL1", url1);
 				request.getSession(true).setAttribute("VideoURL2", url2);
@@ -133,14 +126,7 @@ public class MainServlet extends HttpServlet {
 				randomURLs();
 				
 				//update availability on videos
-				Video av1 = sDAO.getVideobyUrl(url1);
-			    Video av2 = sDAO.getVideobyUrl(url2);
-				av1.addAnzahlAngeboten();
-				av2.addAnzahlAngeboten();
-				sDAO.removeVideobyUrl(url1);
-				sDAO.saveVideo(av1);
-				sDAO.removeVideobyUrl(url2);
-				sDAO.saveVideo(av2);
+				updateAvailability();
 				
 				request.getSession(true).setAttribute("VideoURL1", url1);
 				request.getSession(true).setAttribute("VideoURL2", url2);
@@ -191,6 +177,17 @@ public class MainServlet extends HttpServlet {
 				url2=vidList.get(i).getURL();
 			}
 		}
+	}
+	
+	protected void updateAvailability() throws Exception {
+		Video av1 = sDAO.getVideobyUrl(url1);
+	    Video av2 = sDAO.getVideobyUrl(url2);
+		av1.addAnzahlAngeboten();
+		av2.addAnzahlAngeboten();
+		sDAO.removeVideobyUrl(url1);
+		sDAO.saveVideo(av1);
+		sDAO.removeVideobyUrl(url2);
+		sDAO.saveVideo(av2);
 	}
 	
 	
