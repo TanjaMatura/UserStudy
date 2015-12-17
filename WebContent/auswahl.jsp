@@ -39,7 +39,7 @@
 <br> 
 <p>Bitte sehen Sie sich die beiden Videos an. Wählen Sie das Video aus, das Ihnen besser gefällt.
 </p>
-<p>Im Anschluss können Sie Fragen zu dem gewählten Video beantworten. 
+<p>Im Anschluss können Sie Fragen zu dem gewählten Video beantworten.
 </p>
 <br> 
 <br> 

@@ -10,9 +10,6 @@
 <!-- Bootstrap -->
 <link href="bootstrap-3.3.6-dist\css\bootstrap.min.css" rel="stylesheet" type="text/css" />
 <!-- Url auslesen -->
-<script type="text/javascript">
-var url = request.getSession().getAttribute("VideoURL");
-</script>
 
 </head>
 <body>
@@ -26,7 +23,7 @@ var url = request.getSession().getAttribute("VideoURL");
 	<input type="hidden" name="action" value="bewertung">
 	<input type="hidden" name="videoURL" value=<%= request.getSession().getAttribute("VideoURL") %>>
 	<table class="table">
-	<tr> <td colspan="2">  <script type="text/javascript">document.write(url)</script> Ich habe die Werbung schon einmal gesehen </td>
+	<tr> <td colspan="2"> Ich habe die Werbung schon einmal gesehen</td>
 	     <td> <input type="radio" name="janein1" value="j" />	Ja 
 	          <input type="radio" name="janein1" value="n" /> Nein 
 	          <input type="radio" name="janein1" value="k" checked/> N/A </td></tr>

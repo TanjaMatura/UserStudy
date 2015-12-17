@@ -33,14 +33,14 @@ public class Admin {
 		
 	}
 	//für laden von der database
-	public Admin(String id, String username, String password, String age, String gender, String admin){
+	public Admin(String id, String username, String password, String age, String gender, int admin){
 		this.id = id;
 		this.username = username; 
 		this.password = password; 
 		this.password = password; 
 		this.age = age;
 		this.gender = gender;
-		this.admin = Integer.parseInt(admin);
+		this.admin = admin;
 		
 	}
 

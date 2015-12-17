@@ -265,7 +265,7 @@ public void saveBewertung(Bewertung bewertung) throws Exception{
 	      //iterate through the reultSet and create new Video objects, adding them to the videoList
 	      while(resultSet.next()) {
 	    	  Admin tempUser = new Admin(resultSet.getString("user_id"), resultSet.getString("user_name"), resultSet.getString("user_password"),
-	    			  resultSet.getString("user_age"), resultSet.getString("user_gender"), resultSet.getString("user_admin"));
+	    			  resultSet.getString("user_age"), resultSet.getString("user_gender"), Integer.parseInt(resultSet.getString("user_admin")));
 
 	    	  userList.add(tempUser);
 
@@ -297,7 +297,7 @@ public void saveBewertung(Bewertung bewertung) throws Exception{
 	      //iterate through the reultSet and create new Video object
 	      while(resultSet.next()) {
 	    	  thing = new Admin(resultSet.getString("user_id"), resultSet.getString("user_name"), resultSet.getString("user_password"),
-	    			  resultSet.getString("user_age"), resultSet.getString("user_gender"), resultSet.getString("user_admin"));
+	    			  resultSet.getString("user_age"), resultSet.getString("user_gender"), Integer.parseInt(resultSet.getString("user_admin")));
 	    	  
 	      }
 	  }catch (Exception e) {

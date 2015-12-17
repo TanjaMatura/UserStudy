@@ -13,6 +13,7 @@
 </head>
 <body>
 <script type="text/javascript">
+
 	function getRandomInt(min, max) { 
 		return Math.floor(Math.random() * (max - min +1)) + min; 
 		
@@ -51,9 +52,9 @@
 <b>Geschlecht:  </b><br>
 <input type="radio" name="geschlecht" value="w" />	weiblich
 <input type="radio" name="geschlecht" value="m" />	männlich
-<input type="radio" name="geschlecht" value="a" />	N/A<p><br>
+<input type="radio" name="geschlecht" value="a" checked/>	N/A<p><br>
 
-<b>Alter: </b> <input type="text" name="alter"/> Jahre<p>
+<b>Alter: </b> <input type="text" name="alter" value="0"/> Jahre<p>
 
 <input class="btn btn-default" type="submit" value="Teilnehmen"></center>
 </form>

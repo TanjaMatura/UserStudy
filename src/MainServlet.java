@@ -10,12 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.net.InetAddress;
+
+
 /**
  * Servlet implementation class MainServlet
  */
 @WebServlet("/MainServlet")
 public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	MySqlDAO sDAO = new MySqlDAO();
+	Admin tempUser = null; 
+	Bewertung nbew = null; 
+	String url1=null;
+	String url2=null;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -43,7 +51,6 @@ public class MainServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MySqlDAO sDAO = new MySqlDAO();
 		String action = request.getParameter("action");  
 		
 		//Video wählen 
@@ -55,32 +62,20 @@ public class MainServlet extends HttpServlet {
 				request.getSession(true).setAttribute("VideoURL", url);
 				request.getRequestDispatcher("bewertung.jsp").include(request, response);
 				
-				// Auslese in jsp: out.println(request.getSession().getAttribute("VideoURL"));
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
 
-			//System.out.println(request.getParameter("videos")); 
-			//response.getWriter().println("Hello");
 		}
 		
 		// Bewertung
 		if(action != null && action.equalsIgnoreCase("bewertung")){
-			String alter = (String) request.getSession().getAttribute("UserAlter");
-			String geschlecht = (String) request.getSession().getAttribute("UserGeschlecht"); 
-			Admin tempUser = new Admin("anon", "none", alter, geschlecht, 0);
-			// Schau mal wegen dem ^^
-			Bewertung nbew = new Bewertung( tempUser.getId(), request.getParameter("videoURL"), request.getParameter("janein1"),  request.getParameter("janein3"),  request.getParameter("janein4"), request.getParameter("zutreffend2"),
+			nbew = new Bewertung(tempUser.getId(), request.getParameter("videoURL"), request.getParameter("janein1"),  request.getParameter("janein3"),  request.getParameter("janein4"), request.getParameter("zutreffend2"),
 					request.getParameter("zutreffend3"),  request.getParameter("zutreffend4"),  request.getParameter("janein2"), Integer.parseInt(request.getParameter("zutreffend1")), 
 					Integer.parseInt(request.getParameter("empfinden1")),  Integer.parseInt(request.getParameter("empfinden2")),  Integer.parseInt(request.getParameter("empfinden3")),  Integer.parseInt(request.getParameter("empfinden4")),  Integer.parseInt(request.getParameter("empfinden5")),  Integer.parseInt(request.getParameter("empfinden6")), 
-					request.getParameter("zielgruppe"),  Integer.parseInt(request.getParameter("gesamtbewertung")));
-			
-			//System.out.println(request.getParameter("videoURL"));
-			
+					request.getParameter("zielgruppe"),  Integer.parseInt(request.getParameter("gesamtbewertung")));				
 			try {
-					response.getWriter().println("Start saveBewertung(nbew)");
 					sDAO.saveBewertung(nbew);
-					sDAO.saveUser(tempUser);
 					sDAO.saveComment(tempUser, sDAO.getVideobyUrl(request.getParameter("videoURL")), request.getParameter("kommentar"));
 				} 
 			catch (Exception e) {
@@ -90,45 +85,35 @@ public class MainServlet extends HttpServlet {
 			}
 		
 		// Teilnehmen
-		if(action != null && action.equalsIgnoreCase("Teilnehmen")){
-			//zufällige videos
-			//response.sendRedirect(request.getContextPath() + "/bewertung.jsp");
-			//generere die beidne zufallsurls
-		try {
-			String url1=null;
-			String url2=null;
-			int max;
-			ArrayList<Video> vidList = sDAO.getVideoList();
-			max=vidList.size();
-			Random randomGenerator = new Random();
-			int rand1= randomGenerator.nextInt(max);
-			if(rand1==0){
-				rand1++;
-			}
-			int rand2=randomGenerator.nextInt(max);
-			if(rand2==0 || rand2==rand1){
-				rand2++;
-			}
-			//iterate through List
-			for(int i=0; i<max;i++){
-				if(Integer.parseInt(vidList.get(i).getId())==rand1){
-					url1=vidList.get(i).getURL();
-				}
-				if(Integer.parseInt(vidList.get(i).getId())==rand2){
-					url2=vidList.get(i).getURL();
-				}
-			}
-			String alter = request.getParameter("alter"); 
-			String geschlecht = request.getParameter("geschlecht"); 
-			request.getSession(true).setAttribute("UserAlter", alter);
-			request.getSession(true).setAttribute("UserGeschlecht", geschlecht);
-			request.getSession(true).setAttribute("VideoURL1", url1);
-			request.getSession(true).setAttribute("VideoURL2", url2);
-			request.getRequestDispatcher("index.jsp").include(request, response);
-
+		if(action != null && action.equalsIgnoreCase("Teilnehmen")){	
+			try {
+				randomURLs();
+				InetAddress inetadress = InetAddress.getLocalHost();
+				String ip = inetadress.getHostAddress();
+				String alter = request.getParameter("alter"); 
+				String geschlecht = request.getParameter("geschlecht"); 
+				tempUser = new Admin(ip, "anon", "none", alter, geschlecht, 0);
+				sDAO.saveUser(tempUser);
+				request.getSession(true).setAttribute("VideoURL1", url1);
+				request.getSession(true).setAttribute("VideoURL2", url2);
+				request.getRequestDispatcher("auswahl.jsp").include(request, response);
 			} catch (Exception e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} 
+			}
+		}
+		
+		// Nochmal
+		if(action != null && action.equalsIgnoreCase("nochmal")){
+			try {
+				randomURLs();
+				request.getSession(true).setAttribute("VideoURL1", url1);
+				request.getSession(true).setAttribute("VideoURL2", url2);
+				request.getRequestDispatcher("auswahl.jsp").include(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 	   
@@ -136,7 +121,6 @@ public class MainServlet extends HttpServlet {
 	
 	/* ------------ Database stuff  ------------ */
 	protected String getUrl(String vid_id) throws Exception{
-		//vid_id="1";
 		String finalurl="";
 		MySqlDAO testDAO = new MySqlDAO();
 		ArrayList<Video> vidList = testDAO.getVideoList();
@@ -148,6 +132,34 @@ public class MainServlet extends HttpServlet {
 		}
 		return finalurl;
 	}
+	
+	//zufällige videos
+	protected void randomURLs() throws Exception {
+		int max;
+		ArrayList<Video> vidList = sDAO.getVideoList();
+		max=vidList.size();
+		Random randomGenerator = new Random();
+		int rand1= randomGenerator.nextInt(max);
+		if(rand1==0){
+			rand1++;
+		}
+		int rand2=randomGenerator.nextInt(max);
+		if(rand2==0 || rand2==rand1){
+			rand2++;
+		}
+		//iterate through List
+		for(int i=0; i<max;i++){
+			if(Integer.parseInt(vidList.get(i).getId())==rand1){
+				url1=vidList.get(i).getURL();
+			}
+			if(Integer.parseInt(vidList.get(i).getId())==rand2){
+				url2=vidList.get(i).getURL();
+			}
+		}
+	}
+	
+	
+	
 	
 	
 
