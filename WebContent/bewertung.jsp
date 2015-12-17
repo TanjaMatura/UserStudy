@@ -138,7 +138,7 @@
 	
 	<table class="table">
 	<tr><th colspan="3">Hast du noch eine persönliche Anmerkung zu dieser Werbung? </th></tr>
-	<tr><td colspand="3"><input type="text" name="kommentar"></td>
+	<tr><td colspand="3"><input type="text" name="kommentar" value=" "></td>
 	</tr>
 	</table>
 	<input class="btn btn-default" type="submit" value="Submit">

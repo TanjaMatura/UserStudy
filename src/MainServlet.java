@@ -83,7 +83,7 @@ public class MainServlet extends HttpServlet {
 					request.getParameter("zielgruppe"),  Integer.parseInt(request.getParameter("gesamtbewertung")));				
 			try {
 					sDAO.saveBewertung(nbew);
-					if(request.getParameter("kommentar")!=null){
+					if(!request.getParameter("kommentar").equals(" ")){
 						sDAO.saveComment(tempUser, sDAO.getVideobyUrl(request.getParameter("videoURL")), request.getParameter("kommentar"));
 					}
 				} 
