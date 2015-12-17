@@ -59,13 +59,13 @@ public class MainServlet extends HttpServlet {
 				//String url = getUrl(request.getParameter("videos"));
 				String url = request.getParameter("videos");
 				MySqlDAO tempDAO = new MySqlDAO();
-				
+
 				Video pick = tempDAO.getVideobyUrl(url);
 				//update pickrate
 				pick.addAnzahlAusgewaehlt();
 				tempDAO.removeVideobyUrl(url);
 				tempDAO.saveVideo(pick);
-				
+
 				request.getSession(true).setAttribute("VideoURL", url);
 				request.getRequestDispatcher("bewertung.jsp").include(request, response);
 				
