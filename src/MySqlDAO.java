@@ -102,11 +102,9 @@ public class MySqlDAO {
   
   public void removeVideobyUrl(String url) throws Exception{
 	  
-	  
 	  try {
-		
 		  connect();
-	      String query = "DELETE * FROM Video WHERE vid_url='" + url +"'";
+	      String query = "DELETE FROM Video WHERE vid_url='" + url +"'";
 	   
 	      // create the java statement
 	      statement = connect.createStatement();
@@ -130,7 +128,7 @@ public class MySqlDAO {
 		
 		  connect();
 	      //set our SQL SELECT query
-	      String query = "INSERT INTO Video VALUES ('" + video.getId() + "','" + video.getURL() + video.getName() + "','" + video.getLength() + "','" +
+	      String query = "INSERT INTO Video VALUES ('" + video.getId() + "','" + video.getURL() + "','"  + video.getName() + "','" + video.getLength() + "','" +
 	    		  video.getMarke() + "','" + video.getKategorie() + "',"+ video.getAnzahlAusgewaehlt() + "," + video.getAnzahlAngeboten() +  ")";
 	   
 	      // create the java statement
@@ -168,7 +166,7 @@ public ArrayList<Bewertung> getBewertungList() throws Exception{
 	    	  Bewertung tempbew = new Bewertung(resultSet.getString("b_id"), resultSet.getString("b_uid"), resultSet.getString("b_url"),
 	    			  resultSet.getString("schongesehen"),resultSet.getString("plottwist"),resultSet.getString("catchphrase"),
 	    			  resultSet.getString("gerngesehen"), resultSet.getString("ueberzeugung"), resultSet.getString("aufmerksamkeit"),resultSet.getString("markebekannt"),
-	    			  resultSet.getInt("produktfixierung"), resultSet.getInt("lachenweinen"), resultSet.getInt("froehlichtraurig"), resultSet.getInt("lustigernst"),
+	    			  resultSet.getInt("produktfixierung"), resultSet.getInt("froehlichtraurig"), resultSet.getInt("lustigernst"),
 	    			  resultSet.getInt("altmodischmodern"), resultSet.getInt("kreativunkreativ"), resultSet.getInt("liebenswertfies"), resultSet.getInt("sympathischunsympathisch"), resultSet.getString("zielgruppe"), resultSet.getInt("bewertungen"));
 	    	  bewertungList.add(tempbew);
 	      }

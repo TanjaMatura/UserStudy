@@ -102,7 +102,7 @@ public class MainServlet extends HttpServlet {
 				String geschlecht = request.getParameter("geschlecht"); 
 				InetAddress inetadress = InetAddress.getLocalHost();
 				String ip = inetadress.getHostAddress();
-				if(sDAO.getUserbyID(ip)!=null){tempUser=sDAO.getUserbyID(ip);}
+				if(sDAO.getUserbyID(ip)!=null){tempUser=sDAO.getUserbyID(ip); }
 				else {
 					tempUser = new Admin(ip, "anon", "none", alter, geschlecht, 0);
 					sDAO.saveUser(tempUser);

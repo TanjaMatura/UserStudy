@@ -24,21 +24,21 @@
 	<input type="hidden" name="videoURL" value=<%= request.getSession().getAttribute("VideoURL") %>>
 	<table class="table">
 	<tr> <td colspan="2"> Ich habe die Werbung schon einmal gesehen</td>
-	     <td> <input type="radio" name="janein1" value="j" />	Ja 
-	          <input type="radio" name="janein1" value="n" /> Nein 
-	          <input type="radio" name="janein1" value="k" checked/> N/A </td></tr>
+	     <td> <input type="radio" name="janein1" value="ja" />	Ja 
+	          <input type="radio" name="janein1" value="nein" /> Nein 
+	          <input type="radio" name="janein1" value="NA" checked/> N/A </td></tr>
 	<tr> <td colspan="2"> Ich kenne die beworbene Marke </td>
-	     <td> <input type="radio" name="janein2" value="j" />	Ja 
-	          <input type="radio" name="janein2" value="n" /> Nein 
-	          <input type="radio" name="janein2" value="k" checked/> N/A </td></tr>
+	     <td> <input type="radio" name="janein2" value="ja" />	Ja 
+	          <input type="radio" name="janein2" value="nein" /> Nein 
+	          <input type="radio" name="janein2" value="NA" checked/> N/A </td></tr>
 	<tr> <td colspan="2"> Die Werbung hat mich überrascht </td>
-	     <td> <input type="radio" name="janein3" value="j" />	Ja 
-	          <input type="radio" name="janein3" value="n" /> Nein 
-	          <input type="radio" name="janein3" value="k" checked/> N/A </td></tr>
+	     <td> <input type="radio" name="janein3" value="ja" />	Ja 
+	          <input type="radio" name="janein3" value="nein" /> Nein 
+	          <input type="radio" name="janein3" value="NA" checked/> N/A </td></tr>
 	<tr> <td colspan="2"> Die Werbung hat eine gute Catch Phrase </td>
-	     <td> <input type="radio" name="janein4" value="j" />	Ja 
-	          <input type="radio" name="janein4" value="n" /> Nein 
-	          <input type="radio" name="janein4" value="k" checked/> N/A </td></tr>
+	     <td> <input type="radio" name="janein4" value="ja" />	Ja 
+	          <input type="radio" name="janein4" value="nein" /> Nein 
+	          <input type="radio" name="janein4" value="NA" checked/> N/A </td></tr>
 	          </table>
 	          
 	<table class="table">
@@ -138,7 +138,7 @@
 	
 	<table class="table">
 	<tr><th colspan="3">Hast du noch eine persönliche Anmerkung zu dieser Werbung? </th></tr>
-	<tr><td colspand="3"><input type="text" name="kommentar"/></td>
+	<tr><td colspand="3"><input type="text" name="kommentar"></td>
 	</tr>
 	</table>
 	<input class="btn btn-default" type="submit" value="Submit">
