@@ -72,6 +72,9 @@ public class Video {
 	public int getAnzahlAngeboten(){ return angeboten; }
 	public int getAnzahlAusgewaehlt(){ return ausgewaehlt; }
 	public double getPickRatio(){ return angeboten/ausgewaehlt; }
+	/* ------------ Setter ------------ */
+	public void addAnzahlAngeboten(){  this.angeboten++; }
+	public void addAnzahlAusgewaehlt(){  this.ausgewaehlt++; }
 	
 	
 }

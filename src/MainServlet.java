@@ -59,6 +59,12 @@ public class MainServlet extends HttpServlet {
 			try {
 				//String url = getUrl(request.getParameter("videos"));
 				String url = request.getParameter("videos");
+				MySqlDAO tempDAO = new MySqlDAO();
+				Video pick = tempDAO.getVideobyUrl(url);
+				//update pickrate
+				pick.addAnzahlAusgewaehlt();
+				tempDAO.removeVideobyUrl(url);
+				tempDAO.saveVideo(pick);
 				request.getSession(true).setAttribute("VideoURL", url);
 				request.getRequestDispatcher("bewertung.jsp").include(request, response);
 				
@@ -94,6 +100,15 @@ public class MainServlet extends HttpServlet {
 				String geschlecht = request.getParameter("geschlecht"); 
 				tempUser = new Admin(ip, "anon", "none", alter, geschlecht, 0);
 				sDAO.saveUser(tempUser);
+				//update availability on videos
+				Video av1 = sDAO.getVideobyUrl(url1);
+				Video av2 = sDAO.getVideobyUrl(url2);
+				av1.addAnzahlAngeboten();
+				av2.addAnzahlAngeboten();
+				sDAO.removeVideobyUrl(url1);
+				sDAO.saveVideo(av1);
+				sDAO.removeVideobyUrl(url2);
+				sDAO.saveVideo(av2);
 				request.getSession(true).setAttribute("VideoURL1", url1);
 				request.getSession(true).setAttribute("VideoURL2", url2);
 				request.getRequestDispatcher("auswahl.jsp").include(request, response);
