@@ -15,6 +15,17 @@
 body {
 	background-color: #fafafa; 
 }
+.ten {
+	text-align: center; 
+}
+.ten input {
+	margin-right: 2px; 
+	margin-left: 10px; 
+}
+.gruppen input {
+	margin-right: 2px; 
+	margin-left: 2px; 
+}
 </style>
 </head>
 <body>
@@ -112,22 +123,32 @@ body {
 	          <input type="radio" name="empfinden6" value="4" />
 	          <input type="radio" name="empfinden6" value="5" /> </td> <td> unsympathisch </td></tr></table>
 	          
+	<div id="gruppen">
 	<table class="table">
-	<tr> <th colspan="3"><b>Zielt die Werbung Ihrer Meinung nach auf eine bestimmte Zielgruppe ab? (Antwort optional)</b></th></tr>
+	<tr> <th colspan="4"><b>Zielt die Werbung deiner Meinung nach auf eine bestimmte Zielgruppe ab? (Antwort optional)</b></th></tr>
 	<tr><td>
-	<input type="checkbox" name="zielgruppe" value="tiere" />Tierliebhaber<br>
-	<input type="checkbox" name="zielgruppe" value="frauen" />Frauen<br>
-	<input type="checkbox" name="zielgruppe" value="maenner" />Männer<br>
-	<input type="checkbox" name="zielgruppe" value="kinder" />Kinder oder Jugendliche<br>
-	<input type="checkbox" name="zielgruppe" value="familien" />Familien<br>
-	<input type="checkbox" name="zielgruppe" value="pensionisten" />Pensionisten<br>
-	<input type="checkbox" name="zielgruppe" value="singles" />Singles<br>
-	</td></tr>
+	<input type="checkbox" name="zielgruppe" value="frauen" />   Frauen<br>
+	<input type="checkbox" name="zielgruppe" value="familien" />   Familien<br>
+	</td>
+	<td>
+	<input type="checkbox" name="zielgruppe" value="maenner" />   Männer<br>
+	<input type="checkbox" name="zielgruppe" value="pensionisten" />   Pensionisten<br>
+	</td>
+	<td>
+	<input type="checkbox" name="zielgruppe" value="kinder" />   Kinder oder Jugendliche<br>
+	<input type="checkbox" name="zielgruppe" value="singles" />   Singles<br>
+	</td>
+	<td>
+	<input type="checkbox" name="zielgruppe" value="tiere" />   Tierliebhaber<br>
+	</td>
+	</tr>
 	</table>
+	</div>
 	
 	<table class="table">
 	<tr><th colspan="3">Wie hoch würdest du die Werbung insgesamt bewerten?</th></tr>
-	<tr><td colspand="3"><input type="radio" name="gesamtbewertung" value="0" />0
+	<tr><td colspand="3"><div class="ten">
+	<input type="radio" name="gesamtbewertung" value="0" />0
 	<input type="radio" name="gesamtbewertung" value="1" />1
 	<input type="radio" name="gesamtbewertung" value="2" />2
 	<input type="radio" name="gesamtbewertung" value="3" />3
@@ -138,6 +159,7 @@ body {
 	<input type="radio" name="gesamtbewertung" value="8" />8
 	<input type="radio" name="gesamtbewertung" value="9" />9
 	<input type="radio" name="gesamtbewertung" value="10" />10</td>
+	</div>
 	</tr>
 	</table>
 	

@@ -9,6 +9,9 @@
 
 <!-- Bootstrap -->
 <link href="bootstrap-3.3.6-dist\css\bootstrap.min.css" rel="stylesheet" type="text/css" />
+<!-- Materialize -->
+<link href="materialize-v0.97.3/materialize/css/materialize.min.css" rel="stylesheet" type="text/css" />
+
 <style>
 body {
 	background-color: #fafafa; 
@@ -42,11 +45,11 @@ body {
 <form action="MainServlet" method="post">
 <input type="hidden" name="action" value="VideoWaehlen">
 <table class="table"><tr> 
-	<td colspan="2"> <center><iframe width="400" height="265" src=https://www.youtube.com/embed/<%= request.getSession().getAttribute("VideoURL1") %> frameborder="0" allowfullscreen></iframe> </center></td>
-	<td colspan="2"> <center><iframe width="400" height="265" src=https://www.youtube.com/embed/<%= request.getSession().getAttribute("VideoURL2") %> frameborder="0" allowfullscreen></iframe></center> </td>
+	<td colspan="2"> <center><iframe width="425" height="250" src=https://www.youtube.com/embed/<%= request.getSession().getAttribute("VideoURL1") %> frameborder="0" allowfullscreen></iframe> </center></td>
+	<td colspan="2"> <center><iframe width="425" height="250" src=https://www.youtube.com/embed/<%= request.getSession().getAttribute("VideoURL2") %> frameborder="0" allowfullscreen></iframe></center> </td>
 	<tr> 
-	<td colspan="2"><center><input type="radio" name="videos" value=<%= request.getSession().getAttribute("VideoURL1") %> /></center> </td>
-	<td colspan="2"><center><input type="radio" name="videos" value=<%= request.getSession().getAttribute("VideoURL2") %> /> </center></td>
+	<td colspan="2"><center><input id="test1"  type="radio" name="videos" value=<%= request.getSession().getAttribute("VideoURL1") %> /><label for="test1"></label></center> </td>
+	<td colspan="2"><center><input id="test2" type="radio" name="videos" value=<%= request.getSession().getAttribute("VideoURL2") %> /><label for="test2"></label> </center></td>
 	<!-- Kommentar: wenn ein Button geklickt wird muss auf die Bewertungsseite verlinkt werden außerdem muss die Videtabelle in der DB
 		 mit der auswahl und pickrate upgedated werden -->
 
