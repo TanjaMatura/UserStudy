@@ -20,6 +20,7 @@ body {
 	color: #fff;
 	padding: 10px;
 	background-color: #4db6ac;
+	text-align: right; 
 }
 </style>
 </head>
@@ -46,7 +47,7 @@ body {
 </script>
 
 <div id="header">
-<h4>Herzlich Willkommen!</h4>
+<h3>Herzlich Willkommen!</h3>
 </div>
 <div style="width:80%; margin: 0 auto; ">
 
