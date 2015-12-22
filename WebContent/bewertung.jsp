@@ -11,6 +11,11 @@
 <link href="bootstrap-3.3.6-dist\css\bootstrap.min.css" rel="stylesheet" type="text/css" />
 <!-- Url auslesen -->
 
+<style>
+body {
+	background-color: #fafafa; 
+}
+</style>
 </head>
 <body>
 
@@ -138,7 +143,7 @@
 	
 	<table class="table">
 	<tr><th colspan="3">Hast du noch eine persönliche Anmerkung zu dieser Werbung? </th></tr>
-	<tr><td colspand="3"><input type="text" name="kommentar" value=" "></td>
+	<tr><td colspand="3"><textarea type="text" name="kommentar" value=" " class="form-control" rows="3"></textarea></td>
 	</tr>
 	</table>
 	<input class="btn btn-default" type="submit" value="Submit">

@@ -9,7 +9,11 @@
 
 <!-- Bootstrap -->
 <link href="bootstrap-3.3.6-dist\css\bootstrap.min.css" rel="stylesheet" type="text/css" />
-<style></style>
+<style>
+body {
+	background-color: #fafafa; 
+}
+</style>
 </head>
 <body>
 <script type="text/javascript">
@@ -38,8 +42,8 @@
 <form action="MainServlet" method="post">
 <input type="hidden" name="action" value="VideoWaehlen">
 <table class="table"><tr> 
-	<td colspan="2"> <center><iframe width="280" height="162" src=https://www.youtube.com/embed/<%= request.getSession().getAttribute("VideoURL1") %> frameborder="0" allowfullscreen></iframe> </center></td>
-	<td colspan="2"> <center><iframe width="280" height="162" src=https://www.youtube.com/embed/<%= request.getSession().getAttribute("VideoURL2") %> frameborder="0" allowfullscreen></iframe></center> </td>
+	<td colspan="2"> <center><iframe width="400" height="265" src=https://www.youtube.com/embed/<%= request.getSession().getAttribute("VideoURL1") %> frameborder="0" allowfullscreen></iframe> </center></td>
+	<td colspan="2"> <center><iframe width="400" height="265" src=https://www.youtube.com/embed/<%= request.getSession().getAttribute("VideoURL2") %> frameborder="0" allowfullscreen></iframe></center> </td>
 	<tr> 
 	<td colspan="2"><center><input type="radio" name="videos" value=<%= request.getSession().getAttribute("VideoURL1") %> /></center> </td>
 	<td colspan="2"><center><input type="radio" name="videos" value=<%= request.getSession().getAttribute("VideoURL2") %> /> </center></td>

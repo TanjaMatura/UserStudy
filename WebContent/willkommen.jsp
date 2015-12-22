@@ -9,7 +9,19 @@
 
 <!-- Bootstrap -->
 <link href="bootstrap-3.3.6-dist\css\bootstrap.min.css" rel="stylesheet" type="text/css" />
-<style></style>
+<!-- Materialize -->
+<link href="materialize-v0.97.3/materialize/css/materialize.min.css" rel="stylesheet" type="text/css" />
+<style>
+body {
+	background-color: #fafafa; 
+}
+#header {
+	width: 100%;
+	color: #fff;
+	padding: 10px;
+	background-color: #4db6ac;
+}
+</style>
 </head>
 <body>
 <script type="text/javascript">
@@ -33,16 +45,18 @@
 
 </script>
 
+<div id="header">
+<h4>Herzlich Willkommen!</h4>
+</div>
 <div style="width:80%; margin: 0 auto; ">
 
 <p>
 <center>
-<h1>Herzlich Willkommen!</h1>
 <br> 
 <br> 
 <p>Vielen Dank für Ihr Interesse an unserer Studie.
 
-<p>Bitte sehen Sie sich die beiden Videos an. Wählen Sie das Video aus, das Ihnen besser gefällt.
+<p>Bitte sehen Sie sich die beiden Videos auf der nächsten Steite an und wählen Sie die Werbung aus, das Ihnen besser gefällt.
 </p>
 <p>Im Anschluss können Sie Fragen zu dem gewählten Video beantworten. Alle Angaben werden nur anonym gespeichert.
 </p>
@@ -51,20 +65,22 @@
 
 <form action="MainServlet" method="post">
 	<input type="hidden" name="action" value="Teilnehmen">
-	<table>
+	<table width="60%">
 	<tr>
-	<td><b>Geschlecht: </b></td> <td><input type="radio" name="geschlecht" value="w" />	weiblich
-	<input type="radio" name="geschlecht" value="m" />	männlich
-	<input type="radio" name="geschlecht" value="a" checked/>	N/A</td>
+	<td><b>Geschlecht: </b><p>
+	<select name="geschlecht" class="form-control">
+	<option value="a"/>N/A</option>
+	<option value="w"/>weiblich</option>
+	<option value="m"/>männlich</option>
+	</select>
+	<td><b>Alter: </b><br>
+	<input type="text" name="alter" value="0" placeholder="Jahre"/> Jahre<p></td>
 	</tr>
-	<tr>
-	<td><b>Alter: </b></td>
-	<td><input type="text" name="alter" value="0"/> Jahre<p></td>
-	</tr>
-	</table>
+	</table><p>
 
 	<input class="btn btn-default" type="submit" value="Teilnehmen!"></center>
 </form>
+
 </div>
 <body onload="doubleurl();">
 
