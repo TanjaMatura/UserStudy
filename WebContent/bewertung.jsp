@@ -41,10 +41,12 @@ th {
 }
 .ten {
 	text-align: center; 
+	padding-top: 10px;
 }
 .ten input {
 	margin-right: 2px; 
 	margin-left: 10px; 
+	color: #eee; 
 }
 .gruppen input {
 	margin-right: 2px; 
