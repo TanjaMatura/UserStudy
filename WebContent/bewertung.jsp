@@ -19,7 +19,9 @@ table {
 	border: 0px; 
 }
 th {
-	background-color: #eee; 
+	background-color: #4db6ac; 
+	color: #fff;
+	font-size: 15px;
 	border-top-right-radius: 15px; 
 	border-top-left-radius: 15px; 
 }
