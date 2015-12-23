@@ -20,7 +20,6 @@ body {
 	color: #fff;
 	padding: 10px;
 	background-color: #4db6ac;
-	text-align: right; 
 }
 </style>
 </head>
@@ -47,7 +46,7 @@ body {
 </script>
 
 <div id="header">
-<h3>Herzlich Willkommen!</h3>
+<h4>Herzlich Willkommen!</h4>
 </div>
 <div style="width:80%; margin: 0 auto; ">
 
@@ -62,26 +61,26 @@ body {
 <p>Im Anschluss können Sie Fragen zu dem gewählten Video beantworten. Alle Angaben werden nur anonym gespeichert.
 </p>
 <br> 
-<br> 
 
 <form action="MainServlet" method="post">
 	<input type="hidden" name="action" value="Teilnehmen">
-	<table width="60%">
+	<div style="width:400px;">
+	<table>
 	<tr>
-	<td><b>Geschlecht: </b><p>
+	<td style="width:150px;"><b>Geschlecht: </b><p>
 	<select name="geschlecht" class="form-control">
 	<option value="a"/>N/A</option>
 	<option value="w"/>weiblich</option>
 	<option value="m"/>männlich</option>
 	</select>
-	<td><b>Alter: </b><br>
-	<input type="text" name="alter" value="0" placeholder="Jahre"/> Jahre<p></td>
+	<td style="width:25px;"></td>
+	<td style="width:125px;"><b>Alter: </b><br>
+	<input type="text" name="alter" value="0"/> <p></td>
 	</tr>
-	</table><p>
-
-	<input class="btn btn-default" type="submit" value="Teilnehmen!"></center>
+	</table></div>
 </form>
-
+	<br>
+	<input class="btn btn-default" type="submit" value="Teilnehmen!"></center>
 </div>
 <body onload="doubleurl();">
 
