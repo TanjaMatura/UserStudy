@@ -96,7 +96,7 @@ public class MainServlet extends HttpServlet {
 		
 		
 		// Teilnehmen
-		if(action != null && action.equalsIgnoreCase("Teilnehmen")){	
+		if(action != null &&  action.equalsIgnoreCase("Teilnehmen")){	
 			try {
 				randomURLs();
 				String alter = request.getParameter("alter"); 
