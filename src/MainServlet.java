@@ -101,8 +101,12 @@ public class MainServlet extends HttpServlet {
 				randomURLs();
 				String alter = request.getParameter("alter"); 
 				String geschlecht = request.getParameter("geschlecht"); 
-				InetAddress inetadress = InetAddress.getLocalHost();
-				String ip = inetadress.getHostAddress();
+				String ip = request.getRemoteAddr();
+				if (ip.equalsIgnoreCase("0:0:0:0:0:0:0:1")) {
+				    InetAddress inetAddress = InetAddress.getLocalHost();
+				    String ipAddress = inetAddress.getHostAddress();
+				    ip = ipAddress;
+				}
 				if(sDAO.getUserbyID(ip)!=null){tempUser=sDAO.getUserbyID(ip); }
 				else {
 					tempUser = new Admin(ip, "anon", "none", alter, geschlecht, 0);
