@@ -116,7 +116,32 @@ th {
 	          <input type="radio" name="zutreffend4" value="2" /> 
 	          <input type="radio" name="zutreffend4" value="3" checked/> 
 	          <input type="radio" name="zutreffend4" value="4" />
-	          <input type="radio" name="zutreffend4" value="5" /> 5</td></tr></table>
+	          <input type="radio" name="zutreffend4" value="5" /> 5</td></tr>
+	<tr> <td colspan="2"> Die Werbung spricht mich visuell an.</td>
+	     <td> 1 <input type="radio" name="ansprech1" value="1" />
+	          <input type="radio" name="ansprech1" value="2" /> 
+	          <input type="radio" name="ansprech1" value="3" checked/> 
+	          <input type="radio" name="ansprech1" value="4" />
+	          <input type="radio" name="ansprech1" value="5" /> 5</td></tr>
+	<tr> <td colspan="2"> Die Werbung spricht mich inhaltlich an.</td>
+	     <td> 1 <input type="radio" name="ansprech2" value="1" />
+	          <input type="radio" name="ansprech2" value="2" /> 
+	          <input type="radio" name="ansprech2" value="3" checked/> 
+	          <input type="radio" name="ansprech2" value="4" />
+	          <input type="radio" name="ansprech2" value="5" /> 5</td></tr>
+	<tr> <td colspan="2"> Die Werbung spricht mich auditiv an.</td>
+	     <td> 1 <input type="radio" name="ansprech3" value="1" />
+	          <input type="radio" name="ansprech3" value="2" /> 
+	          <input type="radio" name="ansprech3" value="3" checked/> 
+	          <input type="radio" name="ansprech3" value="4" />
+	          <input type="radio" name="ansprech3" value="5" /> 5</td></tr>
+	<tr> <td colspan="2"> Die in der Werbugn erzählte Geschichte spricht mich an.</td>
+	     <td> 1 <input type="radio" name="ansprech4" value="1" />
+	          <input type="radio" name="ansprech4" value="2" /> 
+	          <input type="radio" name="ansprech4" value="3" checked/> 
+	          <input type="radio" name="ansprech4" value="4" />
+	          <input type="radio" name="ansprech4" value="5" /> 5</td></tr>
+	          </table>
 	          </div>
 	          
 	<div id="wrapper">
@@ -159,6 +184,8 @@ th {
 	          <input type="radio" name="empfinden6" value="4" />
 	          <input type="radio" name="empfinden6" value="5" /> </td> <td> unsympathisch </td></tr></table>
 	</div>
+	
+	
 	          
 	<div id="wrapper">
 	<div id="gruppen">

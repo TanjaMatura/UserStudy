@@ -83,9 +83,10 @@ public class MainServlet extends HttpServlet {
 					request.getParameter("zielgruppe"),  Integer.parseInt(request.getParameter("gesamtbewertung")));				
 			try {
 					sDAO.saveBewertung(nbew);
-					if(!request.getParameter("kommentar").equals(" ")){
+					if(!request.getParameter("kommentar").equals("")){
 						sDAO.saveComment(tempUser, sDAO.getVideobyUrl(request.getParameter("videoURL")), request.getParameter("kommentar"));
 					}
+					sDAO.saveAnsprechend(nbew, sDAO.getVideobyUrl(request.getParameter("videoURL")), Integer.parseInt(request.getParameter("ansprech1")), Integer.parseInt(request.getParameter("ansprech2")), Integer.parseInt(request.getParameter("ansprech3")), Integer.parseInt(request.getParameter("ansprech4")));
 				} 
 			catch (Exception e) {
 					response.getWriter().println(e);
@@ -100,12 +101,8 @@ public class MainServlet extends HttpServlet {
 				randomURLs();
 				String alter = request.getParameter("alter"); 
 				String geschlecht = request.getParameter("geschlecht"); 
-				String ip = request.getRemoteAddr();
-				if (ip.equalsIgnoreCase("0:0:0:0:0:0:0:1")) {
-					InetAddress inetAddress = InetAddress.getLocalHost();
-				    String ipAddress = inetAddress.getHostAddress();
-				    ip = ipAddress;
-				}
+				InetAddress inetadress = InetAddress.getLocalHost();
+				String ip = inetadress.getHostAddress();
 				if(sDAO.getUserbyID(ip)!=null){tempUser=sDAO.getUserbyID(ip); }
 				else {
 					tempUser = new Admin(ip, "anon", "none", alter, geschlecht, 0);

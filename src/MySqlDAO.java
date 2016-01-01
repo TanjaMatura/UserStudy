@@ -463,7 +463,7 @@ public void saveAnsprechend(Bewertung bew, Video vid, int visuell, int auditiv, 
 		
 		  connect();
 	      //set our SQL SELECT query
-	      String query = "INSERT INTO Comment VALUES ('" + tempId + "','" + bew.getID() + "','"+ vid.getURL() + "'," + 
+	      String query = "INSERT INTO Ansprechend VALUES ('" + tempId + "','" + bew.getID() + "','"+ vid.getURL() + "'," + 
 	      visuell + "," + inhalt + "," + auditiv + "," + story +")";
 	   
 	      // create the java statement
