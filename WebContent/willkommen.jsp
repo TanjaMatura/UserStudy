@@ -78,9 +78,9 @@ body {
 	<input type="text" name="alter" value="0"/> <p></td>
 	</tr>
 	</table></div>
-</form>
 	<br>
 	<input class="btn btn-default" type="submit" value="Teilnehmen!"></center>
+</form>
 </div>
 <body onload="doubleurl();">
 
