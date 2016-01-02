@@ -56,7 +56,7 @@ body {
 <br> 
 <p>Vielen Dank für Ihr Interesse an unserer Studie.
 
-<p>Bitte sehen Sie sich die beiden Videos auf der nächsten Steite an und wählen Sie die Werbung aus, das Ihnen besser gefällt.
+<p>Bitte sehen Sie sich die beiden Videos auf der nächsten Seite an und wählen Sie die Werbung aus, das Ihnen besser gefällt.
 </p>
 <p>Im Anschluss können Sie Fragen zu dem gewählten Video beantworten. Alle Angaben werden nur anonym gespeichert.
 </p>

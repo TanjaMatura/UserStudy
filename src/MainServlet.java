@@ -77,7 +77,14 @@ public class MainServlet extends HttpServlet {
 		
 		// Bewertung
 		if(action != null && action.equalsIgnoreCase("bewertung")){
-			nbew = new Bewertung(tempUser.getId(), request.getParameter("videoURL"), request.getParameter("janein1"),  request.getParameter("janein3"),  request.getParameter("janein4"), request.getParameter("zutreffend2"),
+			String tempId;
+			try {
+				tempId = Integer.toString(sDAO.getBewertungList().size()+1);	
+			}
+			catch(Exception e){
+				tempId = Integer.toString(1);
+			}  
+			nbew = new Bewertung(tempId, tempUser.getId(), request.getParameter("videoURL"), request.getParameter("janein1"),  request.getParameter("janein3"),  request.getParameter("janein4"), request.getParameter("zutreffend2"),
 					request.getParameter("zutreffend3"),  request.getParameter("zutreffend4"),  request.getParameter("janein2"), Integer.parseInt(request.getParameter("zutreffend1")), 
 					Integer.parseInt(request.getParameter("empfinden1")),  Integer.parseInt(request.getParameter("empfinden2")),  Integer.parseInt(request.getParameter("empfinden3")),  Integer.parseInt(request.getParameter("empfinden4")),  Integer.parseInt(request.getParameter("empfinden5")),  Integer.parseInt(request.getParameter("empfinden6")), 
 					request.getParameter("zielgruppe"),  Integer.parseInt(request.getParameter("gesamtbewertung")));				
@@ -86,11 +93,17 @@ public class MainServlet extends HttpServlet {
 					if(!request.getParameter("kommentar").equals("")){
 						sDAO.saveComment(tempUser, sDAO.getVideobyUrl(request.getParameter("videoURL")), request.getParameter("kommentar"));
 					}
-					sDAO.saveAnsprechend(nbew, sDAO.getVideobyUrl(request.getParameter("videoURL")), Integer.parseInt(request.getParameter("ansprech1")), Integer.parseInt(request.getParameter("ansprech2")), Integer.parseInt(request.getParameter("ansprech3")), Integer.parseInt(request.getParameter("ansprech4")));
+					
 				} 
 			catch (Exception e) {
 					response.getWriter().println(e);
 				}
+			try {
+				sDAO.saveAnsprechend(nbew, sDAO.getVideobyUrl(request.getParameter("videoURL")), Integer.parseInt(request.getParameter("ansprech1")), Integer.parseInt(request.getParameter("ansprech2")), Integer.parseInt(request.getParameter("ansprech3")), Integer.parseInt(request.getParameter("ansprech4")));
+			}
+			catch (Exception e) {
+				response.getWriter().println(e);
+			}
 			request.getRequestDispatcher("danke.html").include(request, response);
 			}
 		

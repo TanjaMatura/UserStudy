@@ -135,7 +135,7 @@ th {
 	          <input type="radio" name="ansprech3" value="3" checked/> 
 	          <input type="radio" name="ansprech3" value="4" />
 	          <input type="radio" name="ansprech3" value="5" /> 5</td></tr>
-	<tr> <td colspan="2"> Die in der Werbugn erzählte Geschichte spricht mich an.</td>
+	<tr> <td colspan="2"> Die in der Werbung erzählte Geschichte spricht mich an.</td>
 	     <td> 1 <input type="radio" name="ansprech4" value="1" />
 	          <input type="radio" name="ansprech4" value="2" /> 
 	          <input type="radio" name="ansprech4" value="3" checked/> 

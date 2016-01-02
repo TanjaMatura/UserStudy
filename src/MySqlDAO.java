@@ -217,9 +217,6 @@ public void saveBewertung(Bewertung bewertung) throws Exception{
 		
 		try {
 
-	      //set our SQL SELECT query
-			String insert = "INSERT INTO comments " +
-	                   "VALUES (100, 'Zara', 'Ali@keks.de', 'imagineWebPages', '2009-09-14' , 'ImagineSummery' , 'ImagineComments')";
 	      String query = "INSERT INTO Bewertung VALUES ('" + bewertung.getID() + "','" + bewertung.getUid() + "','" + bewertung.geturl() + "','" + bewertung.getSchonGesehen() + "','" + bewertung.getPlotTwist() + "','" +
 	    		  bewertung.getCatchPhrase() + "','" + bewertung.getGernGesehen() + "','" + bewertung.getUeberzeugung() +  
 	    		  "','" + bewertung.getAufmerksamkeit() + "','" + bewertung.getMarkeBekannt() + "'," + bewertung.getProduktfixierung() +
