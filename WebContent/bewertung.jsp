@@ -8,8 +8,13 @@
 
 <!-- Bootstrap -->
 <link href="bootstrap-3.3.6-dist\css\bootstrap.min.css" rel="stylesheet" type="text/css" />
-
-
+<!--  JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
 <style>
 body {
 	background-color: #fafafa; 
@@ -19,7 +24,7 @@ table {
 }
 th {
 	background-color: #8fccc6; 
-		background: -moz-linear-gradient(top, #EEE, #FFF);    
+	background: -moz-linear-gradient(top, #eee, #FFF);    
 	background: -webkit-linear-gradient(top, #eee, #fff);
 	background: -ms-linear-gradient(top, #eee, #fff);
 	background: -o-linear-gradient(top, #eee, #fff);
@@ -28,9 +33,8 @@ th {
 #wrapper {
 	background-color: #fff; 
 	box-shadow: 1px 2px 4px rgba(0,0,0, .2);
-	padding: 5px; 
 	margin-top: 15px; 
-	border: 3px solid #eee; 
+	border-left: 2px solid #eee; 
 	box-shadow: 1px 2px 4px rgba(0,0,0, .2);
 }
 #header {
@@ -80,11 +84,11 @@ th {
 	     <td> <input type="radio" name="janein2" value="ja" />	Ja 
 	          <input type="radio" name="janein2" value="nein" /> Nein 
 	          <input type="radio" name="janein2" value="NA" checked/> N/A </td></tr>
-	<tr> <td colspan="2"> Die Werbung hat mich überrascht </td>
+	<tr> <td colspan="2"> Die Werbung hat mich überrascht   <a href="#" data-toggle="tooltip" title="Beispiel: Bei einem Rockkonzert wird stattdessen ruhige Musik gepsielt."><img src="tooltip.jpg"></a></td>
 	     <td> <input type="radio" name="janein3" value="ja" />	Ja 
 	          <input type="radio" name="janein3" value="nein" /> Nein 
 	          <input type="radio" name="janein3" value="NA" checked/> N/A </td></tr>
-	<tr> <td colspan="2"> Die Werbung hat eine gute Catch Phrase </td>
+	<tr> <td colspan="2"> Die Werbung hat eine gute Catch Phrase   <a href="#" data-toggle="tooltip" title="Werbespruch, der im Ohr bleiben und mit dem Produkt verbunden werden soll. Bespiele: McDonalds - I'm lovin' it"><img src="tooltip.jpg"></a></td>
 	     <td> <input type="radio" name="janein4" value="ja" />	Ja 
 	          <input type="radio" name="janein4" value="nein" /> Nein 
 	          <input type="radio" name="janein4" value="NA" checked/> N/A </td></tr>
