@@ -110,7 +110,8 @@ public class MainServlet extends HttpServlet {
 		// Teilnehmen
 		if(action != null &&  action.equalsIgnoreCase("Teilnehmen")){	
 			try {
-				randomURLs();
+				
+				
 				String alter = request.getParameter("alter"); 
 				String geschlecht = request.getParameter("geschlecht"); 
 				String ip = request.getRemoteAddr();
@@ -124,13 +125,34 @@ public class MainServlet extends HttpServlet {
 					tempUser = new Admin(ip, "anon", "none", alter, geschlecht, 0);
 					sDAO.saveUser(tempUser);
 				}
+				int counter =0;
+				boolean schonBew =false;
+				ArrayList<Bewertung> bList = sDAO.getBewertungList();
+				do{
+					schonBew =false;
+					randomURLs();
+					for (int i=0; i< bList.size();i++){
+						if( (bList.get(i).getUid()== ip && bList.get(i).geturl() == url1)  || (bList.get(i).getUid()== ip && bList.get(i).geturl() == url2)){
+							schonBew =true;
+						}
+					}
+					counter++;
+				}
+				while(schonBew == true && counter <= 15);
+				if(schonBew==true){
+					request.getRequestDispatcher("dankesehr.html").include(request, response);
+				}
+				else{
+					//update availability on videos
+					updateAvailability();
+					
+					request.getSession(true).setAttribute("VideoURL1", url1);
+					request.getSession(true).setAttribute("VideoURL2", url2);
+					request.getRequestDispatcher("auswahl.jsp").include(request, response);
+					
+				}
 				
-				//update availability on videos
-				updateAvailability();
 				
-				request.getSession(true).setAttribute("VideoURL1", url1);
-				request.getSession(true).setAttribute("VideoURL2", url2);
-				request.getRequestDispatcher("auswahl.jsp").include(request, response);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
