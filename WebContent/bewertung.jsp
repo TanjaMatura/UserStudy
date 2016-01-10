@@ -88,7 +88,7 @@ th {
 	     <td> <input type="radio" name="janein3" value="ja" />	Ja 
 	          <input type="radio" name="janein3" value="nein" /> Nein 
 	          <input type="radio" name="janein3" value="NA" checked/> N/A </td></tr>
-	<tr> <td colspan="2"> Die Werbung hat eine gute Catch Phrase   <a href="#" data-toggle="tooltip" title="Werbespruch, der im Ohr bleiben und mit dem Produkt verbunden werden soll. Bespiele: McDonalds - I'm lovin' it"><img src="tooltip.jpg"></a></td>
+	<tr> <td colspan="2"> Die Werbung hat eine gute Catch Phrase   <a href="#" data-toggle="tooltip" title="Werbespruch, der im Ohr bleiben und mit dem Produkt in Verbindung gebracht werden soll. Bespiele: McDonalds - I'm lovin' it"><img src="tooltip.jpg"></a></td>
 	     <td> <input type="radio" name="janein4" value="ja" />	Ja 
 	          <input type="radio" name="janein4" value="nein" /> Nein 
 	          <input type="radio" name="janein4" value="NA" checked/> N/A </td></tr>
