@@ -19,18 +19,20 @@ table {
 	border: 0px; 
 }
 th {
-	background-color: #4db6ac; 
-	color: #fff;
+	background-color: #8fccc6; 
+		background: -moz-linear-gradient(top, #EEE, #FFF);    
+	background: -webkit-linear-gradient(top, #eee, #fff);
+	background: -ms-linear-gradient(top, #eee, #fff);
+	background: -o-linear-gradient(top, #eee, #fff);
 	font-size: 15px;
-	border-top-right-radius: 15px; 
-	border-top-left-radius: 15px; 
 }
 #wrapper {
 	background-color: #fff; 
+	box-shadow: 1px 2px 4px rgba(0,0,0, .2);
 	padding: 5px; 
 	margin-top: 15px; 
 	border: 3px solid #eee; 
-	border-radius: 25px; 
+	box-shadow: 1px 2px 4px rgba(0,0,0, .2);
 }
 #header {
 	width: 100%;
@@ -116,7 +118,32 @@ th {
 	          <input type="radio" name="zutreffend4" value="2" /> 
 	          <input type="radio" name="zutreffend4" value="3" checked/> 
 	          <input type="radio" name="zutreffend4" value="4" />
-	          <input type="radio" name="zutreffend4" value="5" /> 5</td></tr></table>
+	          <input type="radio" name="zutreffend4" value="5" /> 5</td></tr>
+	<tr> <td colspan="2"> Die Werbung spricht mich visuell an.</td>
+	     <td> 1 <input type="radio" name="ansprech1" value="1" />
+	          <input type="radio" name="ansprech1" value="2" /> 
+	          <input type="radio" name="ansprech1" value="3" checked/> 
+	          <input type="radio" name="ansprech1" value="4" />
+	          <input type="radio" name="ansprech1" value="5" /> 5</td></tr>
+	<tr> <td colspan="2"> Die Werbung spricht mich inhaltlich an.</td>
+	     <td> 1 <input type="radio" name="ansprech2" value="1" />
+	          <input type="radio" name="ansprech2" value="2" /> 
+	          <input type="radio" name="ansprech2" value="3" checked/> 
+	          <input type="radio" name="ansprech2" value="4" />
+	          <input type="radio" name="ansprech2" value="5" /> 5</td></tr>
+	<tr> <td colspan="2"> Die Werbung spricht mich auditiv an.</td>
+	     <td> 1 <input type="radio" name="ansprech3" value="1" />
+	          <input type="radio" name="ansprech3" value="2" /> 
+	          <input type="radio" name="ansprech3" value="3" checked/> 
+	          <input type="radio" name="ansprech3" value="4" />
+	          <input type="radio" name="ansprech3" value="5" /> 5</td></tr>
+	<tr> <td colspan="2"> Die in der Werbung erzählte Geschichte spricht mich an.</td>
+	     <td> 1 <input type="radio" name="ansprech4" value="1" />
+	          <input type="radio" name="ansprech4" value="2" /> 
+	          <input type="radio" name="ansprech4" value="3" checked/> 
+	          <input type="radio" name="ansprech4" value="4" />
+	          <input type="radio" name="ansprech4" value="5" /> 5</td></tr>
+	          </table>
 	          </div>
 	          
 	<div id="wrapper">
@@ -159,6 +186,8 @@ th {
 	          <input type="radio" name="empfinden6" value="4" />
 	          <input type="radio" name="empfinden6" value="5" /> </td> <td> unsympathisch </td></tr></table>
 	</div>
+	
+	
 	          
 	<div id="wrapper">
 	<div id="gruppen">
@@ -210,8 +239,8 @@ th {
 	</tr>
 	</table>
 	</div>
-	
-	<input class="btn btn-default" type="submit" value="Submit">
+	<p><br>
+	<center><input class="btn btn-default" type="submit" value="Submit" style="background-color: #4db6ac; color: #fff; font-weight: bold;"></center>
 	</form>
 	
 </div>

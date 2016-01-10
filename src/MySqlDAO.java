@@ -217,9 +217,6 @@ public void saveBewertung(Bewertung bewertung) throws Exception{
 		
 		try {
 
-	      //set our SQL SELECT query
-			String insert = "INSERT INTO comments " +
-	                   "VALUES (100, 'Zara', 'Ali@keks.de', 'imagineWebPages', '2009-09-14' , 'ImagineSummery' , 'ImagineComments')";
 	      String query = "INSERT INTO Bewertung VALUES ('" + bewertung.getID() + "','" + bewertung.getUid() + "','" + bewertung.geturl() + "','" + bewertung.getSchonGesehen() + "','" + bewertung.getPlotTwist() + "','" +
 	    		  bewertung.getCatchPhrase() + "','" + bewertung.getGernGesehen() + "','" + bewertung.getUeberzeugung() +  
 	    		  "','" + bewertung.getAufmerksamkeit() + "','" + bewertung.getMarkeBekannt() + "'," + bewertung.getProduktfixierung() +
@@ -447,7 +444,68 @@ public ArrayList<String> getCommentList() throws Exception{
 	
 }
   
+/* ------------ Ansprechend stuff ------------ */
 
+public void saveAnsprechend(Bewertung bew, Video vid, int visuell, int auditiv, int inhalt, int story ) throws Exception{
+	 
+	String tempId;
+	try {
+		tempId = Integer.toString(getAnsprechendList().size()+1);	
+	}
+	catch(Exception e){
+		tempId = Integer.toString(1);
+	}  
+	
+	  try {
+		
+		  connect();
+	      //set our SQL SELECT query
+	      String query = "INSERT INTO Ansprechend VALUES ('" + tempId + "','" + bew.getID() + "','"+ vid.getURL() + "'," + 
+	      visuell + "," + inhalt + "," + auditiv + "," + story +")";
+	   
+	      // create the java statement
+	      statement = connect.createStatement();
+
+		  //execute query and get java resultSet
+	      statement.executeUpdate(query);
+	      
+	      
+	  }catch (Exception e) {
+	      throw e;
+	    } finally {
+	      close();
+	    }
+  }
+
+public ArrayList<String> getAnsprechendList() throws Exception{
+	
+	ArrayList<String> AnsprechendList= new ArrayList<String>();
+	  try {
+		
+		  connect();
+	      //set our SQL SELECT query
+	      String query = "SELECT * FROM Ansprechend";
+	   
+	      // create the java statement
+	      statement = connect.createStatement();
+
+		  //execute query and get java resultSet
+	      resultSet = statement.executeQuery(query);
+	      
+	      //iterate through the reultSet and create new Video objects, adding them to the videoList
+	      while(resultSet.next()) {
+	    	  AnsprechendList.add(resultSet.getString("a_id"));
+	      }
+	    	
+	  }catch (Exception e) {
+	      throw e;
+	    } finally {
+	      close();
+	    }
+	  return AnsprechendList;
+
+	
+}
 
   // You need to close the resultSet
   private void close() {

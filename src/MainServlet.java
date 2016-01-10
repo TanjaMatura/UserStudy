@@ -77,32 +77,46 @@ public class MainServlet extends HttpServlet {
 		
 		// Bewertung
 		if(action != null && action.equalsIgnoreCase("bewertung")){
-			nbew = new Bewertung(tempUser.getId(), request.getParameter("videoURL"), request.getParameter("janein1"),  request.getParameter("janein3"),  request.getParameter("janein4"), request.getParameter("zutreffend2"),
+			String tempId;
+			try {
+				tempId = Integer.toString(sDAO.getBewertungList().size()+1);	
+			}
+			catch(Exception e){
+				tempId = Integer.toString(1);
+			}  
+			nbew = new Bewertung(tempId, tempUser.getId(), request.getParameter("videoURL"), request.getParameter("janein1"),  request.getParameter("janein3"),  request.getParameter("janein4"), request.getParameter("zutreffend2"),
 					request.getParameter("zutreffend3"),  request.getParameter("zutreffend4"),  request.getParameter("janein2"), Integer.parseInt(request.getParameter("zutreffend1")), 
 					Integer.parseInt(request.getParameter("empfinden1")),  Integer.parseInt(request.getParameter("empfinden2")),  Integer.parseInt(request.getParameter("empfinden3")),  Integer.parseInt(request.getParameter("empfinden4")),  Integer.parseInt(request.getParameter("empfinden5")),  Integer.parseInt(request.getParameter("empfinden6")), 
 					request.getParameter("zielgruppe"),  Integer.parseInt(request.getParameter("gesamtbewertung")));				
 			try {
 					sDAO.saveBewertung(nbew);
-					if(!request.getParameter("kommentar").equals(" ")){
+					if(!request.getParameter("kommentar").equals("")){
 						sDAO.saveComment(tempUser, sDAO.getVideobyUrl(request.getParameter("videoURL")), request.getParameter("kommentar"));
 					}
+					
 				} 
 			catch (Exception e) {
 					response.getWriter().println(e);
 				}
+			try {
+				sDAO.saveAnsprechend(nbew, sDAO.getVideobyUrl(request.getParameter("videoURL")), Integer.parseInt(request.getParameter("ansprech1")), Integer.parseInt(request.getParameter("ansprech2")), Integer.parseInt(request.getParameter("ansprech3")), Integer.parseInt(request.getParameter("ansprech4")));
+			}
+			catch (Exception e) {
+				response.getWriter().println(e);
+			}
 			request.getRequestDispatcher("danke.html").include(request, response);
 			}
 		
 		
 		// Teilnehmen
-		if(action != null && action.equalsIgnoreCase("Teilnehmen")){	
+		if(action != null &&  action.equalsIgnoreCase("Teilnehmen")){	
 			try {
 				randomURLs();
 				String alter = request.getParameter("alter"); 
 				String geschlecht = request.getParameter("geschlecht"); 
 				String ip = request.getRemoteAddr();
 				if (ip.equalsIgnoreCase("0:0:0:0:0:0:0:1")) {
-					InetAddress inetAddress = InetAddress.getLocalHost();
+				    InetAddress inetAddress = InetAddress.getLocalHost();
 				    String ipAddress = inetAddress.getHostAddress();
 				    ip = ipAddress;
 				}
