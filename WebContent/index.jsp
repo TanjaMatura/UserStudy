@@ -9,7 +9,6 @@
 <!-- Bootstrap -->
 <link href="bootstrap-3.3.6-dist\css\bootstrap.min.css" rel="stylesheet" type="text/css" />
 <!-- Materialize -->
-<link href="materialize-v0.97.3/materialize/css/materialize.min.css" rel="stylesheet" type="text/css" />
 <style>
 body {
 	background-color: #fafafa; 
@@ -45,7 +44,7 @@ body {
 </script>
 
 <div id="header">
-<h4>Herzlich Willkommen!</h4>
+<h3>Herzlich Willkommen!</h3>
 </div>
 <div style="width:80%; margin: 0 auto; ">
 
@@ -67,18 +66,16 @@ body {
 	<table>
 	<tr>
 	<td style="width:150px;"><b>Geschlecht: </b><p>
-	<select name="geschlecht" class="form-control">
-	<option value="a"/>N/A</option>
-	<option value="w"/>weiblich</option>
-	<option value="m"/>männlich</option>
-	</select>
+	<input type="radio" name="geschlecht" value="a"/> N/A<br></option>
+	<input type="radio" name="geschlecht" value="w"/> weiblich<br></option>
+	<input type="radio" name="geschlecht" value="m"/> männlich</option>
 	<td style="width:25px;"></td>
 	<td style="width:125px;"><b>Alter: </b><br>
 	<input type="text" name="alter" value="0"/> <p></td>
 	</tr>
 	</table></div>
 	<br>
-	<input class="btn btn-default" type="submit" value="Teilnehmen!" ></center>
+	<input class="btn btn-default" type="submit" style="background-color: #4db6ac; color: #fff; padding: 3px;" value="Teilnehmen!" ></center>
 </form>
 </div>
 <body onload="doubleurl();">

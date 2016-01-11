@@ -22,6 +22,9 @@ body {
 table {
 	border: 0px; 
 }
+tr {
+	padding: 2px; 
+	}
 th {
 	background-color: #8fccc6; 
 	background: -moz-linear-gradient(top, #eee, #FFF);    
@@ -33,9 +36,10 @@ th {
 #wrapper {
 	background-color: #fff; 
 	box-shadow: 1px 2px 4px rgba(0,0,0, .2);
-	margin-top: 15px; 
+	margin: 15px auto; 
 	border-left: 2px solid #eee; 
 	box-shadow: 1px 2px 4px rgba(0,0,0, .2);
+	width: 850px;
 }
 #header {
 	width: 100%;
@@ -74,7 +78,7 @@ th {
 	<input type="hidden" name="videoURL" value=<%= request.getSession().getAttribute("VideoURL") %>>
 	
 	<div id="wrapper">
-	<table class="table">
+	<table class="table" width="100%">
 	<tr><th colspan="3">Bitte beantworte die folgenden Fragen wahrheitsgemäß: </th></tr>
 	<tr> <td colspan="2"> Ich habe die Werbung schon einmal gesehen</td>
 	     <td> <input type="radio" name="janein1" value="ja" />	Ja 
@@ -96,7 +100,7 @@ th {
 	</div>
 	         
 	<div id="wrapper">
-	<table class="table">
+	<table class="table" width="100%">
 	<tr> <th colspan="3">Ist die folgende Aussage nicht zutreffend (1), wenig zutreffend (2), neutral (3), etwas zutreffend (4) oder zutreffend (5)? </th></tr>
 	<tr> <td colspan="2"> In der Werbung geht es hauptsächlich um das beworbene Produkt </td>
 	     <td> 1 <input type="radio" name="zutreffend1" value="1" />
@@ -150,7 +154,7 @@ th {
 	          </div>
 	          
 	<div id="wrapper">
-	<table class="table">
+	<table class="table" width="100%">
 	<tr> <th colspan="3">Ich empfinde diese Werbung als </th></tr>
 	<tr> <td style="text-align: right;" > fröhlich </td> <td style="text-align: center" >
 			  <input type="radio" name="empfinden1" value="1" />
@@ -194,7 +198,7 @@ th {
 	          
 	<div id="wrapper">
 	<div id="gruppen">
-	<table class="table">
+	<table class="table" width="100%">
 	<tr> <th colspan="4"><b>Zielt die Werbung deiner Meinung nach auf eine bestimmte Zielgruppe ab? (Antwort optional)</b></th></tr>
 	<tr><td>
 	<input type="checkbox" name="zielgruppe" value="frauen" />   Frauen<br>
@@ -217,7 +221,7 @@ th {
 	</div>
 	
 	<div id="wrapper">
-	<table class="table">
+	<table class="table" width="100%">
 	<tr><th colspan="3">Wie hoch würdest du die Werbung insgesamt bewerten?</th></tr>
 	<tr><td colspand="3"><div class="ten">
 	<input type="radio" name="gesamtbewertung" value="0" />0
@@ -236,9 +240,9 @@ th {
 	</table></div>
 	
 	<div id="wrapper">
-	<table class="table">
+	<table class="table" width="100%">
 	<tr><th colspan="3">Hast du noch eine persönliche Anmerkung zu dieser Werbung? </th></tr>
-	<tr><td colspand="3"><textarea type="text" name="kommentar" value=" " class="form-control" rows="3"></textarea></td>
+	<tr><td colspand="3"><textarea width="100%" type="text" name="kommentar" value=" " class="form-control" rows="3"></textarea></td>
 	</tr>
 	</table>
 	</div>
