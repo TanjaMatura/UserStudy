@@ -115,6 +115,7 @@ public class MainServlet extends HttpServlet {
 				String alter = request.getParameter("alter"); 
 				String geschlecht = request.getParameter("geschlecht"); 
 				String ip = request.getRemoteAddr();
+				boolean fitfound = false;
 				if (ip.equalsIgnoreCase("0:0:0:0:0:0:0:1")) {
 				    InetAddress inetAddress = InetAddress.getLocalHost();
 				    String ipAddress = inetAddress.getHostAddress();
@@ -125,21 +126,8 @@ public class MainServlet extends HttpServlet {
 					tempUser = new Admin(ip, "anon", "none", alter, geschlecht, 0);
 					sDAO.saveUser(tempUser);
 				}
-				int counter =0;
-				boolean schonBew =false;
-				ArrayList<Bewertung> bList = sDAO.getBewertungList();
-				do{
-					schonBew =false;
-					randomURLs();
-					for (int i=0; i< bList.size();i++){
-						if( (bList.get(i).getUid()== ip && bList.get(i).geturl() == url1)  || (bList.get(i).getUid()== ip && bList.get(i).geturl() == url2)){
-							schonBew =true;
-						}
-					}
-					counter++;
-				}
-				while(schonBew == true && counter <= 15);
-				if(schonBew==true){
+				fitfound = fetchFittingUrls(ip);
+				if(fitfound==false){
 					request.getRequestDispatcher("dankesehr.html").include(request, response);
 				}
 				else{
@@ -162,14 +150,25 @@ public class MainServlet extends HttpServlet {
 		// Nochmal
 		if(action != null && action.equalsIgnoreCase("nochmal")){
 			try {
-				randomURLs();
+				String ip = request.getRemoteAddr();
+				boolean fitfound = false;
+				if (ip.equalsIgnoreCase("0:0:0:0:0:0:0:1")) {
+				    InetAddress inetAddress = InetAddress.getLocalHost();
+				    String ipAddress = inetAddress.getHostAddress();
+				    ip = ipAddress;
+				}
+				fitfound = fetchFittingUrls(ip);
+				if(fitfound==false){
+					request.getRequestDispatcher("dankesehr.html").include(request, response);
+				}
+				else{
+					//update availability on videos
+					updateAvailability();
 				
-				//update availability on videos
-				updateAvailability();
-				
-				request.getSession(true).setAttribute("VideoURL1", url1);
-				request.getSession(true).setAttribute("VideoURL2", url2);
-				request.getRequestDispatcher("auswahl.jsp").include(request, response);
+					request.getSession(true).setAttribute("VideoURL1", url1);
+					request.getSession(true).setAttribute("VideoURL2", url2);
+					request.getRequestDispatcher("auswahl.jsp").include(request, response);
+				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -194,6 +193,29 @@ public class MainServlet extends HttpServlet {
 	}
 	
 	//zufällige videos
+	protected boolean fetchFittingUrls(String ip) throws Exception {
+		int counter =0;
+		boolean schonBew =false;
+		ArrayList<Bewertung> bList = sDAO.getBewertungList();
+		do{
+			schonBew =false;
+			randomURLs();
+			for (int i=0; i< bList.size();i++){
+				if( (bList.get(i).getUid()== ip && bList.get(i).geturl() == url1)  || (bList.get(i).getUid()== ip && bList.get(i).geturl() == url2)){
+					schonBew =true;
+				}
+			}
+			counter++;
+		}
+		while(schonBew == true && counter <= 15);
+		if(schonBew==true){
+			return false;
+		}
+		else {
+			return true;
+		}
+		
+	}
 	protected void randomURLs() throws Exception {
 		int max;
 		ArrayList<Video> vidList = sDAO.getVideoList();

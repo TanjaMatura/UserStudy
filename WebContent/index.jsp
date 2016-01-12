@@ -66,7 +66,7 @@ body {
 	<table>
 	<tr>
 	<td style="width:150px;"><b>Geschlecht: </b><p>
-	<input type="radio" name="geschlecht" value="a"/> N/A<br></option>
+	<input type="radio" name="geschlecht" value="a" checked />  N/A<br></option>
 	<input type="radio" name="geschlecht" value="w"/> weiblich<br></option>
 	<input type="radio" name="geschlecht" value="m"/> männlich</option>
 	<td style="width:25px;"></td>
