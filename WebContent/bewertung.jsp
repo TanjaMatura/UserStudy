@@ -120,13 +120,13 @@ th {
 	          <input type="radio" name="zutreffend3" value="3" checked/> 
 	          <input type="radio" name="zutreffend3" value="4" /> 
 	          <input type="radio" name="zutreffend3" value="5" /> 5</td></tr>
-	<tr> <td colspan="2"> Wenn ich das nächste Mal einkaufen gehe, werde ich nach dem beworbenen Produkt Ausschau halten</td>
+	<tr> <td colspan="2"> Wenn ich das nächste Mal einkaufen gehe, werde ich nach dem beworbenen Produkt Ausschau halten<a href="#" data-toggle="tooltip" title="Beispiel: Bei Websites und Läden (Saturn), werde ich für beworbene Ware dort hin gehen."><img src="tooltip.jpg"></a></td>
 	     <td> 1 <input type="radio" name="zutreffend4" value="1" />
 	          <input type="radio" name="zutreffend4" value="2" /> 
 	          <input type="radio" name="zutreffend4" value="3" checked/> 
 	          <input type="radio" name="zutreffend4" value="4" />
 	          <input type="radio" name="zutreffend4" value="5" /> 5</td></tr>
-	<tr> <td colspan="2"> Die Werbung spricht mich visuell an.</td>
+	<tr> <td colspan="2"> Die Werbung spricht mich visuell an.<a href="#" data-toggle="tooltip" title="Hierbei geht es ausschließlich um Sichtbares, Farbgestaltung, Szenenaufbau, Kameraführung..."><img src="tooltip.jpg"></a></td>
 	     <td> 1 <input type="radio" name="ansprech1" value="1" />
 	          <input type="radio" name="ansprech1" value="2" /> 
 	          <input type="radio" name="ansprech1" value="3" checked/> 
@@ -138,13 +138,13 @@ th {
 	          <input type="radio" name="ansprech2" value="3" checked/> 
 	          <input type="radio" name="ansprech2" value="4" />
 	          <input type="radio" name="ansprech2" value="5" /> 5</td></tr>
-	<tr> <td colspan="2"> Die Werbung spricht mich auditiv an.</td>
+	<tr> <td colspan="2"> Die Werbung spricht mich auditiv an.<a href="#" data-toggle="tooltip" title="Hierbei geht es um Geräusche, Klänge und Musik."><img src="tooltip.jpg"></a></td>
 	     <td> 1 <input type="radio" name="ansprech3" value="1" />
 	          <input type="radio" name="ansprech3" value="2" /> 
 	          <input type="radio" name="ansprech3" value="3" checked/> 
 	          <input type="radio" name="ansprech3" value="4" />
 	          <input type="radio" name="ansprech3" value="5" /> 5</td></tr>
-	<tr> <td colspan="2"> Die in der Werbung erzählte Geschichte spricht mich an.</td>
+	<tr> <td colspan="2"> Die in der Werbung erzählte Geschichte spricht mich an.<a href="#" data-toggle="tooltip" title="Hierbei geht es weniger um den Inhalt, sondern um die Rahmenhandlung der Werbung."></a></td>
 	     <td> 1 <input type="radio" name="ansprech4" value="1" />
 	          <input type="radio" name="ansprech4" value="2" /> 
 	          <input type="radio" name="ansprech4" value="3" checked/> 
@@ -222,7 +222,7 @@ th {
 	
 	<div id="wrapper">
 	<table class="table" width="100%">
-	<tr><th colspan="3">Wie hoch würdest du die Werbung insgesamt bewerten?</th></tr>
+	<tr><th colspan="3">Wie hoch würdest du die Werbung insgesamt bewerten?<a href="#" data-toggle="tooltip" title="10 ist die Bestnote, 0 ist eine sehr schlechte Bewertung."><img src="tooltip.jpg"></a></th></tr>
 	<tr><td colspand="3"><div class="ten">
 	<input type="radio" name="gesamtbewertung" value="0" />0
 	<input type="radio" name="gesamtbewertung" value="1" />1
