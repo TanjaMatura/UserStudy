@@ -17,8 +17,6 @@ body {
 	background-color: #fafafa; 
 }
 </style>
-</head>
-<body>
 <script type="text/javascript">
 	function getRandomInt(min, max) { 
 		return Math.floor(Math.random() * (max - min +1)) + min; 
@@ -36,7 +34,10 @@ body {
 	//document.getElementId('urlId2').value = getRandomInt(1,37);
 	}
 </script>
+</head>
 
+
+<body onload="doubleurl();">
 <div style="width:80%; margin: 0 auto; ">
 
 <p>
@@ -44,11 +45,14 @@ body {
 
 <form action="MainServlet" method="post">
 <input type="hidden" name="action" value="VideoWaehlen">
+
+User ID: <%= request.getSession().getAttribute("userID") %> <p>
+
 <table class="table"><tr> 
 	<td colspan="2"> <center><iframe width="425" height="250" src=https://www.youtube.com/embed/<%= request.getSession().getAttribute("VideoURL1") %> frameborder="0" allowfullscreen></iframe> </center></td>
 	<td colspan="2"> <center><iframe width="425" height="250" src=https://www.youtube.com/embed/<%= request.getSession().getAttribute("VideoURL2") %> frameborder="0" allowfullscreen></iframe></center> </td>
 	<tr> 
-	<td colspan="2"><center><input id="test1"  type="radio" name="videos" value=<%= request.getSession().getAttribute("VideoURL1") %> /><label for="test1"></label></center> </td>
+	<td colspan="2"><center><input id="test1"  type="radio" checked name="videos" value=<%= request.getSession().getAttribute("VideoURL1") %> /><label for="test1"></label></center> </td>
 	<td colspan="2"><center><input id="test2" type="radio" name="videos" value=<%= request.getSession().getAttribute("VideoURL2") %> /><label for="test2"></label> </center></td>
 	<!-- Kommentar: wenn ein Button geklickt wird muss auf die Bewertungsseite verlinkt werden außerdem muss die Videtabelle in der DB
 		 mit der auswahl und pickrate upgedated werden -->
@@ -57,7 +61,7 @@ body {
 <center><input class="btn btn-default" type="submit" value="Wählen"></center>
 </form>
 </div>
-<body onload="doubleurl();">
+
 
 </body>
 </html>

@@ -68,6 +68,37 @@ public class MySqlDAO {
 	  
   }
   
+  // Gibt eine Liste mit allen Videos zurück, die ein User noch NICHT bewertet hat
+  public ArrayList<Video> getVideoListByUser(String userId) throws Exception{
+	  ArrayList<Video> videoList= new ArrayList<Video>();
+	  
+	  try {	
+		  connect();
+	      //set our SQL SELECT query
+	      String query = "SELECT * FROM Video WHERE vid_url NOT IN (SELECT vid_url FROM Bewertung NATURAL JOIN Video WHERE b_uid =" + userId +")";
+	   
+	      // create the java statement
+	      statement = connect.createStatement();
+
+		  //execute query and get java resultSet
+	      resultSet = statement.executeQuery(query);
+	      
+	      //iterate through the reultSet and create new Video objects, adding them to the videoList
+	      while(resultSet.next()) {
+	    	  Video tempvid = new Video(resultSet.getString("vid_id"), resultSet.getString("vid_url"), resultSet.getString("vid_name"),
+	    			  resultSet.getString("vid_length"), resultSet.getString("vid_marke"), resultSet.getString("vid_kategorie"),
+	    			  resultSet.getString("vid_pickcount"), resultSet.getString("vid_pickavailable"));
+	    	  videoList.add(tempvid);
+	      }
+	  }catch (Exception e) {
+	      throw e;
+	    } finally {
+	      close();
+	    }
+	  return videoList;
+  }
+  
+  
   public Video getVideobyUrl(String url) throws Exception{
 	  
 	  Video thing=null;
@@ -162,7 +193,7 @@ public ArrayList<Bewertung> getBewertungList() throws Exception{
 	      
 	      //iterate through the reultSet and create new Video objects, adding them to the videoList
 	      while(resultSet.next()) {
-	    	  Bewertung tempbew = new Bewertung(resultSet.getString("b_id"), resultSet.getString("b_uid"), resultSet.getString("b_url"),
+	    	  Bewertung tempbew = new Bewertung(resultSet.getString("b_id"), resultSet.getString("b_uid"), resultSet.getString("vid_url"),
 	    			  resultSet.getString("schongesehen"),resultSet.getString("plottwist"),resultSet.getString("catchphrase"),
 	    			  resultSet.getString("gerngesehen"), resultSet.getString("ueberzeugung"), resultSet.getString("aufmerksamkeit"),resultSet.getString("markebekannt"),
 	    			  resultSet.getInt("produktfixierung"), resultSet.getInt("froehlichtraurig"), resultSet.getInt("lustigernst"),
@@ -179,8 +210,6 @@ public ArrayList<Bewertung> getBewertungList() throws Exception{
   }
 
 public void removeBewertungbyId(String id) throws Exception{
-	  
-	  
 	  try {
 		
 		  connect();
@@ -192,7 +221,6 @@ public void removeBewertungbyId(String id) throws Exception{
 
 		  //execute query and get java resultSet
 	      statement.executeUpdate(query);
-	      
 	      
 	  }catch (Exception e) {
 	      throw e;
@@ -358,8 +386,6 @@ public void saveBewertung(Bewertung bewertung) throws Exception{
   }
   
   public void saveUser(Admin user) throws Exception{
-	  
-	  
 	  try {
 		
 		  connect();

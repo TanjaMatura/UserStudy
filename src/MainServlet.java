@@ -5,6 +5,7 @@ import java.util.Random;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,6 +24,7 @@ public class MainServlet extends HttpServlet {
 	Bewertung nbew = null; 
 	String url1=null;
 	String url2=null;
+	String userId=null; 
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -52,30 +54,26 @@ public class MainServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");  
 		
-		//Video wählen 
+		/* ------------ Video wählen  ------------ */ 
 		if(action != null && action.equalsIgnoreCase("VideoWaehlen")){
 			try { 
-				//String url = getUrl(request.getParameter("videos"));
 				String url = request.getParameter("videos");
-				MySqlDAO tempDAO = new MySqlDAO();
-
-				Video pick = tempDAO.getVideobyUrl(url);
+				Video pick = sDAO.getVideobyUrl(url);
 				//update pickrate
 				pick.addAnzahlAusgewaehlt();
-				tempDAO.removeVideobyUrl(url);
-				tempDAO.saveVideo(pick);
+				sDAO.removeVideobyUrl(url);
+				sDAO.saveVideo(pick);
 
 				request.getSession(true).setAttribute("VideoURL", url);
 				request.getRequestDispatcher("bewertung.jsp").include(request, response);
-				
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
-
 		}
 		
-		// Bewertung
+		/* ------------ Bewertung  ------------ */
 		if(action != null && action.equalsIgnoreCase("bewertung")){
+			// Bewertungs ID festlegen
 			String tempId;
 			try {
 				tempId = Integer.toString(sDAO.getBewertungList().size()+1);	
@@ -83,99 +81,91 @@ public class MainServlet extends HttpServlet {
 			catch(Exception e){
 				tempId = Integer.toString(1);
 			}  
-			nbew = new Bewertung(tempId, tempUser.getId(), request.getParameter("videoURL"), request.getParameter("janein1"),  request.getParameter("janein3"),  request.getParameter("janein4"), request.getParameter("zutreffend2"),
-					request.getParameter("zutreffend3"),  request.getParameter("zutreffend4"),  request.getParameter("janein2"), Integer.parseInt(request.getParameter("zutreffend1")), 
-					Integer.parseInt(request.getParameter("empfinden1")),  Integer.parseInt(request.getParameter("empfinden2")),  Integer.parseInt(request.getParameter("empfinden3")),  Integer.parseInt(request.getParameter("empfinden4")),  Integer.parseInt(request.getParameter("empfinden5")),  Integer.parseInt(request.getParameter("empfinden6")), 
-					request.getParameter("zielgruppe"),  Integer.parseInt(request.getParameter("gesamtbewertung")));				
-			try {
-					sDAO.saveBewertung(nbew);
-					if(!request.getParameter("kommentar").equals("")){
-						sDAO.saveComment(tempUser, sDAO.getVideobyUrl(request.getParameter("videoURL")), request.getParameter("kommentar"));
-					}
-					
-				} 
-			catch (Exception e) {
-					response.getWriter().println(e);
-				}
-			try {
+			
+			// Bewertung, Comment, Ansprechend speichern
+			try { 
+				nbew = new Bewertung(tempId, tempUser.getId(), request.getParameter("videoURL"), request.getParameter("janein1"),  request.getParameter("janein3"),  request.getParameter("janein4"), request.getParameter("zutreffend2"),
+				request.getParameter("zutreffend3"),  request.getParameter("zutreffend4"),  request.getParameter("janein2"), Integer.parseInt(request.getParameter("zutreffend1")), 
+				Integer.parseInt(request.getParameter("empfinden1")),  Integer.parseInt(request.getParameter("empfinden2")),  Integer.parseInt(request.getParameter("empfinden3")),  Integer.parseInt(request.getParameter("empfinden4")),  Integer.parseInt(request.getParameter("empfinden5")),  Integer.parseInt(request.getParameter("empfinden6")), 
+				request.getParameter("zielgruppe"),  Integer.parseInt(request.getParameter("gesamtbewertung")));				
+			
+				sDAO.saveBewertung(nbew);
+				if(!request.getParameter("kommentar").equals("")){
+					sDAO.saveComment(tempUser, sDAO.getVideobyUrl(request.getParameter("videoURL")), request.getParameter("kommentar"));}
 				sDAO.saveAnsprechend(nbew, sDAO.getVideobyUrl(request.getParameter("videoURL")), Integer.parseInt(request.getParameter("ansprech1")), Integer.parseInt(request.getParameter("ansprech2")), Integer.parseInt(request.getParameter("ansprech3")), Integer.parseInt(request.getParameter("ansprech4")));
-			}
-			catch (Exception e) {
+			}catch (Exception e) {
 				response.getWriter().println(e);
 			}
 			request.getRequestDispatcher("danke.html").include(request, response);
 			}
 		
 		
-		// Teilnehmen
+		/* ------------ Teilnehmen  ------------ */
 		if(action != null &&  action.equalsIgnoreCase("Teilnehmen")){	
 			try {
+				// Cookies durchgehen und schauen ob schon eines mit Namen userId vorhanden ist
+				userId = null;
+				Cookie[] cookies = request.getCookies();
+				for(Cookie cookie : cookies){
+				    if("cookieUserID".equals(cookie.getName())){
+				        userId = cookie.getValue();
+				    }
+				}
 				
+				// Falls keines vorhanden ist auf "anmeldung" weiterleiten
+				if(userId==null){
+					request.getRequestDispatcher("anmeldung.jsp").include(request, response);
+				}
 				
-				String alter = request.getParameter("alter"); 
-				String geschlecht = request.getParameter("geschlecht"); 
-				String ip = request.getRemoteAddr();
-				boolean fitfound = false;
-				if (ip.equalsIgnoreCase("0:0:0:0:0:0:0:1")) {
-				    InetAddress inetAddress = InetAddress.getLocalHost();
-				    String ipAddress = inetAddress.getHostAddress();
-				    ip = ipAddress;
-				}
-				if(sDAO.getUserbyID(ip)!=null){tempUser=sDAO.getUserbyID(ip); }
-				else {
-					tempUser = new Admin(ip, "anon", "none", alter, geschlecht, 0);
-					sDAO.saveUser(tempUser);
-				}
-				fitfound = fetchFittingUrls(ip);
-				if(fitfound==false){
-					request.getRequestDispatcher("dankesehr.html").include(request, response);
-				}
+				// Falls eines vorhanden ist, User mit dieser ID auslesen und zur Auswahl weiterleiten
 				else{
-					//update availability on videos
-					updateAvailability();
-					
-					request.getSession(true).setAttribute("VideoURL1", url1);
-					request.getSession(true).setAttribute("VideoURL2", url2);
-					request.getRequestDispatcher("auswahl.jsp").include(request, response);
-					
-				}
-				
-				
+					tempUser=sDAO.getUserbyID(userId);
+					randomURLs2(request, response);
+				}	
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		
-		// Nochmal
+		/* ------------ Anmelden  ------------ */
+		if(action != null &&  action.equalsIgnoreCase("Anmelden")){	
+			try {
+			// Cookie anlegen
+			userId = null;
+			userId = Integer.toString(sDAO.getUserList().size()+1);
+			Cookie cookie = new Cookie("cookieUserID", userId);
+			response.addCookie(cookie);
+			
+			// Neuen User speichern
+			String alter = request.getParameter("alter"); 
+			String geschlecht = request.getParameter("geschlecht"); 
+			tempUser = new Admin(userId, "anon", "none", alter, geschlecht, 0);
+			sDAO.saveUser(tempUser);
+
+			// Zufällige Videos für Auswahl-Seite generieren
+			randomURLs2(request, response); 
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		/* ------------ Nochmal  ------------ */
 		if(action != null && action.equalsIgnoreCase("nochmal")){
 			try {
-				String ip = request.getRemoteAddr();
-				boolean fitfound = false;
-				if (ip.equalsIgnoreCase("0:0:0:0:0:0:0:1")) {
-				    InetAddress inetAddress = InetAddress.getLocalHost();
-				    String ipAddress = inetAddress.getHostAddress();
-				    ip = ipAddress;
+				//Cookies (Brauch ich dann nicht mehr, nur inzwischen, solang ID angezeigt wird)
+				String userId = null;
+				Cookie[] cookies = request.getCookies();
+				for(Cookie cookie : cookies){
+				    if("cookieUserID".equals(cookie.getName())){
+				        userId = cookie.getValue();
+				    }
 				}
-				fitfound = fetchFittingUrls(ip);
-				if(fitfound==false){
-					request.getRequestDispatcher("dankesehr.html").include(request, response);
-				}
-				else{
-					//update availability on videos
-					updateAvailability();
-				
-					request.getSession(true).setAttribute("VideoURL1", url1);
-					request.getSession(true).setAttribute("VideoURL2", url2);
-					request.getRequestDispatcher("auswahl.jsp").include(request, response);
-				}
+				randomURLs2(request,response); 
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		
-	   
 	}
 	
 	/* ------------ Database stuff  ------------ */
@@ -187,58 +177,47 @@ public class MainServlet extends HttpServlet {
 			if(vidList.get(i).getId() == vid_id){
 				finalurl = vidList.get(i).getURL();
 			}
-			
 		}
 		return finalurl;
 	}
 	
-	//zufällige videos
-	protected boolean fetchFittingUrls(String ip) throws Exception {
-		int counter =0;
-		boolean schonBew =false;
-		ArrayList<Bewertung> bList = sDAO.getBewertungList();
-		do{
-			schonBew =false;
-			randomURLs();
-			for (int i=0; i< bList.size();i++){
-				if( (bList.get(i).getUid()== ip && bList.get(i).geturl() == url1)  || (bList.get(i).getUid()== ip && bList.get(i).geturl() == url2)){
-					schonBew =true;
-				}
-			}
-			counter++;
-		}
-		while(schonBew == true && counter <= 15);
-		if(schonBew==true){
-			return false;
-		}
-		else {
-			return true;
+	
+	/* ------------ zufällige Videos 2 ------------ */
+	protected void randomURLs2(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		// Generiert Liste mit Videos, die der Nutzer noch nicht bewertet hat
+		ArrayList<Video> vidList = sDAO.getVideoListByUser(userId);
+		int max=vidList.size();
+		Random randomGenerator = new Random();
+		
+		// Falls es noch mindestens zwei Videos gibt
+		if(max>1){
+			int rand1= randomGenerator.nextInt(max);	
+			int rand2=randomGenerator.nextInt(max);
+			while(rand2==rand1){rand2=randomGenerator.nextInt(max);}
+			url1=vidList.get(rand1).getURL();
+			url2=vidList.get(rand2).getURL();
+			
+			updateAvailability();
+			
+			request.getSession(true).setAttribute("VideoURL1", url1);
+			request.getSession(true).setAttribute("VideoURL2", url2);
+			request.getSession(true).setAttribute("userID", userId);
+			request.getRequestDispatcher("auswahl.jsp").include(request, response);
 		}
 		
-	}
-	protected void randomURLs() throws Exception {
-		int max;
-		ArrayList<Video> vidList = sDAO.getVideoList();
-		max=vidList.size();
-		Random randomGenerator = new Random();
-		int rand1= randomGenerator.nextInt(max);
-		if(rand1==0){
-			rand1++;
+		// Wenn es nur noch ein Video gibt
+		else if(max==1){
+			int rand1= randomGenerator.nextInt(max);
+			url1=vidList.get(rand1).getURL();
+			request.getSession(true).setAttribute("VideoURL", url1);
+			request.getRequestDispatcher("bewertung.jsp").include(request, response);
 		}
-		int rand2=randomGenerator.nextInt(max);
-		if(rand2==0 || rand2==rand1){
-			rand2++;
-		}
-		//iterate through List
-		for(int i=0; i<max;i++){
-			if(Integer.parseInt(vidList.get(i).getId())==rand1){
-				url1=vidList.get(i).getURL();
-			}
-			if(Integer.parseInt(vidList.get(i).getId())==rand2){
-				url2=vidList.get(i).getURL();
-			}
+		// Wenn es kein Video mehr gibt
+		else{
 		}
 	}
+	
 	
 	protected void updateAvailability() throws Exception {
 		Video av1 = sDAO.getVideobyUrl(url1);
@@ -250,11 +229,6 @@ public class MainServlet extends HttpServlet {
 		sDAO.removeVideobyUrl(url2);
 		sDAO.saveVideo(av2);
 	}
-	
-	
-	
-	
-	
 
 }
 
