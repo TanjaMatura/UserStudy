@@ -7,7 +7,7 @@
 <title>User Study</title>
 
 <!-- Bootstrap -->
-<link href="bootstrap-3.3.6-dist\css\bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript">
 function getRandomInt(min, max) { 

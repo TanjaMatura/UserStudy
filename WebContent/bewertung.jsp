@@ -7,7 +7,7 @@
 <title>User Study</title>
 
 <!-- Bootstrap -->
-<link href="bootstrap-3.3.6-dist\css\bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <!--  JQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
@@ -16,6 +16,9 @@ $(document).ready(function(){
 });
 </script>
 <style>
+@-moz-document url-prefix() {
+  fieldset { display: table-cell; }
+}
 body {
 	background-color: #fafafa; 
 }
@@ -61,6 +64,7 @@ th {
 	margin-right: 2px; 
 	margin-left: 2px; 
 }
+
 </style>
 </head>
 <body>
@@ -77,6 +81,7 @@ th {
 	<input type="hidden" name="action" value="bewertung">
 	<input type="hidden" name="videoURL" value=<%= request.getSession().getAttribute("VideoURL") %>>
 	
+<div class="table-responsive">
 	<div id="wrapper">
 	<table class="table" width="100%">
 	<tr><th colspan="3">Bitte beantworte die folgenden Fragen wahrheitsgemäß: </th></tr>
@@ -98,7 +103,9 @@ th {
 	          <input type="radio" name="janein4" value="NA" checked/> N/A </td></tr>
 	          </table>
 	</div>
-	         
+</div>
+
+<div class="table-responsive">
 	<div id="wrapper">
 	<table class="table" width="100%">
 	<tr> <th colspan="3">Ist die folgende Aussage nicht zutreffend (1), wenig zutreffend (2), neutral (3), etwas zutreffend (4) oder zutreffend (5)? </th></tr>
@@ -152,7 +159,9 @@ th {
 	          <input type="radio" name="ansprech4" value="5" /> 5</td></tr>
 	          </table>
 	          </div>
-	          
+</div>
+
+<div class="table-responsive">
 	<div id="wrapper">
 	<table class="table" width="100%">
 	<tr> <th colspan="3">Ich empfinde diese Werbung als </th></tr>
@@ -193,9 +202,9 @@ th {
 	          <input type="radio" name="empfinden6" value="4" />
 	          <input type="radio" name="empfinden6" value="5" /> </td> <td> unsympathisch </td></tr></table>
 	</div>
+</div>
 	
-	
-	          
+<div class="table-responsive"> 
 	<div id="wrapper">
 	<div id="gruppen">
 	<table class="table" width="100%">
@@ -219,7 +228,9 @@ th {
 	</table>
 	</div>
 	</div>
-	
+</div>
+
+<div class="table-responsive">
 	<div id="wrapper">
 	<table class="table" width="100%">
 	<tr><th colspan="3">Wie hoch würdest du die Werbung insgesamt bewerten?<a href="#" data-toggle="tooltip" title="10 ist die Bestnote, 0 ist eine sehr schlechte Bewertung."><img src="tooltip.jpg"></a></th></tr>
@@ -238,7 +249,9 @@ th {
 	</div>
 	</tr>
 	</table></div>
-	
+</div>
+
+<div class="table-responsive">
 	<div id="wrapper">
 	<table class="table" width="100%">
 	<tr><th colspan="3">Hast du noch eine persönliche Anmerkung zu dieser Werbung? </th></tr>
@@ -246,10 +259,12 @@ th {
 	</tr>
 	</table>
 	</div>
+</div>
+
 	<p><br>
 	<center><input class="btn btn-default" type="submit" value="Submit" style="background-color: #4db6ac; color: #fff; font-weight: bold;"></center>
 	</form>
-	
+
 </div>
 
 </body>

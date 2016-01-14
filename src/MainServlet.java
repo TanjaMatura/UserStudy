@@ -120,7 +120,7 @@ public class MainServlet extends HttpServlet {
 				// Falls eines vorhanden ist, User mit dieser ID auslesen und zur Auswahl weiterleiten
 				else{
 					tempUser=sDAO.getUserbyID(userId);
-					randomURLs2(request, response);
+					randomURLs(request, response);
 				}	
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -143,7 +143,7 @@ public class MainServlet extends HttpServlet {
 			sDAO.saveUser(tempUser);
 
 			// Zufällige Videos für Auswahl-Seite generieren
-			randomURLs2(request, response); 
+			randomURLs(request, response); 
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -160,13 +160,15 @@ public class MainServlet extends HttpServlet {
 				        userId = cookie.getValue();
 				    }
 				}
-				randomURLs2(request,response); 
+				randomURLs(request,response); 
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 	}
+	
+	
 	
 	/* ------------ Database stuff  ------------ */
 	protected String getUrl(String vid_id) throws Exception{
@@ -182,8 +184,8 @@ public class MainServlet extends HttpServlet {
 	}
 	
 	
-	/* ------------ zufällige Videos 2 ------------ */
-	protected void randomURLs2(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	/* ------------ zufällige Videos  ------------ */
+	protected void randomURLs(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		// Generiert Liste mit Videos, die der Nutzer noch nicht bewertet hat
 		ArrayList<Video> vidList = sDAO.getVideoListByUser(userId);
