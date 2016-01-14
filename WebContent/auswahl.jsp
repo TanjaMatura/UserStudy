@@ -8,14 +8,25 @@
 <title>User Study</title>
 
 <!-- Bootstrap -->
-<link href="bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="bootstrap-3.3.6-dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
 <!-- Materialize -->
-<link href="materialize-v0.97.3/materialize/css/materialize.min.css" rel="stylesheet" type="text/css" />
+<link href="materialize-v0.97.3/materialize/css/materialize.css" rel="stylesheet" type="text/css" />
 
 <style>
 body {
 	background-color: #fafafa; 
 }
+#header {
+	width: 100%;
+	color: #fff;
+	padding: 10px;
+	background-color: #4db6ac;
+}
+/* Remove default Radio Buttons */
+[type="radio"]:not(:checked), [type="radio"]:checked {
+  position: absolute;
+  left: -9999px;
+  visibility: hidden; }
 </style>
 <script type="text/javascript">
 	function getRandomInt(min, max) { 
@@ -38,6 +49,10 @@ body {
 
 
 <body onload="doubleurl();">
+<div id="header">
+<h4>Video wählen</h4>
+</div>
+
 <div style="width:80%; margin: 0 auto; ">
 
 <p>
@@ -47,6 +62,13 @@ body {
 <input type="hidden" name="action" value="VideoWaehlen">
 
 User ID: <%= request.getSession().getAttribute("userID") %> <p>
+
+ <center><div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow=<%= request.getSession().getAttribute("bewerteteVideos") %> 
+  aria-valuemin="0" aria-valuemax="50" style="width:<%= request.getSession().getAttribute("bewerteteVideos") %>%">
+    <%= request.getSession().getAttribute("bewerteteVideos") %>/50
+  </div>
+</div></center>
 
 <table class="table"><tr> 
 	<td colspan="2"> <center><iframe width="425" height="250" src=https://www.youtube.com/embed/<%= request.getSession().getAttribute("VideoURL1") %> frameborder="0" allowfullscreen></iframe> </center></td>

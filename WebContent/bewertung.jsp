@@ -10,6 +10,9 @@
 <link href="bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <!--  JQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Materialize -->
+<link href="materialize-v0.97.3/materialize/css/materialize.css" rel="stylesheet" type="text/css" />
+
 <script>
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
@@ -49,7 +52,6 @@ th {
 	color: #fff;
 	padding: 10px;
 	background-color: #4db6ac;
-	text-align: right; 
 }
 .ten {
 	text-align: center; 
@@ -69,7 +71,7 @@ th {
 </head>
 <body>
 
-<div id="header"><h3>Bewertung</h3></div>
+<div id="header"><h4>Bewertung</h4></div>
 <div style="width:80%; margin: 0 auto; ">
 
 <p>
@@ -86,21 +88,21 @@ th {
 	<table class="table" width="100%">
 	<tr><th colspan="3">Bitte beantworte die folgenden Fragen wahrheitsgemäß: </th></tr>
 	<tr> <td colspan="2"> Ich habe die Werbung schon einmal gesehen</td>
-	     <td> <input type="radio" name="janein1" value="ja" />	Ja 
-	          <input type="radio" name="janein1" value="nein" /> Nein 
-	          <input type="radio" name="janein1" value="NA" checked/> N/A </td></tr>
+	     <td> <input type="radio" id="punkt1" name="janein1" value="ja" /> Ja
+	          <input type="radio" id="punkt2" name="janein1" value="nein" /> Nein
+	          <input type="radio" id="punkt3" name="janein1" value="NA" checked/> N/A </td></tr>
 	<tr> <td colspan="2"> Ich kenne die beworbene Marke </td>
-	     <td> <input type="radio" name="janein2" value="ja" />	Ja 
-	          <input type="radio" name="janein2" value="nein" /> Nein 
-	          <input type="radio" name="janein2" value="NA" checked/> N/A </td></tr>
+	     <td> <input type="radio" id="punkt4" name="janein2" value="ja" /> Ja 
+	          <input type="radio" id="punkt5" name="janein2" value="nein" /> Nein 
+	          <input type="radio" id="punkt6" name="janein2" value="NA" checked/> N/A </td></tr>
 	<tr> <td colspan="2"> Die Werbung hat mich überrascht   <a href="#" data-toggle="tooltip" title="Beispiel: Bei einem Rockkonzert wird stattdessen ruhige Musik gepsielt."><img src="tooltip.jpg"></a></td>
-	     <td> <input type="radio" name="janein3" value="ja" />	Ja 
-	          <input type="radio" name="janein3" value="nein" /> Nein 
-	          <input type="radio" name="janein3" value="NA" checked/> N/A </td></tr>
+	     <td> <input type="radio" id="punkt7" name="janein3" value="ja" /> Ja 
+	          <input type="radio" id="punkt8" name="janein3" value="nein" /> Nein 
+	          <input type="radio" id="punkt9" name="janein3" value="NA" checked/> N/A </td></tr>
 	<tr> <td colspan="2"> Die Werbung hat eine gute Catch Phrase   <a href="#" data-toggle="tooltip" title="Werbespruch, der im Ohr bleiben und mit dem Produkt in Verbindung gebracht werden soll. Bespiele: McDonalds - I'm lovin' it"><img src="tooltip.jpg"></a></td>
-	     <td> <input type="radio" name="janein4" value="ja" />	Ja 
-	          <input type="radio" name="janein4" value="nein" /> Nein 
-	          <input type="radio" name="janein4" value="NA" checked/> N/A </td></tr>
+	     <td> <input type="radio" id="punkt10" name="janein4" value="ja" /> Ja
+	          <input type="radio" id="punkt11" name="janein4" value="nein" /> Nein
+	          <input type="radio" id="punkt12" name="janein4" value="NA" checked/> N/A </td></tr>
 	          </table>
 	</div>
 </div>
@@ -110,11 +112,11 @@ th {
 	<table class="table" width="100%">
 	<tr> <th colspan="3">Ist die folgende Aussage nicht zutreffend (1), wenig zutreffend (2), neutral (3), etwas zutreffend (4) oder zutreffend (5)? </th></tr>
 	<tr> <td colspan="2"> In der Werbung geht es hauptsächlich um das beworbene Produkt </td>
-	     <td> 1 <input type="radio" name="zutreffend1" value="1" />
-	          <input type="radio" name="zutreffend1" value="2" />
-	          <input type="radio" name="zutreffend1" value="3" checked/> 
-	          <input type="radio" name="zutreffend1" value="4" /> 
-	          <input type="radio" name="zutreffend1" value="5" /> 5</td></tr>
+	     <td> <input type="radio" id="zutr1" name="zutreffend1" value="1" /> 1
+	          <input type="radio" id="zutr2" name="zutreffend1" value="2" />
+	          <input type="radio" id="zutr3" name="zutreffend1" value="3" checked/> 
+	          <input type="radio" id="zutr4" name="zutreffend1" value="4" /> 
+	          <input type="radio" id="zutr5" name="zutreffend1" value="5" /></td></tr>
 	<tr> <td colspan="2"> Ich sehe diese Werbung gerne im Fernsehen  </td>
 	     <td> 1 <input type="radio" name="zutreffend2" value="1" /> 
 	          <input type="radio" name="zutreffend2" value="2" /> 

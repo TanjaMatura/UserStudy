@@ -8,6 +8,8 @@
 
 <!-- Bootstrap -->
 <link href="bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<!-- Materialize -->
+<link href="materialize-v0.97.3/materialize/css/materialize.min.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript">
 function getRandomInt(min, max) { 
@@ -40,7 +42,7 @@ body {
 
 <body onload="doubleurl();">
 <div id="header">
-<h3>Herzlich Willkommen!</h3>
+<h4>Herzlich Willkommen!</h4>
 </div>
 <div style="width:80%; margin: 0 auto; ">
 
@@ -57,7 +59,7 @@ body {
 <br> 
 <form action="MainServlet" method="post">
 <input type="hidden" name="action" value="Teilnehmen">
-<input class="btn btn-default" type="submit" style="background-color: #4db6ac; color: #fff; padding: 3px;" value="Teilnehmen!" ></center>
+<input class="btn btn-default" type="submit"  value="Teilnehmen!" ></center>
 </form>
 </div>
 </html>

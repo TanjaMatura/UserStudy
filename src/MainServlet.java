@@ -190,6 +190,9 @@ public class MainServlet extends HttpServlet {
 		// Generiert Liste mit Videos, die der Nutzer noch nicht bewertet hat
 		ArrayList<Video> vidList = sDAO.getVideoListByUser(userId);
 		int max=vidList.size();
+		
+		//Anzahl der Videos, die ein User schon bewertet hat
+		int bewertet = 50-max; 
 		Random randomGenerator = new Random();
 		
 		// Falls es noch mindestens zwei Videos gibt
@@ -202,9 +205,11 @@ public class MainServlet extends HttpServlet {
 			
 			updateAvailability();
 			
+			
 			request.getSession(true).setAttribute("VideoURL1", url1);
 			request.getSession(true).setAttribute("VideoURL2", url2);
 			request.getSession(true).setAttribute("userID", userId);
+			request.getSession(true).setAttribute("bewerteteVideos", bewertet);
 			request.getRequestDispatcher("auswahl.jsp").include(request, response);
 		}
 		
