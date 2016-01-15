@@ -44,31 +44,50 @@ body {
 	}
 	//document.getElementId('urlId2').value = getRandomInt(1,37);
 	}
+	
+	function progressBar() {
+		var progress = request.getSession().getAttribute("bewerteteVideos"); 
+		var prozent = progress*2; 
+		docment.write(prozent);
+	}
 </script>
 </head>
 
 
 <body onload="doubleurl();">
-<div id="header">
-<h4>Video wählen</h4>
-</div>
 
+ <nav>
+ <div class="brand-logo">User Study</div>
+<div id="nav-mobile" class="right hide-on-med-and-down">
+    <div class="nav-wrapper">
+      <div class="col s12">
+        <div style="width:100%; padding-right: 15px;"">
+        <div class="breadcrumb"> Willkommmen </div>
+        <div class="breadcrumb"> Über dich </div>
+        <div class="breadcrumb active"> Auswahl </div>
+        <div class="breadcrumb"> Bewertung</div>
+        <div class="breadcrumb"> Auswertung</div>
+      </div>
+      </div>
+    </div>
+    </div>
+  </nav>
+  
+ 
 <div style="width:80%; margin: 0 auto; ">
 
-<p>
-
+ <font color=#000">User ID: <%= request.getSession().getAttribute("userID") %> </font><p>
+ <center>
+ <div class="progress" width="80%">
+  <div class="progress-bar" role="progressbar" aria-valuenow=<%= request.getSession().getAttribute("bewerteteVideos") %> 
+  aria-valuemin="0" aria-valuemax="50" style="width:<%= request.getSession().getAttribute("Prozent") %>%">
+    <%= request.getSession().getAttribute("bewerteteVideos") %>/50
+  </div>
+ </div>
+</center>
 
 <form action="MainServlet" method="post">
 <input type="hidden" name="action" value="VideoWaehlen">
-
-User ID: <%= request.getSession().getAttribute("userID") %> <p>
-
- <center><div class="progress">
-  <div class="progress-bar" role="progressbar" aria-valuenow=<%= request.getSession().getAttribute("bewerteteVideos") %> 
-  aria-valuemin="0" aria-valuemax="50" style="width:<%= request.getSession().getAttribute("bewerteteVideos") %>%">
-    <%= request.getSession().getAttribute("bewerteteVideos") %>/50
-  </div>
-</div></center>
 
 <table class="table"><tr> 
 	<td colspan="2"> <center><iframe width="425" height="250" src=https://www.youtube.com/embed/<%= request.getSession().getAttribute("VideoURL1") %> frameborder="0" allowfullscreen></iframe> </center></td>

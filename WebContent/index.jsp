@@ -7,9 +7,9 @@
 <title>User Study</title>
 
 <!-- Bootstrap -->
-<link href="bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="bootstrap-3.3.6-dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
 <!-- Materialize -->
-<link href="materialize-v0.97.3/materialize/css/materialize.min.css" rel="stylesheet" type="text/css" />
+<link href="materialize-v0.97.3/materialize/css/materialize.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript">
 function getRandomInt(min, max) { 
@@ -41,10 +41,25 @@ body {
 </head>
 
 <body onload="doubleurl();">
-<div id="header">
-<h4>Herzlich Willkommen!</h4>
-</div>
-<div style="width:80%; margin: 0 auto; ">
+
+<nav>
+ <div class="brand-logo">User Study</div>
+<div id="nav-mobile" class="right hide-on-med-and-down">
+    <div class="nav-wrapper">
+      <div class="col s12">
+        <div style="width:100%; padding-right: 15px;"">
+        <div class="breadcrumb active"> Willkommmen </div>
+        <div class="breadcrumb"> Über dich </div>
+        <div class="breadcrumb"> Auswahl </div>
+        <div class="breadcrumb"> Bewertung</div>
+        <div class="breadcrumb"> Auswertung</div>
+      </div>
+      </div>
+    </div>
+    </div>
+  </nav>
+
+<div style="width:80%; margin: 10 auto; ">
 
 <p>
 <center>

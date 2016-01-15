@@ -7,7 +7,7 @@
 <title>User Study</title>
 
 <!-- Bootstrap -->
-<link href="bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="bootstrap-3.3.6-dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
 <!--  JQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Materialize -->
@@ -71,7 +71,23 @@ th {
 </head>
 <body>
 
-<div id="header"><h4>Bewertung</h4></div>
+ <nav>
+ <div class="brand-logo">User Study</div>
+<div id="nav-mobile" class="right hide-on-med-and-down">
+    <div class="nav-wrapper">
+      <div class="col s12">
+        <div style="width:100%; padding-right: 15px;"">
+        <div class="breadcrumb"> Willkommmen </div>
+        <div class="breadcrumb"> Über dich </div>
+        <div class="breadcrumb"> Auswahl </div>
+        <div class="breadcrumb active"> Bewertung</div>
+        <div class="breadcrumb"> Auswertung</div>
+      </div>
+      </div>
+    </div>
+    </div>
+  </nav>
+  
 <div style="width:80%; margin: 0 auto; ">
 
 <p>

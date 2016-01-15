@@ -96,7 +96,22 @@ public class MainServlet extends HttpServlet {
 			}catch (Exception e) {
 				response.getWriter().println(e);
 			}
-			request.getRequestDispatcher("danke.html").include(request, response);
+			
+			try {
+			//Cookies (Brauch ich dann nicht mehr, nur inzwischen, solang ID angezeigt wird)
+			String userId = null;
+			Cookie[] cookies = request.getCookies();
+			for(Cookie cookie : cookies){
+			    if("cookieUserID".equals(cookie.getName())){
+			        userId = cookie.getValue();
+			    }
+			}
+				randomURLs(request,response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+			
+			request.getRequestDispatcher("auswahl.html").include(request, response);
 			}
 		
 		
@@ -151,7 +166,7 @@ public class MainServlet extends HttpServlet {
 		
 		/* ------------ Nochmal  ------------ */
 		if(action != null && action.equalsIgnoreCase("nochmal")){
-			try {
+			/*try {
 				//Cookies (Brauch ich dann nicht mehr, nur inzwischen, solang ID angezeigt wird)
 				String userId = null;
 				Cookie[] cookies = request.getCookies();
@@ -164,7 +179,7 @@ public class MainServlet extends HttpServlet {
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 		}
 	}
 	
@@ -202,13 +217,14 @@ public class MainServlet extends HttpServlet {
 			while(rand2==rand1){rand2=randomGenerator.nextInt(max);}
 			url1=vidList.get(rand1).getURL();
 			url2=vidList.get(rand2).getURL();
-			
+			int prozent = bewertet*2; 
 			updateAvailability();
 			
 			
 			request.getSession(true).setAttribute("VideoURL1", url1);
 			request.getSession(true).setAttribute("VideoURL2", url2);
 			request.getSession(true).setAttribute("userID", userId);
+			request.getSession(true).setAttribute("Prozent", prozent);
 			request.getSession(true).setAttribute("bewerteteVideos", bewertet);
 			request.getRequestDispatcher("auswahl.jsp").include(request, response);
 		}
@@ -222,6 +238,7 @@ public class MainServlet extends HttpServlet {
 		}
 		// Wenn es kein Video mehr gibt
 		else{
+			request.getRequestDispatcher("auswertung.jsp").include(request, response);
 		}
 	}
 	
