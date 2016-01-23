@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 import javax.servlet.ServletConfig;
@@ -145,11 +146,24 @@ public class MainServlet extends HttpServlet {
 		/* ------------ Anmelden  ------------ */
 		if(action != null &&  action.equalsIgnoreCase("Anmelden")){	
 			try {
-			// Cookie anlegen
 			userId = null;
-			userId = Integer.toString(sDAO.getUserList().size()+1);
-			Cookie cookie = new Cookie("cookieUserID", userId);
-			response.addCookie(cookie);
+			boolean cookieVorhanden=false; 
+			Cookie[] cookies = request.getCookies();
+			
+			// Checken ob Cookie da is
+			for(Cookie Cookie : cookies){
+			    if("cookieUserID".equals(Cookie.getName())){
+			    	userId = Cookie.getValue();
+			    	cookieVorhanden=true;
+			    }
+			}
+			// Wenn keines da ist, Cookie anlegen
+			if(!cookieVorhanden){ 
+				userId = Integer.toString(sDAO.getUserList().size()+1);
+				Cookie cookie = new Cookie("cookieUserID", userId);
+				cookie.setMaxAge(60*60*24*365*10);
+				response.addCookie(cookie);
+			}
 			
 			// Neuen User speichern
 			String alter = request.getParameter("alter"); 
@@ -180,6 +194,37 @@ public class MainServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}*/
+		}
+		
+		/* ------------ Auswertung  ------------ */
+		if(action != null && action.equalsIgnoreCase("Auswertung")){
+			ArrayList<Video> videoList;
+			try {
+				videoList = sDAO.getVideoList();
+				
+				// Objekte mit Durchschnittsbewertung und URL erzeugen, in Liste speichern
+				ArrayList<RankedVideo> sortedVideos = new ArrayList<RankedVideo>();
+				for (int i = 0; i < videoList.size(); i++) {
+					String tempURL = videoList.get(i).getURL();
+					RankedVideo tempRVideo = new RankedVideo(tempURL, sDAO.getDurchschnittsBewertung(tempURL), sDAO.getVideobyUrl(tempURL).getMarke()); 
+					sortedVideos.add(tempRVideo); 
+				}
+				
+				// List nach Durchschnitsbewertung sortieren
+				Collections.sort(sortedVideos, new SortDBewertung());
+				Collections.reverse(sortedVideos);
+				
+				// Alle 50 Video beim request mitübergeben
+					// Hab leider noch keine umkomplizierteren Weg gefunden :/
+				for(int i=0; i < sortedVideos.size(); i++){
+					request.getSession(true).setAttribute("bewertung" + i, sortedVideos.get(i).getDBewertung());
+					request.getSession(true).setAttribute("marke" + i, sortedVideos.get(i).getMarke());
+					request.getSession(true).setAttribute("url" + i, sortedVideos.get(i).getURL());
+				}
+				request.getRequestDispatcher("AuswertungTest.jsp").include(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -220,7 +265,6 @@ public class MainServlet extends HttpServlet {
 			int prozent = bewertet*2; 
 			updateAvailability();
 			
-			
 			request.getSession(true).setAttribute("VideoURL1", url1);
 			request.getSession(true).setAttribute("VideoURL2", url2);
 			request.getSession(true).setAttribute("userID", userId);
@@ -254,5 +298,8 @@ public class MainServlet extends HttpServlet {
 		sDAO.saveVideo(av2);
 	}
 
+	
+	
+	
 }
 

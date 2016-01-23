@@ -74,9 +74,7 @@ body {
   </nav>
   
  
-<div style="width:80%; margin: 0 auto; ">
-
- <font color=#000">User ID: <%= request.getSession().getAttribute("userID") %> </font><p>
+<div style="width:80%; margin: 10px auto; ">
  <center>
  <div class="progress" width="80%">
   <div class="progress-bar" role="progressbar" aria-valuenow=<%= request.getSession().getAttribute("bewerteteVideos") %> 

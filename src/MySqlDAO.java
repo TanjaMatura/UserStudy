@@ -551,5 +551,27 @@ public ArrayList<String> getAnsprechendList() throws Exception{
     }
   }
   
+  /* ------------ METHODEN FÜR STATISTIK ------------ */
+  
+  // Durchschnittsbewertung eines Videos
+  public double getDurchschnittsBewertung(String videoURL) throws Exception{
+	  ArrayList<Video> videoList = getVideoList(); 
+	  double bewertung = 0; 
+	  double counter = 0; 
+	  
+	  connect();
+      String query = "SELECT * FROM Bewertung WHERE vid_url ='" + videoURL + "'";
+      statement = connect.createStatement();
+      resultSet = statement.executeQuery(query);
+
+      while(resultSet.next()) {
+    	  bewertung += Integer.parseInt(resultSet.getString("bewertungen"));
+    	  counter++;
+      }
+      // Um Division durch 0 zu verhinderns
+      if(counter==0){ return -1; }
+      
+      return bewertung/counter; 
+  }
 }
 

@@ -128,53 +128,53 @@ th {
 	<table class="table" width="100%">
 	<tr> <th colspan="3">Ist die folgende Aussage nicht zutreffend (1), wenig zutreffend (2), neutral (3), etwas zutreffend (4) oder zutreffend (5)? </th></tr>
 	<tr> <td colspan="2"> In der Werbung geht es hauptsächlich um das beworbene Produkt </td>
-	     <td> <input type="radio" id="zutr1" name="zutreffend1" value="1" /> 1
+	     <td> <font color="#D6431A">1</font> <input type="radio" id="zutr1" name="zutreffend1" value="1" /> 
 	          <input type="radio" id="zutr2" name="zutreffend1" value="2" />
 	          <input type="radio" id="zutr3" name="zutreffend1" value="3" checked/> 
 	          <input type="radio" id="zutr4" name="zutreffend1" value="4" /> 
-	          <input type="radio" id="zutr5" name="zutreffend1" value="5" /></td></tr>
+	          <input type="radio" id="zutr5" name="zutreffend1" value="5" /> <font color="#43AD28">5</font></td></tr>
 	<tr> <td colspan="2"> Ich sehe diese Werbung gerne im Fernsehen  </td>
-	     <td> 1 <input type="radio" name="zutreffend2" value="1" /> 
+	     <td>  <font color="#D6431A">1</font>  <input type="radio" name="zutreffend2" value="1" /> 
 	          <input type="radio" name="zutreffend2" value="2" /> 
 	          <input type="radio" name="zutreffend2" value="3" checked/> 
 	          <input type="radio" name="zutreffend2" value="4" />
-	          <input type="radio" name="zutreffend2" value="5" /> 5</td></tr>
+	          <input type="radio" name="zutreffend2" value="5" /> <font color="#43AD28">5</font></td></tr>
 	<tr> <td colspan="2"> Die Werbung überzeugt mich von der Qualität des Produkts  </td>
-	     <td> 1 <input type="radio" name="zutreffend3" value="1" /> 
+	     <td> <font color="#D6431A">1</font>  <input type="radio" name="zutreffend3" value="1" /> 
 	          <input type="radio" name="zutreffend3" value="2" /> 
 	          <input type="radio" name="zutreffend3" value="3" checked/> 
 	          <input type="radio" name="zutreffend3" value="4" /> 
-	          <input type="radio" name="zutreffend3" value="5" /> 5</td></tr>
+	          <input type="radio" name="zutreffend3" value="5" /> <font color="#43AD28">5</font></td></tr>
 	<tr> <td colspan="2"> Wenn ich das nächste Mal einkaufen gehe, werde ich nach dem beworbenen Produkt Ausschau halten<a href="#" data-toggle="tooltip" title="Beispiel: Bei Websites und Läden (Saturn), werde ich für beworbene Ware dort hin gehen."><img src="tooltip.jpg"></a></td>
-	     <td> 1 <input type="radio" name="zutreffend4" value="1" />
+	     <td> <font color="#D6431A">1</font>  <input type="radio" name="zutreffend4" value="1" />
 	          <input type="radio" name="zutreffend4" value="2" /> 
 	          <input type="radio" name="zutreffend4" value="3" checked/> 
 	          <input type="radio" name="zutreffend4" value="4" />
-	          <input type="radio" name="zutreffend4" value="5" /> 5</td></tr>
+	          <input type="radio" name="zutreffend4" value="5" /> <font color="#43AD28">5</font></td></tr>
 	<tr> <td colspan="2"> Die Werbung spricht mich visuell an.<a href="#" data-toggle="tooltip" title="Hierbei geht es ausschließlich um Sichtbares, Farbgestaltung, Szenenaufbau, Kameraführung..."><img src="tooltip.jpg"></a></td>
-	     <td> 1 <input type="radio" name="ansprech1" value="1" />
+	     <td> <font color="#D6431A">1</font>  <input type="radio" name="ansprech1" value="1" />
 	          <input type="radio" name="ansprech1" value="2" /> 
 	          <input type="radio" name="ansprech1" value="3" checked/> 
 	          <input type="radio" name="ansprech1" value="4" />
-	          <input type="radio" name="ansprech1" value="5" /> 5</td></tr>
+	          <input type="radio" name="ansprech1" value="5" /> <font color="#43AD28">5</font></td></tr>
 	<tr> <td colspan="2"> Die Werbung spricht mich inhaltlich an.</td>
-	     <td> 1 <input type="radio" name="ansprech2" value="1" />
+	     <td> <font color="#D6431A">1</font>  <input type="radio" name="ansprech2" value="1" />
 	          <input type="radio" name="ansprech2" value="2" /> 
 	          <input type="radio" name="ansprech2" value="3" checked/> 
 	          <input type="radio" name="ansprech2" value="4" />
-	          <input type="radio" name="ansprech2" value="5" /> 5</td></tr>
+	          <input type="radio" name="ansprech2" value="5" /> <font color="#43AD28">5</font></td></tr>
 	<tr> <td colspan="2"> Die Werbung spricht mich auditiv an.<a href="#" data-toggle="tooltip" title="Hierbei geht es um Geräusche, Klänge und Musik."><img src="tooltip.jpg"></a></td>
-	     <td> 1 <input type="radio" name="ansprech3" value="1" />
+	     <td> <font color="#D6431A">1</font>  <input type="radio" name="ansprech3" value="1" />
 	          <input type="radio" name="ansprech3" value="2" /> 
 	          <input type="radio" name="ansprech3" value="3" checked/> 
 	          <input type="radio" name="ansprech3" value="4" />
-	          <input type="radio" name="ansprech3" value="5" /> 5</td></tr>
+	          <input type="radio" name="ansprech3" value="5" /> <font color="#43AD28">5</font></td></tr>
 	<tr> <td colspan="2"> Die in der Werbung erzählte Geschichte spricht mich an.<a href="#" data-toggle="tooltip" title="Hierbei geht es weniger um den Inhalt, sondern um die Rahmenhandlung der Werbung."></a></td>
-	     <td> 1 <input type="radio" name="ansprech4" value="1" />
+	     <td> <font color="#D6431A">1</font>  <input type="radio" name="ansprech4" value="1" />
 	          <input type="radio" name="ansprech4" value="2" /> 
 	          <input type="radio" name="ansprech4" value="3" checked/> 
 	          <input type="radio" name="ansprech4" value="4" />
-	          <input type="radio" name="ansprech4" value="5" /> 5</td></tr>
+	          <input type="radio" name="ansprech4" value="5" /> <font color="#43AD28">5</font></td></tr>
 	          </table>
 	          </div>
 </div>
@@ -280,7 +280,7 @@ th {
 </div>
 
 	<p><br>
-	<center><input class="btn btn-default" type="submit" value="Submit" style="background-color: #4db6ac; color: #fff; font-weight: bold;"></center>
+	<center><input class="btn btn-default" type="submit" value="Submit" style="background-color: #4db6ac; color: #fff; font-weight: bold;"><p><br></center>
 	</form>
 
 </div>

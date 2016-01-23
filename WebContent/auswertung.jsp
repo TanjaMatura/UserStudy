@@ -39,12 +39,17 @@ body {
     </div>
   </nav>
   
-<div style="width:80%; margin: 10 auto; ">
+<div style="width:80%; margin: 10px auto; ">
 
 <center><br><br>
 Vielen Dank, dass du dir die Zeit genommen hast, an unserer Studie mitzumachen. <p>
 Leider steht momentan keine Auswertung zur Verfügung. <p>
 Schau doch später noch einmal vorbei!
+
+<form action="MainServlet" method="post">
+<input type="hidden" name="action" value="Auswertung">
+<input class="btn btn-default" type="submit"  value="Anzeigen" ></center>
+</form>
 </center>
 </div>
 </body>

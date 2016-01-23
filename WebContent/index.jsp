@@ -59,19 +59,21 @@ body {
     </div>
   </nav>
 
-<div style="width:80%; margin: 10 auto; ">
+<div style="width:80%; margin: 10px auto;  ">
 
 <p>
-<center>
 <br> 
-<br> 
-<p>Vielen Dank für dein Interesse an unserer Studie. 
+<p><b><center>Vielen Dank für dein Interesse an unserer Studie!</b><p><br>
 
-<p>Bitte sieh dir die beiden Videos auf der nächsten Seite an und wähle die Werbung aus, die dir besser gefällt.
+Bitte sieh dir die beiden Videos auf der nächsten Seite an und wähle die Werbung aus, die dir besser gefällt.
+<p>
+Im Anschluss kannst du Fragen zu dem gewählten Video beantworten.
+Insgesamt stehen <b>50</b> Videos zur Auswahl. <br>
+Falls du sie alle bewertest, kannst du die zwischenzeitlichen Ergebnisse schon 
+vor Ende der Studie einsehen. <p>
 </p>
-<p>Im Anschluss kannst du Fragen zu dem gewählten Video beantworten. Alle Angaben werden anonym gespeichert.
-</p>
-<br> 
+<br> <br>
+
 <form action="MainServlet" method="post">
 <input type="hidden" name="action" value="Teilnehmen">
 <input class="btn btn-default" type="submit"  value="Teilnehmen!" ></center>

@@ -2095,20 +2095,8 @@ img.responsive-img, video.responsive-video {
   font-size: 18px;
   color: rgba(255, 255, 255, 0.7);
   position: relative; 
-  float: left; }
-  .breadcrumb:before {
-    content: '\E5CC';
-    color: rgba(255, 255, 255, 0.7);
-    vertical-align: top;
-    display: inline-block;
-    font-family: 'Material Icons';
-    font-weight: normal;
-    font-style: normal;
-    font-size: 25px;
-    margin: 0 10px 0 8px;
-    -webkit-font-smoothing: antialiased; }
-  .breadcrumb:first-child:before {
-    display: none; }
+  float: left; 
+  margin: 0 10px 0 8px;}
 .active{
 	color: #fff; 
 }
@@ -2328,6 +2316,7 @@ td, th {
         background-color: #999;
         text-align: center; }
       .collection .collection-item.avatar .title {
+        font-weight;
         font-size: 16px; }
       .collection .collection-item.avatar p {
         margin: 0; }
@@ -2516,7 +2505,7 @@ nav ul a span.badge {
   user-select: none; }
 
 .circle {
-  border-radius: 50%; }
+  border-radius: 0%; }
 
 .center-block {
   display: block;

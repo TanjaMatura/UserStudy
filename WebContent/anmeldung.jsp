@@ -47,9 +47,9 @@ body {
     </div>
   </nav>
   
-<div style="width:80%; margin: 0 auto; ">
+<div style="width:80%; margin: 0px auto; ">
 
-<div style="width:50%; margin: 10 auto; text-align: center;">
+<div style="width:50%; margin: 10px auto;">
 <form action="MainServlet" method="post">
 	<input type="hidden" name="action" value="Anmelden">
 	<center>
