@@ -46,7 +46,7 @@ public class MainServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 	}
 
 	/**
@@ -221,11 +221,29 @@ public class MainServlet extends HttpServlet {
 					request.getSession(true).setAttribute("marke" + i, sortedVideos.get(i).getMarke());
 					request.getSession(true).setAttribute("url" + i, sortedVideos.get(i).getURL());
 				}
-				request.getRequestDispatcher("AuswertungTest.jsp").include(request, response);
+				request.getRequestDispatcher("auswertungAlles.jsp").include(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
+		
+		/* ------------ EinzelAuswertung  ------------ */
+		if(action != null && action.equalsIgnoreCase("EinzelAuswertung")){
+			try {
+			String url = request.getParameter("link"); 
+			Video vid = sDAO.getVideobyUrl(url);
+			
+			request.getSession(true).setAttribute("URL", url); 
+			request.getSession(true).setAttribute("marke",vid.getMarke());
+			
+			request.getRequestDispatcher("auswertungEinzeln.jsp").include(request, response);
+			
+			}catch (Exception e) {
+				e.printStackTrace();
+			} 
+		}
+		
+		
 	}
 	
 	
