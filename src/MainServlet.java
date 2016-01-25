@@ -232,10 +232,13 @@ public class MainServlet extends HttpServlet {
 				Collections.sort(rankedVideoList, new SortDBewertung());
 				Collections.reverse(rankedVideoList);
 				
+				DecimalFormat f = new DecimalFormat("#0.00"); 
+				
 				// Alle 50 Video beim request mitübergeben
 					// Hab leider noch keine umkomplizierteren Weg gefunden :/
 				for(int i=0; i < rankedVideoList.size(); i++){
-					request.getSession(true).setAttribute("bewertung" + i, rankedVideoList.get(i).getDBewertung());
+					String dbewertung = f.format(rankedVideoList.get(i).getDBewertung()); 
+					request.getSession(true).setAttribute("bewertung" + i, dbewertung);
 					request.getSession(true).setAttribute("marke" + i, rankedVideoList.get(i).getMarke());
 					request.getSession(true).setAttribute("url" + i, rankedVideoList.get(i).getURL());
 
@@ -264,7 +267,7 @@ public class MainServlet extends HttpServlet {
 				Collections.sort(rankedVideoList, new SortPickrate());
 				Collections.reverse(rankedVideoList);
 				
-				DecimalFormat f = new DecimalFormat("#0.00"); 
+				DecimalFormat f = new DecimalFormat("#0.0"); 
 				
 				for(int i=0; i < rankedVideoList.size(); i++){
 					String pickrate = f.format(rankedVideoList.get(i).getPickrate()*100); 
