@@ -298,6 +298,7 @@ public class MainServlet extends HttpServlet {
 			int markeGes=0;
 			int catchPhraseGes=0;
 			int produkt=0;
+			int gerngesehen=0;
 			for(int i=0; i< bewList.size();i++){
 				if(bewList.get(i).getSchonGesehen().equals("ja")){
 				gesehenGes ++;
@@ -313,6 +314,7 @@ public class MainServlet extends HttpServlet {
 				}
 				produkt +=bewList.get(i).getProduktfixierung();
 				gesehenCounter++;
+				gerngesehen++;
 			}
 
 			double gesehenProz = gesehenGes/gesehenCounter;
@@ -320,6 +322,7 @@ public class MainServlet extends HttpServlet {
 			double plottwistProz =plottwistGes/gesehenCounter;
 			double catchPhraseProz = catchPhraseGes /gesehenCounter;
 			double zutreffend1Mw = produkt/gesehenCounter;
+			double zutreffend2Mw = gerngesehen/gesehenCounter;
 			request.getSession(true).setAttribute("URL", url); 
 			request.getSession(true).setAttribute("marke",vid.getMarke());
 			
