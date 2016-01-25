@@ -1,4 +1,7 @@
 import java.io.IOException;
+import java.io.OutputStream;
+import java.sql.DriverManager;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -10,6 +13,21 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartRenderingInfo;
+import org.jfree.chart.ChartUtilities;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.entity.StandardEntityCollection;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.general.AbstractDataset;
+import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.jdbc.JDBCPieDataset;
+import org.jfree.data.xy.IntervalXYDataset;
+
+import com.mysql.jdbc.Connection;
+import com.sun.prism.BasicStroke;
+import com.sun.prism.paint.Color;
 
 import java.net.InetAddress;
 
@@ -196,32 +214,66 @@ public class MainServlet extends HttpServlet {
 			}*/
 		}
 		
-		/* ------------ Auswertung  ------------ */
-		if(action != null && action.equalsIgnoreCase("Auswertung")){
+		/* ------------ Auswertung Bewertung ------------ */
+		if(action != null && action.equalsIgnoreCase("AuswertungBewertung")){
 			ArrayList<Video> videoList;
 			try {
 				videoList = sDAO.getVideoList();
 				
 				// Objekte mit Durchschnittsbewertung und URL erzeugen, in Liste speichern
-				ArrayList<RankedVideo> sortedVideos = new ArrayList<RankedVideo>();
+				ArrayList<RankedVideo> rankedVideoList = new ArrayList<RankedVideo>();
 				for (int i = 0; i < videoList.size(); i++) {
 					String tempURL = videoList.get(i).getURL();
-					RankedVideo tempRVideo = new RankedVideo(tempURL, sDAO.getDurchschnittsBewertung(tempURL), sDAO.getVideobyUrl(tempURL).getMarke()); 
-					sortedVideos.add(tempRVideo); 
+					RankedVideo tempRVideo = new RankedVideo(tempURL, sDAO.getDurchschnittsBewertung(tempURL), sDAO.getVideobyUrl(tempURL).getMarke(), sDAO.getPickr(tempURL)); 
+					rankedVideoList.add(tempRVideo); 
 				}
 				
 				// List nach Durchschnitsbewertung sortieren
-				Collections.sort(sortedVideos, new SortDBewertung());
-				Collections.reverse(sortedVideos);
+				Collections.sort(rankedVideoList, new SortDBewertung());
+				Collections.reverse(rankedVideoList);
 				
 				// Alle 50 Video beim request mitübergeben
 					// Hab leider noch keine umkomplizierteren Weg gefunden :/
-				for(int i=0; i < sortedVideos.size(); i++){
-					request.getSession(true).setAttribute("bewertung" + i, sortedVideos.get(i).getDBewertung());
-					request.getSession(true).setAttribute("marke" + i, sortedVideos.get(i).getMarke());
-					request.getSession(true).setAttribute("url" + i, sortedVideos.get(i).getURL());
+				for(int i=0; i < rankedVideoList.size(); i++){
+					request.getSession(true).setAttribute("bewertung" + i, rankedVideoList.get(i).getDBewertung());
+					request.getSession(true).setAttribute("marke" + i, rankedVideoList.get(i).getMarke());
+					request.getSession(true).setAttribute("url" + i, rankedVideoList.get(i).getURL());
+
 				}
-				request.getRequestDispatcher("auswertungAlles.jsp").include(request, response);
+				
+				request.getRequestDispatcher("auswertungBewertung.jsp").include(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		/* ------------ Auswertung Pickrate ------------ */
+		if(action != null && action.equalsIgnoreCase("AuswertungPickrate")){
+			ArrayList<Video> videoList;
+			try {
+				videoList = sDAO.getVideoList();
+				
+				// Objekte mit Durchschnittsbewertung und URL erzeugen, in Liste speichern
+				ArrayList<RankedVideo> rankedVideoList = new ArrayList<RankedVideo>();
+				for (int i = 0; i < videoList.size(); i++) {
+					String tempURL = videoList.get(i).getURL();
+					RankedVideo tempRVideo = new RankedVideo(tempURL, sDAO.getDurchschnittsBewertung(tempURL), sDAO.getVideobyUrl(tempURL).getMarke(), sDAO.getPickr(tempURL)); 
+					rankedVideoList.add(tempRVideo); 
+				}
+
+				Collections.sort(rankedVideoList, new SortPickrate());
+				Collections.reverse(rankedVideoList);
+				
+				DecimalFormat f = new DecimalFormat("#0.00"); 
+				
+				for(int i=0; i < rankedVideoList.size(); i++){
+					String pickrate = f.format(rankedVideoList.get(i).getPickrate()*100); 
+					request.getSession(true).setAttribute("Pickrate" + i, pickrate);
+					request.getSession(true).setAttribute("markePickrate" + i, rankedVideoList.get(i).getMarke());
+					request.getSession(true).setAttribute("urlPickrate" + i, rankedVideoList.get(i).getURL());
+
+				}
+				request.getRequestDispatcher("auswertungPickrate.jsp").include(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -232,6 +284,8 @@ public class MainServlet extends HttpServlet {
 			try {
 			String url = request.getParameter("link"); 
 			Video vid = sDAO.getVideobyUrl(url);
+			
+			sDAO.createBarChart(request, response); 
 			
 			request.getSession(true).setAttribute("URL", url); 
 			request.getSession(true).setAttribute("marke",vid.getMarke());
@@ -315,8 +369,6 @@ public class MainServlet extends HttpServlet {
 		sDAO.removeVideobyUrl(url2);
 		sDAO.saveVideo(av2);
 	}
-
-	
 	
 	
 }

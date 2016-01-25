@@ -47,7 +47,7 @@ Leider steht momentan keine Auswertung zur Verfügung. <p>
 Schau doch später noch einmal vorbei!
 
 <form action="MainServlet" method="post">
-<input type="hidden" name="action" value="Auswertung">
+<input type="hidden" name="action" value="AuswertungBewertung">
 <input class="btn btn-default" type="submit"  value="Anzeigen" ></center>
 </form>
 </center>

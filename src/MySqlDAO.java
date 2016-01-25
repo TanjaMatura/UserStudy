@@ -1,3 +1,4 @@
+import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -6,6 +7,23 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.ChartRenderingInfo;
+import org.jfree.chart.ChartUtilities;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.entity.StandardEntityCollection;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.jdbc.JDBCCategoryDataset;
+
+import com.sun.prism.paint.Color;
 
 public class MySqlDAO {
   private Connection connect = null;
@@ -573,5 +591,104 @@ public ArrayList<String> getAnsprechendList() throws Exception{
       
       return bewertung/counter; 
   }
+  
+  // Pickrate eines Videos
+  public double getPickr(String videoURL) throws Exception{
+	  double av = 0; 
+	  double picked = 0; 
+	  connect();
+      String query = "SELECT * FROM Video WHERE vid_url ='" + videoURL + "'";
+      statement = connect.createStatement();
+      resultSet = statement.executeQuery(query);
+      
+      while(resultSet.next()) {
+		   av = Integer.parseInt(resultSet.getString("vid_pickavailable")); 
+		   picked = Integer.parseInt(resultSet.getString("vid_pickcount")); 
+      }
+	  
+      // Um Division durch 0 zu verhinderns
+      if(picked==0){ return -1; }
+      
+      return picked/av; 
+  }
+  
+  /* ------------ Diagramm erstellen  ------------ */
+	
+	protected void createBarChart(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		Connection connection = null;
+		Class.forName("com.mysql.jdbc.Driver").newInstance();
+		connection = (Connection) DriverManager.getConnection("jdbc:mysql://mysql5.univie.ac.at/a1200069", "a1200069", "mz8UserStudy");
+	      
+		final String SQL = "SELECT b_id, gerngesehen FROM Bewertung WHERE vid_url='w25oWpkK6OI'";
+        final CategoryDataset dataset = new JDBCCategoryDataset(connection, SQL);
+         JFreeChart chart = ChartFactory.createBarChart("Report","X-Axis","Y-Axis", dataset, PlotOrientation.VERTICAL, false, false, false);
+        CategoryPlot catplot = chart.getCategoryPlot();
+        /*chart.setBorderPaint(Color.BLACK);
+		chart.setBorderStroke(new BasicStroke(10.0f));
+		chart.setBorderVisible(true);*/
+		if (chart != null) {
+			int width = 500;
+			int height = 350;
+			final ChartRenderingInfo info = new ChartRenderingInfo(new StandardEntityCollection());
+			response.setContentType("image/png");
+			OutputStream out=response.getOutputStream();
+			ChartUtilities.writeChartAsPNG(out, chart, width, height,info);
+		}
+        
+		/*AbstractDataset dataset = new AbstractDataset(connection);
+		dataset.executeQuery("Select vid_pickcount,vid_pickavailable From Video order by vid_pickcount");
+		final JFreeChart chart = ChartFactory.createXYBarChart("Mein Diagram","X",true, "Y",dataset,PlotOrientation.VERTICAL,true,false,false);
+		
+		chart.setBorderPaint(Color.BLACK);
+		chart.setBorderStroke(new BasicStroke(10.0f));
+		chart.setBorderVisible(true);
+		if (chart != null) {
+			int width = 500;
+			int height = 350;
+			final ChartRenderingInfo info = new ChartRenderingInfo(new StandardEntityCollection());
+			response.setContentType("image/png");
+			OutputStream out=response.getOutputStream();
+			ChartUtilities.writeChartAsPNG(out, chart, width, height,info);
+		}
+	}
+  
+	protected void createPieChart(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		Connection connection = null;
+		Class.forName("com.mysql.jdbc.Driver").newInstance();
+		connection = (Connection) DriverManager.getConnection("jdbc:mysql://mysql5.univie.ac.at/a1200069", "a1200069", "mz8UserStudy");
+	      
+		// Automatisch
+		// Geht hier nicht, weil die Werte keine Zahlen sind
+		/*JDBCPieDataset dataset = new JDBCPieDataset(connection);
+		dataset.executeQuery("Select schongesehen,vid_url From Bewertung where vid_url='VmQl6dTj6Gk'");
+		JFreeChart chart = ChartFactory.createPieChart("Mein Diagram", dataset, true, true, false);*/
+		
+		// So Händisch
+		/*DefaultPieDataset dataset = new DefaultPieDataset();
+	      dataset.setValue("Ja", new Double(43.2));
+	      dataset.setValue("Nein", new Double(10.0));
+	      dataset.setValue("NA", new Double(27.5));  
+	      
+	      JFreeChart chart = ChartFactory.createPieChart(
+	              "Pie Chart Demo 1",  // chart title
+	              dataset,             // data
+	              true,                // include legend
+	              true,
+	              false
+	          );
+
+		chart.setBorderPaint(Color.BLACK);
+		chart.setBorderStroke(new BasicStroke(10.0f));
+		chart.setBorderVisible(true);
+		if (chart != null) {
+			int width = 500;
+			int height = 350;
+			final ChartRenderingInfo info = new ChartRenderingInfo(new StandardEntityCollection());
+			response.setContentType("image/png");
+			OutputStream out=response.getOutputStream();
+			ChartUtilities.writeChartAsPNG(out, chart, width, height, info);
+		}*/
+	
+	}
 }
 

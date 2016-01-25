@@ -10,6 +10,11 @@
 <!-- Materialize -->
 <link href="materialize-v0.97.3/materialize/css/materialize.css" rel="stylesheet" type="text/css" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script language="Javascript">
+function refreshpage(){
+document.forms.form1.submit();
+}
+</script>
 </head>
 <style>
 body {
@@ -55,6 +60,12 @@ body {
       </div>
     </div>
   </div>
+
+<%response.setIntHeader("Refresh",5);%>
+<form id="form1">
+  <img src="chart" width="600" height="400" border="0"/>
+  <input type="button" onclick="refreshpage()" value="Refresh"/>
+</form>
 
 </body>
 </html>

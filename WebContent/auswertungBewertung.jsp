@@ -11,28 +11,6 @@
 <!-- Materialize -->
 <link href="materialize-v0.97.3/materialize/css/materialize.css" rel="stylesheet" type="text/css" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<script>
-function listeErzeugen(){
-	// Liste erzeugen
-	var list = document.createElement('ul');
-	var neuerLink = document.createElement("a");
-    neuerLink.href = www.google.at;
-    neuerLink.innerHTML = "text";
-	for(var i = 0; i < 50; i++) {
-        // Create the list item:
-        var item = document.createElement('li');
-        // Set its contents:
-        item.innerHTML(neuerLink);
-        // Add it to the list:
-        list.appendChild(item);
-  }
-
-	// Liste an Div anhängen
-	document.getElementById('listeDIV').appendChild(list);
-	
-
-}
-</script>
 </head>
 <style>
 body {
@@ -45,7 +23,7 @@ body {
 	background-color: #4db6ac;
 }
 </style>
-<body onload="listeErzeugen()">
+<body>
 
 
  <nav>
@@ -65,13 +43,25 @@ body {
     </div>
   </nav>
   
-
-<div id="listeDIV">
-</div>
+<center>
+<table style="width:25%;">
+<tr>
+<td>
+<form action="MainServlet" method="post">
+<input type="hidden" name="action" value="AuswertungBewertung">
+<input class="btn btn-default" type="submit"  value="Bewertung" ></center>
+</form></td>
+<td>
+<form action="MainServlet" method="post">
+<input type="hidden" name="action" value="AuswertungPickrate">
+<input class="btn btn-default" type="submit"  value="Pickrate" ></center>
+</form>
+</td></tr>
+</table>
+</center>
 
 <form action="MainServlet" method="post">
 <input type="hidden" name="action" value="EinzelAuswertung">
-
 <ul class="collection">
  <!-- 1-10  -->
     <li class="collection-item avatar">
@@ -425,6 +415,7 @@ body {
       <a href="#!" class="secondary-content"><i class="material-icons">equalizer</i></a>
     </li>
     </ul>
+  
    </form>
 </body>
 
