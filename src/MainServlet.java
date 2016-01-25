@@ -284,9 +284,7 @@ public class MainServlet extends HttpServlet {
 			try {
 			String url = request.getParameter("link"); 
 			Video vid = sDAO.getVideobyUrl(url);
-			
-			sDAO.createBarChart(request, response); 
-			
+
 			request.getSession(true).setAttribute("URL", url); 
 			request.getSession(true).setAttribute("marke",vid.getMarke());
 			
