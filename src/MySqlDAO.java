@@ -612,6 +612,44 @@ public ArrayList<String> getAnsprechendList() throws Exception{
       return picked/av; 
   }
   
+  // Ansprechend
+  public ArrayList<Double> getAnsprechendByb_id(String bewertungsID) throws Exception{
+	  ArrayList<Video> videoList = getVideoList(); 
+	  Video thing = null; 
+	  
+	  connect();
+      String query = "SELECT * FROM Ansprechend WHERE b_id ='" + bewertungsID + "'";
+      statement = connect.createStatement();
+      resultSet = statement.executeQuery(query);
+      
+      double visuell = 0; 
+      double auditiv = 0; 
+      double inhalt = 0; 
+      double story = 0; 
+      double counter = 0; 
+      
+      while(resultSet.next()) {
+    	  visuell += Double.parseDouble(resultSet.getString("a_visuell")); 
+    	  inhalt += Double.parseDouble(resultSet.getString("a_inhalt")); 
+    	  auditiv += Double.parseDouble(resultSet.getString("a_auditiv")); 
+    	  story += Double.parseDouble(resultSet.getString("a_story")); 
+    	  counter ++;
+     }
+     
+     visuell = visuell/counter; 
+     auditiv = auditiv/counter; 
+     inhalt = inhalt/counter; 
+     story = story/counter; 
+     
+	 ArrayList<Double> ansprechend = new ArrayList<Double>(); 
+	 ansprechend.add(visuell); 
+	 ansprechend.add(auditiv); 
+	 ansprechend.add(inhalt); 
+	 ansprechend.add(story); 
+	 
+	 return ansprechend; 
+  }
+  
   /* ------------ Diagramm erstellen  ------------ */
 	
 	protected void createBarChart(HttpServletRequest request, HttpServletResponse response) throws Exception {
