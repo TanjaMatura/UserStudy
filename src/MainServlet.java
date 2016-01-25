@@ -284,7 +284,42 @@ public class MainServlet extends HttpServlet {
 			try {
 			String url = request.getParameter("link"); 
 			Video vid = sDAO.getVideobyUrl(url);
+			ArrayList<Bewertung> bewListTemp = sDAO.getBewertungList();
+			ArrayList<Bewertung> bewList = new ArrayList<Bewertung>();
+			for(int i=0; i< bewListTemp.size();i++){
+				if(bewListTemp.get(i).geturl() == url){
+					bewList.add(bewListTemp.get(i));
+				}
+			}
+			ArrayList<Integer> ansprechList = sDAO.getAnsprechendByb_id();
+			int gesehenGes =0;
+			int gesehenCounter=0;
+			int plottwistGes=0;
+			int markeGes=0;
+			int catchPhraseGes=0;
+			int produkt=0;
+			for(int i=0; i< bewList.size();i++){
+				if(bewList.get(i).getSchonGesehen().equals("ja")){
+				gesehenGes ++;
+				}
+				if(bewList.get(i).getMarkeBekannt().equals("ja")){
+					markeGes ++;
+				}
+				if(bewList.get(i).getPlotTwist().equals("ja")){
+					plottwistGes ++;
+				}
+				if(bewList.get(i).getCatchPhrase().equals("ja")){
+					plottwistGes ++;
+				}
+				produkt +=bewList.get(i).getProduktfixierung();
+				gesehenCounter++;
+			}
 
+			double gesehenProz = gesehenGes/gesehenCounter;
+			double markeProz = markeGes/gesehenCounter;
+			double plottwistProz =plottwistGes/gesehenCounter;
+			double catchPhraseProz = catchPhraseGes /gesehenCounter;
+			double zutreffend1Mw = produkt/gesehenCounter;
 			request.getSession(true).setAttribute("URL", url); 
 			request.getSession(true).setAttribute("marke",vid.getMarke());
 			
