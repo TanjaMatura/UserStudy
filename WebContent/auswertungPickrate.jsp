@@ -47,8 +47,8 @@ body {
 <tr>
 <td>
 <form action="MainServlet" method="post">
-<input type="hidden" name="action" value="AuswertungPickrate">
-<input class="btn btn-default" type="submit"  value="Pickrate" ></center>
+<input type="hidden" name="action" value="AuswertungBewertung">
+<input class="btn btn-default" type="submit"  value="Bewertung" ></center>
 </form></td>
 <td>
 <form action="MainServlet" method="post">
