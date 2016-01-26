@@ -66,7 +66,7 @@ body {
         <div class="breadcrumb"> Über dich </div>
         <div class="breadcrumb active"> Auswahl </div>
         <div class="breadcrumb"> Bewertung</div>
-        <div class="breadcrumb"> Auswertung</div>
+        <div class="breadcrumb"> <a href="auswertung.jsp" style="font-style: italic;">Auswertung</a></div>
       </div>
       </div>
     </div>

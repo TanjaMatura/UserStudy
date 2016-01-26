@@ -299,6 +299,11 @@ public class MainServlet extends HttpServlet {
 			int catchPhraseGes=0;
 			int produkt=0;
 			int gerngesehen=0;
+			int quali=0;
+			int ans1=0;
+			int ans2=0;
+			int ans3=0;
+			int ans4=0;
 			for(int i=0; i< bewList.size();i++){
 				if(bewList.get(i).getSchonGesehen().equals("ja")){
 				gesehenGes ++;
@@ -314,8 +319,11 @@ public class MainServlet extends HttpServlet {
 				}
 				produkt +=bewList.get(i).getProduktfixierung();
 				gesehenCounter++;
-				gerngesehen++;
+				gerngesehen += Integer.parseInt(bewList.get(i).getGernGesehen());
+				quali += Integer.parseInt(bewList.get(i).getUeberzeugung());
+				
 			}
+			
 
 			double gesehenProz = gesehenGes/gesehenCounter;
 			double markeProz = markeGes/gesehenCounter;
@@ -323,6 +331,12 @@ public class MainServlet extends HttpServlet {
 			double catchPhraseProz = catchPhraseGes /gesehenCounter;
 			double zutreffend1Mw = produkt/gesehenCounter;
 			double zutreffend2Mw = gerngesehen/gesehenCounter;
+			double zutreffend3Mw = quali/gesehenCounter;
+			double zutreffend4Mw = quali/gesehenCounter;
+			double ansprech1Mw = ansprechList.get(0);
+			double ansprech2Mw = ansprechList.get(1);
+			double ansprech3Mw = ansprechList.get(2);
+			double ansprech4Mw = ansprechList.get(3);
 			request.getSession(true).setAttribute("URL", url); 
 			request.getSession(true).setAttribute("marke",vid.getMarke());
 			
