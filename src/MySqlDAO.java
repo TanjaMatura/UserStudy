@@ -550,6 +550,44 @@ public ArrayList<String> getAnsprechendList() throws Exception{
 	
 }
 
+//Ansprechend
+public ArrayList<Double> getAnsprechendByb_id(String bewertungsID) throws Exception{
+
+
+connect();
+   String query = "SELECT * FROM Ansprechend WHERE v_url ='" + bewertungsID + "'";
+   statement = connect.createStatement();
+   resultSet = statement.executeQuery(query);
+   
+   double visuell = 0; 
+   double auditiv = 0; 
+   double inhalt = 0; 
+   double story = 0; 
+   double counter = 0; 
+   
+   while(resultSet.next()) {
+    visuell += Double.parseDouble(resultSet.getString("a_visuell")); 
+    inhalt += Double.parseDouble(resultSet.getString("a_inhalt")); 
+    auditiv += Double.parseDouble(resultSet.getString("a_auditiv")); 
+    story += Double.parseDouble(resultSet.getString("a_story")); 
+    counter ++;
+  }
+  
+  visuell = visuell/counter; 
+  auditiv = auditiv/counter; 
+  inhalt = inhalt/counter; 
+  story = story/counter; 
+  
+ArrayList<Double> ansprechend = new ArrayList<Double>(); 
+ansprechend.add(visuell); 
+ansprechend.add(auditiv); 
+ansprechend.add(inhalt); 
+ansprechend.add(story); 
+
+close();
+return ansprechend; 
+}
+
   // You need to close the resultSet
   private void close() {
     try {

@@ -291,7 +291,7 @@ public class MainServlet extends HttpServlet {
 					bewList.add(bewListTemp.get(i));
 				}
 			}
-			ArrayList<Integer> ansprechList = sDAO.getAnsprechendByb_id();
+			ArrayList<Double> ansprechList = sDAO.getAnsprechendByb_id(url);
 			int gesehenGes =0;
 			int gesehenCounter=0;
 			int plottwistGes=0;
@@ -300,10 +300,14 @@ public class MainServlet extends HttpServlet {
 			int produkt=0;
 			int gerngesehen=0;
 			int quali=0;
-			int ans1=0;
-			int ans2=0;
-			int ans3=0;
-			int ans4=0;
+			int trauernst=0;
+			int ernstlu=0;
+			int modernu=0;
+			int orig=0;
+			int lieb=0;
+			int sym=0;
+			int bewGes=0;
+			String zielgruppenString="";
 			for(int i=0; i< bewList.size();i++){
 				if(bewList.get(i).getSchonGesehen().equals("ja")){
 				gesehenGes ++;
@@ -317,10 +321,25 @@ public class MainServlet extends HttpServlet {
 				if(bewList.get(i).getCatchPhrase().equals("ja")){
 					plottwistGes ++;
 				}
+				if(bewList.get(i).getZielgruppe() != "null"){
+					if(!zielgruppenString.contains(bewList.get(i).getZielgruppe())){
+						if(zielgruppenString != ""){
+							zielgruppenString += ", ";
+						}
+						zielgruppenString += bewList.get(i).getZielgruppe();
+					}
+				}
 				produkt +=bewList.get(i).getProduktfixierung();
 				gesehenCounter++;
 				gerngesehen += Integer.parseInt(bewList.get(i).getGernGesehen());
 				quali += Integer.parseInt(bewList.get(i).getUeberzeugung());
+				trauernst += bewList.get(i).getFroehlichTraurig();
+				ernstlu += bewList.get(i).getLustigErnst();
+				modernu += bewList.get(i).getAltmodischModern();
+				orig += bewList.get(i).getKreativUnkreativ();
+				lieb += bewList.get(i).getLiebenswertFies();
+				sym += bewList.get(i).getSympathischUnsympathisch();
+				bewGes += bewList.get(i).getBewertung();
 				
 			}
 			
@@ -337,7 +356,34 @@ public class MainServlet extends HttpServlet {
 			double ansprech2Mw = ansprechList.get(1);
 			double ansprech3Mw = ansprechList.get(2);
 			double ansprech4Mw = ansprechList.get(3);
+			double empfinden1Mw = trauernst/gesehenCounter;
+			double empfinden2Mw = ernstlu/gesehenCounter;
+			double empfinden3Mw = modernu/gesehenCounter;
+			double empfinden4Mw = orig/gesehenCounter;
+			double empfinden5Mw = lieb/gesehenCounter;
+			double empfinden6Mw = sym/gesehenCounter;
+			double gesamtBewMw = bewGes/gesehenCounter;
 			request.getSession(true).setAttribute("URL", url); 
+			request.getSession(true).setAttribute("zielgruppenString", zielgruppenString);
+			request.getSession(true).setAttribute("gesehenProz",gesehenProz);
+			request.getSession(true).setAttribute("markeProz",markeProz);
+			request.getSession(true).setAttribute("plottwistProz",plottwistProz);
+			request.getSession(true).setAttribute("catchPhraseProz",catchPhraseProz);
+			request.getSession(true).setAttribute("zutreffend1Mw",zutreffend1Mw);
+			request.getSession(true).setAttribute("zutreffend2Mw",zutreffend2Mw);
+			request.getSession(true).setAttribute("zutreffend3Mw",zutreffend3Mw);
+			request.getSession(true).setAttribute("zutreffend4Mw",zutreffend4Mw);
+			request.getSession(true).setAttribute("ansprech1Mw",ansprech1Mw);
+			request.getSession(true).setAttribute("ansprech2Mw",ansprech2Mw);
+			request.getSession(true).setAttribute("ansprech3Mw",ansprech3Mw);
+			request.getSession(true).setAttribute("ansprech4Mw",ansprech4Mw);
+			request.getSession(true).setAttribute("empfinden1Mw",empfinden1Mw);
+			request.getSession(true).setAttribute("empfinden2Mw",empfinden2Mw);
+			request.getSession(true).setAttribute("empfinden3Mw",empfinden3Mw);
+			request.getSession(true).setAttribute("empfinden4Mw",empfinden4Mw);
+			request.getSession(true).setAttribute("empfinden5Mw",empfinden5Mw);
+			request.getSession(true).setAttribute("empfinden6Mw",empfinden6Mw);
+			request.getSession(true).setAttribute("gesamtBewMw",gesamtBewMw);
 			request.getSession(true).setAttribute("marke",vid.getMarke());
 			
 			request.getRequestDispatcher("auswertungEinzeln.jsp").include(request, response);

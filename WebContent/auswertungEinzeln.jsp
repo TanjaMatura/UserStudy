@@ -1,7 +1,7 @@
 <<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -134,7 +134,7 @@ th {
 
 	<tr> <td colspan="2"> Die Werbung spricht mich auditiv an: <%= request.getSession().getAttribute("ansprech3Mw") %><a href="#" data-toggle="tooltip" title="Hierbei geht es um Geräusche, Klänge und Musik."><img src="tooltip.jpg"></a></td>
 
-	<tr> <td colspan="2"> Die in der Werbung erzählte Geschichte spricht mich an: <%= request.getSession().getAttribute("ansprech3Mw") %><a href="#" data-toggle="tooltip" title="Hierbei geht es weniger um den Inhalt, sondern um die Rahmenhandlung der Werbung."></a></td>
+	<tr> <td colspan="2"> Die in der Werbung erzählte Geschichte spricht mich an: <%= request.getSession().getAttribute("ansprech4Mw") %><a href="#" data-toggle="tooltip" title="Hierbei geht es weniger um den Inhalt, sondern um die Rahmenhandlung der Werbung."></a></td>
 </tr>
 	          </table>
 	          </div>
@@ -197,7 +197,7 @@ th {
 =======
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/lose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
