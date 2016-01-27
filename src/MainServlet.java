@@ -343,7 +343,7 @@ public class MainServlet extends HttpServlet {
 				
 			}
 			
-
+			if (gesehenCounter == 0){gesehenCounter = 1;}
 			double gesehenProz = gesehenGes/gesehenCounter;
 			double markeProz = markeGes/gesehenCounter;
 			double plottwistProz =plottwistGes/gesehenCounter;

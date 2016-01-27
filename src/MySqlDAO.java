@@ -625,6 +625,7 @@ return ansprechend;
     	  counter++;
       }
       // Um Division durch 0 zu verhinderns
+      close();
       if(counter==0){ return -1; }
       
       return bewertung/counter; 
@@ -645,6 +646,7 @@ return ansprechend;
       }
 	  
       // Um Division durch 0 zu verhinderns
+      close();
       if(picked==0){ return -1; }
       
       return picked/av; 
@@ -726,7 +728,7 @@ return ansprechend;
 			OutputStream out=response.getOutputStream();
 			ChartUtilities.writeChartAsPNG(out, chart, width, height, info);
 		}*/
-	
+		close();
 	}
 }
 
